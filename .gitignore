@@ -1,3 +1,4 @@
+.DS_Store
 data/raw/
 data/interim/
 data/processed/
@@ -5,4 +6,3 @@ data/processed/
 .env
 __pycache__/
 .ipynb_checkpoints/
-.DS_Store
