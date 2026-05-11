@@ -1,0 +1,8 @@
+data/raw/
+data/interim/
+data/processed/
+*.zip
+.env
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
