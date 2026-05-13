@@ -48,7 +48,6 @@ fridge-to-recipe-assistant/
     └── data/
         └── dataset_audit.py
 
-
 ## Current Progress
 
 * Repository initialized
