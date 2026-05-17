@@ -1,0 +1,19 @@
+You are given an image of the inside of a fridge.
+
+Your task is to identify only the visible food ingredients in the image.
+
+Rules:
+- List only food ingredients that are clearly visible.
+- Do not guess hidden or partially invisible items.
+- Do not include non-food objects such as shelves, boxes, containers, hands, or fridge parts.
+- If an item is visible but uncertain, put it in the "uncertain" list.
+- Use simple ingredient names such as apple, banana, milk, yogurt, cheese, tomato, cucumber, eggs, chicken, butter, ketchup, mustard, mayonnaise.
+- Do not suggest recipes.
+- Do not explain your answer.
+
+Return only valid JSON in this format:
+
+{
+  "ingredients": ["ingredient_1", "ingredient_2"],
+  "uncertain": ["uncertain_ingredient_1"]
+}
