@@ -1,0 +1,292 @@
+item,type,count,in_dataset_22_classes
+eggs,ingredient,29,True
+butter,ingredient,27,True
+yogurt,ingredient,25,True
+milk,ingredient,24,True
+cheese,ingredient,24,True
+lettuce,ingredient,20,True
+carrot,ingredient,20,True
+pickles,ingredient,19,False
+tomato,ingredient,19,True
+mustard,ingredient,18,True
+mayonnaise,ingredient,16,True
+chicken,ingredient,16,True
+soy sauce,ingredient,13,False
+blueberries,ingredient,13,True
+ketchup,ingredient,12,True
+hot sauce,ingredient,12,False
+jam,ingredient,12,False
+strawberries,ingredient,12,True
+salad dressing,ingredient,11,False
+cucumber,ingredient,10,True
+apple,ingredient,9,True
+beer,ingredient,8,False
+red bell pepper,ingredient,8,False
+mushrooms,ingredient,8,False
+juice,ingredient,8,False
+meat,ingredient,8,False
+salsa,ingredient,7,False
+bread,ingredient,6,False
+avocado,ingredient,6,True
+potatoes,ingredient,6,False
+soda,ingredient,5,False
+tortillas,ingredient,5,False
+lime,ingredient,5,True
+banana,ingredient,5,True
+almond milk,ingredient,5,False
+oat milk,ingredient,5,False
+orange juice,ingredient,5,False
+onion,ingredient,5,False
+water,ingredient,5,False
+olives,ingredient,4,False
+cream cheese,ingredient,4,False
+parmesan cheese,ingredient,4,False
+orange,ingredient,4,True
+lemon,ingredient,4,True
+oranges,ingredient,4,False
+green beans,ingredient,4,False
+berries,ingredient,3,False
+wine,ingredient,3,False
+bell pepper,ingredient,3,True
+bacon,ingredient,3,False
+whipped cream,ingredient,3,False
+red pepper,ingredient,3,False
+sauce,ingredient,3,False
+soy milk,ingredient,3,False
+ground beef,ingredient,3,False
+pasta sauce,ingredient,3,False
+spinach,ingredient,3,False
+sausages,ingredient,3,False
+bananas,ingredient,3,False
+lime juice,ingredient,3,False
+eggplant,ingredient,2,False
+ranch dressing,ingredient,2,False
+creamer,ingredient,2,False
+vinegar,ingredient,2,False
+protein shake,ingredient,2,False
+mango,ingredient,2,False
+tuna,ingredient,2,False
+peanut butter,ingredient,2,False
+red onion,ingredient,2,False
+cottage cheese,ingredient,2,False
+sparkling water,ingredient,2,False
+celery,ingredient,2,False
+limes,ingredient,2,False
+sprouts,ingredient,2,False
+sugar,ingredient,2,False
+apples,ingredient,2,False
+sour cream,ingredient,2,False
+zucchini,ingredient,2,False
+sriracha,ingredient,2,False
+cooking oil,ingredient,2,False
+bbq sauce,ingredient,2,False
+ice cream,ingredient,2,False
+vegetable broth,ingredient,2,False
+broccoli,ingredient,2,False
+ground meat,ingredient,2,False
+barbecue sauce,ingredient,2,False
+taco sauce,ingredient,1,False
+worcestershire sauce,ingredient,1,False
+steak sauce,ingredient,1,False
+bone broth,ingredient,1,False
+caesar dressing,ingredient,1,False
+salt,ingredient,1,False
+balsamic dressing,ingredient,1,False
+vegetables,ingredient,1,False
+tofu,ingredient,1,False
+kimchi,ingredient,1,False
+salad,ingredient,1,False
+peppers,ingredient,1,False
+pickled beets,ingredient,1,False
+black beans,ingredient,1,False
+half and half,ingredient,1,False
+cooking sauce,ingredient,1,False
+dill pickles,ingredient,1,False
+egg whites,ingredient,1,False
+hummus,ingredient,1,False
+corn dogs,ingredient,1,False
+jalapeno peppers,ingredient,1,False
+pickled peppers,ingredient,1,False
+probiotic drink,ingredient,1,False
+egg substitute,ingredient,1,False
+coconut milk,ingredient,1,False
+vanilla extract,ingredient,1,False
+buffalo sauce,ingredient,1,False
+picante sauce,ingredient,1,False
+green onions,ingredient,1,False
+pasta,ingredient,1,False
+kiwi,ingredient,1,False
+liquid eggs,ingredient,1,False
+fruit,ingredient,1,False
+relish,ingredient,1,False
+tomato paste,ingredient,1,False
+pizza,ingredient,1,False
+sports drink,ingredient,1,False
+lemonade,ingredient,1,False
+jelly,ingredient,1,False
+broth,ingredient,1,False
+chocolate,ingredient,1,False
+gochujang,ingredient,1,False
+ham,ingredient,1,False
+flaxseed,ingredient,1,False
+basil,ingredient,1,False
+tater tots,ingredient,1,False
+pork sausage,ingredient,1,False
+red cabbage,ingredient,1,False
+green bell pepper,ingredient,1,False
+chocolate syrup,ingredient,1,False
+nectarine,ingredient,1,False
+apricots,ingredient,1,False
+sliced cheese,ingredient,1,False
+cream,ingredient,1,False
+salmon,ingredient,1,False
+canned fish,ingredient,1,False
+broccolini,ingredient,1,False
+mozzarella,ingredient,1,False
+steak,ingredient,1,False
+salad greens,ingredient,1,False
+ricotta cheese,ingredient,1,False
+tortilla chips,ingredient,1,False
+biscuit dough,ingredient,1,False
+cranberry sauce,ingredient,1,False
+lunchables,ingredient,1,False
+fruit juice,ingredient,1,False
+raspberries,ingredient,1,False
+chocolate covered fruit,ingredient,1,False
+beef,ingredient,1,False
+leafy greens,ingredient,1,False
+fish,ingredient,1,False
+asparagus,ingredient,1,False
+herbs,ingredient,1,False
+maple syrup,ingredient,1,False
+chia seeds,ingredient,1,False
+cauliflower,ingredient,1,False
+syrup,ingredient,1,False
+red peppers,ingredient,1,False
+cucumbers,ingredient,1,False
+chocolate milk,ingredient,1,False
+beef broth,ingredient,1,False
+sweet tea,ingredient,1,False
+onions,ingredient,1,False
+lemons,ingredient,1,False
+sweet potato,ingredient,1,False
+mushroom,ingredient,1,False
+margarine,ingredient,1,False
+collagen powder,ingredient,1,False
+biscuits,ingredient,1,False
+lime pickle,ingredient,1,False
+mint sauce,ingredient,1,False
+chutney,ingredient,1,False
+garlic paste,ingredient,1,False
+tomato sauce,ingredient,1,False
+frozen peas,ingredient,1,False
+feta cheese,ingredient,1,False
+cheddar cheese,ingredient,1,False
+grapes,ingredient,1,False
+rice pudding,ingredient,1,False
+garlic,ingredient,1,False
+gin,ingredient,1,False
+cooking cream,ingredient,1,False
+egg,ingredient,1,False
+sweet chili sauce,ingredient,1,False
+cream sauce,ingredient,1,False
+sun-dried tomatoes,ingredient,1,False
+minced meat,ingredient,1,False
+spring onions,ingredient,1,False
+peri-peri sauce,ingredient,1,False
+relish,uncertain,7,False
+cream cheese,uncertain,7,False
+yogurt,uncertain,7,True
+jam,uncertain,7,False
+pickles,uncertain,6,False
+cheese,uncertain,6,True
+mushrooms,uncertain,6,False
+mustard,uncertain,5,True
+juice,uncertain,5,False
+salsa,uncertain,5,False
+meat,uncertain,5,False
+frozen vegetables,uncertain,4,False
+wine,uncertain,4,False
+butter,uncertain,4,True
+bread,uncertain,3,False
+tomato,uncertain,3,True
+olives,uncertain,3,False
+leftovers,uncertain,3,False
+deli meat,uncertain,3,False
+flour,uncertain,3,False
+sauce,uncertain,3,False
+tofu,uncertain,3,False
+fruit,uncertain,2,False
+canned food,uncertain,2,False
+soy sauce,uncertain,2,False
+nectarine,uncertain,2,False
+wasabi,uncertain,2,False
+vinegar,uncertain,2,False
+broth,uncertain,2,False
+cake,uncertain,2,False
+fish,uncertain,2,False
+salad,uncertain,2,False
+tortillas,uncertain,2,False
+salad dressing,uncertain,2,False
+dressing,uncertain,1,False
+sour cream,uncertain,1,False
+honey,uncertain,1,False
+frozen fruit,uncertain,1,False
+oil,uncertain,1,False
+tomato paste,uncertain,1,False
+bacon,uncertain,1,False
+marinade,uncertain,1,False
+potato,uncertain,1,False
+avocado,uncertain,1,True
+blueberries,uncertain,1,True
+noodles,uncertain,1,False
+casserole,uncertain,1,False
+bell pepper,uncertain,1,True
+frozen fish,uncertain,1,False
+frozen waffles,uncertain,1,False
+broccoli,uncertain,1,False
+carrot,uncertain,1,True
+hummus,uncertain,1,False
+pie,uncertain,1,False
+shredded cheese,uncertain,1,False
+cream,uncertain,1,False
+ground meat,uncertain,1,False
+dips,uncertain,1,False
+mango,uncertain,1,False
+ginger,uncertain,1,False
+syrup,uncertain,1,False
+steak sauce,uncertain,1,False
+vegetables,uncertain,1,False
+dip,uncertain,1,False
+sauerkraut,uncertain,1,False
+pesto,uncertain,1,False
+red sauce,uncertain,1,False
+zucchini,uncertain,1,False
+green beans,uncertain,1,False
+almond milk,uncertain,1,False
+water,uncertain,1,False
+potatoes,uncertain,1,False
+beer,uncertain,1,False
+avocados,uncertain,1,False
+minced garlic,uncertain,1,False
+pasta,uncertain,1,False
+roasted peppers,uncertain,1,False
+soda,uncertain,1,False
+waffles,uncertain,1,False
+cheese slices,uncertain,1,False
+creamer,uncertain,1,False
+tuna,uncertain,1,False
+cashew milk,uncertain,1,False
+spices,uncertain,1,False
+soup,uncertain,1,False
+apricot jam,uncertain,1,False
+ice cream,uncertain,1,False
+hot sauce,uncertain,1,False
+packaged food item,uncertain,1,False
+container contents,uncertain,1,False
+nuts,uncertain,1,False
+cooking spray,uncertain,1,False
+packaged meat,uncertain,1,False
+tube,uncertain,1,False
+plums,uncertain,1,False
+chopped fruit,uncertain,1,False

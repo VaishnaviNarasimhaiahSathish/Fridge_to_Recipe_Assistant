@@ -1,0 +1,97 @@
+item,type,count,in_dataset_22_classes
+relish,uncertain,7,False
+cream cheese,uncertain,7,False
+yogurt,uncertain,7,True
+jam,uncertain,7,False
+pickles,uncertain,6,False
+cheese,uncertain,6,True
+mushrooms,uncertain,6,False
+mustard,uncertain,5,True
+juice,uncertain,5,False
+salsa,uncertain,5,False
+meat,uncertain,5,False
+frozen vegetables,uncertain,4,False
+wine,uncertain,4,False
+butter,uncertain,4,True
+bread,uncertain,3,False
+tomato,uncertain,3,True
+olives,uncertain,3,False
+leftovers,uncertain,3,False
+deli meat,uncertain,3,False
+flour,uncertain,3,False
+sauce,uncertain,3,False
+tofu,uncertain,3,False
+fruit,uncertain,2,False
+canned food,uncertain,2,False
+soy sauce,uncertain,2,False
+nectarine,uncertain,2,False
+wasabi,uncertain,2,False
+vinegar,uncertain,2,False
+broth,uncertain,2,False
+cake,uncertain,2,False
+fish,uncertain,2,False
+salad,uncertain,2,False
+tortillas,uncertain,2,False
+salad dressing,uncertain,2,False
+dressing,uncertain,1,False
+sour cream,uncertain,1,False
+honey,uncertain,1,False
+frozen fruit,uncertain,1,False
+oil,uncertain,1,False
+tomato paste,uncertain,1,False
+bacon,uncertain,1,False
+marinade,uncertain,1,False
+potato,uncertain,1,False
+avocado,uncertain,1,True
+blueberries,uncertain,1,True
+noodles,uncertain,1,False
+casserole,uncertain,1,False
+bell pepper,uncertain,1,True
+frozen fish,uncertain,1,False
+frozen waffles,uncertain,1,False
+broccoli,uncertain,1,False
+carrot,uncertain,1,True
+hummus,uncertain,1,False
+pie,uncertain,1,False
+shredded cheese,uncertain,1,False
+cream,uncertain,1,False
+ground meat,uncertain,1,False
+dips,uncertain,1,False
+mango,uncertain,1,False
+ginger,uncertain,1,False
+syrup,uncertain,1,False
+steak sauce,uncertain,1,False
+vegetables,uncertain,1,False
+dip,uncertain,1,False
+sauerkraut,uncertain,1,False
+pesto,uncertain,1,False
+red sauce,uncertain,1,False
+zucchini,uncertain,1,False
+green beans,uncertain,1,False
+almond milk,uncertain,1,False
+water,uncertain,1,False
+potatoes,uncertain,1,False
+beer,uncertain,1,False
+avocados,uncertain,1,False
+minced garlic,uncertain,1,False
+pasta,uncertain,1,False
+roasted peppers,uncertain,1,False
+soda,uncertain,1,False
+waffles,uncertain,1,False
+cheese slices,uncertain,1,False
+creamer,uncertain,1,False
+tuna,uncertain,1,False
+cashew milk,uncertain,1,False
+spices,uncertain,1,False
+soup,uncertain,1,False
+apricot jam,uncertain,1,False
+ice cream,uncertain,1,False
+hot sauce,uncertain,1,False
+packaged food item,uncertain,1,False
+container contents,uncertain,1,False
+nuts,uncertain,1,False
+cooking spray,uncertain,1,False
+packaged meat,uncertain,1,False
+tube,uncertain,1,False
+plums,uncertain,1,False
+chopped fruit,uncertain,1,False
