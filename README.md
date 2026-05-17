@@ -47,24 +47,33 @@ Dataset statistics, split sizes, class names, and class distribution are documen
     ├── data/
     │   └── raw/                  # local only, not committed
     ├── reports/
-    │   └── dataset_audit_report.md
+    │   ├── dataset_audit_report.md
+    │   ├── dataset_visual_inspection.md
+    │   └── figures/
+    │       ├── sample_grid_train.png
+    │       ├── sample_grid_valid.png
+    │       └── sample_grid_test.png
     └── src/
         └── data/
-            └── dataset_audit.py
+            ├── dataset_audit.py
+            └── create_sample_grid.py
 
 ## Current Progress
 
-- Repository initialized
-- Dataset downloaded and organized
+- Repository initialized and connected to FIM Git
+- Dataset downloaded and organized locally
 - Initial dataset audit completed
 - Class distribution analysis completed
 - Project documentation added
+- Sample image grids generated for train, validation, and test splits
+- Visual dataset inspection completed
 
 ## Next Steps
 
-1. Create a small sample set for VLM testing
-2. Run first VLM ingredient extraction baseline
-3. Normalize VLM outputs to dataset class names
-4. Evaluate VLM predictions against annotation labels
-5. Compare VLM results with YOLO baseline
-6. Build recipe recommendation module
+1. Create a small VLM evaluation subset
+2. Extract ground truth ingredients from annotation labels
+3. Run first VLM ingredient extraction baseline
+4. Normalize VLM outputs to dataset class names
+5. Evaluate VLM predictions against annotation labels
+6. Compare VLM results with YOLO baseline
+7. Build recipe recommendation module

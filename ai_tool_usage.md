@@ -66,3 +66,38 @@ The script structure was accepted but adapted to our local folder structure. We 
 ### Impact
 
 This created a useful first technical output for the project. The dataset audit report now supports later evaluation because the annotations can be used as ground truth for checking VLM ingredient recognition. It also produced meaningful Git commits for the university repository.
+
+
+## Entry #3 - Sample Image Grid and Visual Dataset Inspection
+
+**Date:** 2026-05-13
+
+**Team member(s):** Vaishnavi N.S
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+After completing the dataset audit and class distribution analysis, we needed to visually inspect the dataset before starting VLM experiments. The goal was to understand whether the images are suitable for a VLM-focused fridge-to-recipe assistant and whether the dataset contains realistic fridge scenes.
+
+### Prompt / Task
+
+Asked ChatGPT what should be included in `src/data/create_sample_grid.py` and how to document the visual dataset inspection based on generated sample grids.
+
+### AI Output Summary
+
+ChatGPT provided a Python script to generate sample image grids for the train, validation, and test splits. It also suggested a structure for `reports/dataset_visual_inspection.md`.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The script was used to generate sample grids for all dataset splits. The generated images were manually inspected before writing the visual inspection notes. The written observations were based on the actual dataset grids, not only on the AI suggestion.
+
+### Impact
+
+This helped us inspect the dataset more efficiently instead of opening individual images manually. The visual inspection confirmed that the dataset mainly contains real fridge interior images with clutter, occlusion, multiple ingredients, and packaging variation. This supports the decision to use the dataset for VLM-based ingredient recognition evaluation.
