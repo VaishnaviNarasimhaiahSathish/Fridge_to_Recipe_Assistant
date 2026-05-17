@@ -72,7 +72,7 @@ This created a useful first technical output for the project. The dataset audit 
 
 **Date:** 2026-05-13
 
-**Team member(s):** Vaishnavi N.S
+**Team member(s):**  Vaishnavi Narasimhaiah Sathish
 
 **AI Tool used:** ChatGPT
 
@@ -101,3 +101,37 @@ The script was used to generate sample grids for all dataset splits. The generat
 ### Impact
 
 This helped us inspect the dataset more efficiently instead of opening individual images manually. The visual inspection confirmed that the dataset mainly contains real fridge interior images with clutter, occlusion, multiple ingredients, and packaging variation. This supports the decision to use the dataset for VLM-based ingredient recognition evaluation.
+
+## Entry #4 - Preliminary Open-Vocabulary VLM Trial and Output Analysis
+
+**Date:** 2026-05-17
+
+**Team member(s):**  Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+After completing dataset inspection, we created a 50-image evaluation subset and tested the university InnKube VLM endpoint for open-vocabulary ingredient extraction. The goal was to check whether a VLM can identify visible fridge items beyond the limited 22 annotated dataset classes.
+
+### Prompt / Task
+
+Asked ChatGPT how to run a preliminary VLM baseline on 50 images, and analyze the raw VLM outputs using CSV summaries and visualizations.
+
+### AI Output Summary
+
+ChatGPT suggested scripts running the VLM baseline on 50 selected images, and analyzing the output. The analysis included ingredient frequency counts, uncertain item counts, predictions per image, and comparison between dataset-class predictions and open-vocabulary predictions.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The suggested workflow was used as a starting point and adapted to the project direction. We kept the task open-vocabulary because the fridge images contain more visible items than the 22 annotated dataset classes. The results were manually checked to understand whether extra VLM predictions were useful visible items or possible over-inference.
+
+### Impact
+
+This created the first working VLM trial for the project. The InnKube endpoint successfully processed the selected fridge images and returned structured ingredient outputs. The analysis showed that open-vocabulary extraction is more suitable for the Fridge-to-Recipe Assistant than restricting the task to the 22 dataset labels. It also revealed next improvements: prompt refinement, better parsing, ingredient normalization, and possible extraction of visible quantities or counts.
