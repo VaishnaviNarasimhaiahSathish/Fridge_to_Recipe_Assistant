@@ -44,6 +44,7 @@ Dataset statistics, split sizes, class names, and class distribution are documen
     ├── README.md
     ├── ai_tool_usage.md
     ├── project_plan.md
+    ├── app_trial_review.py
     ├── configs/
     │   └── vlm_prompt.txt
     ├── data/
@@ -76,6 +77,14 @@ Dataset statistics, split sizes, class names, and class distribution are documen
             ├── run_vlm_baseline.py
             └── analyze_trial_vlm_outputs.py
 
+## Trial Review UI
+
+A lightweight Streamlit UI is available for reviewing preliminary VLM outputs image-by-image:
+
+    streamlit run app_trial_review.py
+
+The UI shows the input fridge image, open-vocabulary VLM ingredient predictions, uncertain items, optional dataset reference labels, and raw VLM responses.
+
 ## Current Progress
 
 - Repository initialized and connected to FIM Git
@@ -89,14 +98,15 @@ Dataset statistics, split sizes, class names, and class distribution are documen
 - Tested the InnKube VLM endpoint with one fridge image
 - Ran a preliminary open-vocabulary VLM trial on 50 images
 - Analyzed preliminary VLM outputs using frequency tables and visualizations
+- Added a Streamlit trial review UI for inspecting VLM outputs image-by-image
 
 
 ## Next Steps
 
 1. Refine the VLM prompt to reduce guessing and improve structured ingredient extraction
-2. Extend the prompt to extract ingredient quantities or approximate counts where visible
+2. Extend the prompt to extract visible quantities or approximate counts where possible
 3. Rerun the VLM baseline with the improved prompt
-4. Normalize ingredient names from open-vocabulary outputs
-5. Analyze visible-but-unannotated items separately from hallucinations
-6. Build the recipe recommendation module using extracted ingredients
-7. Compare VLM-based extraction with a YOLO/object-detection baseline
+4. Normalize open-vocabulary ingredient names
+5. Manually inspect selected outputs to separate visible unannotated items from hallucinations
+6. Compare VLM-based extraction with a YOLO/object-detection baseline
+7. Build the recipe recommendation module using extracted ingredients

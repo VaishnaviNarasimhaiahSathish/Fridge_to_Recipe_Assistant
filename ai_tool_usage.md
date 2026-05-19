@@ -120,7 +120,7 @@ Asked ChatGPT how to run a preliminary VLM baseline on 50 images, and analyze th
 
 ### AI Output Summary
 
-ChatGPT suggested scripts running the VLM baseline on 50 selected images, and analyzing the output. The analysis included ingredient frequency counts, uncertain item counts, predictions per image, and comparison between dataset-class predictions and open-vocabulary predictions.
+ChatGPT suggested scripts srunning the VLM baseline on 50 selected images, and analyzing the output. The analysis included ingredient frequency counts, uncertain item counts, predictions per image, and comparison between dataset-class predictions and open-vocabulary predictions.
 
 ### Decision
 
@@ -135,3 +135,37 @@ The suggested workflow was used as a starting point and adapted to the project d
 ### Impact
 
 This created the first working VLM trial for the project. The InnKube endpoint successfully processed the selected fridge images and returned structured ingredient outputs. The analysis showed that open-vocabulary extraction is more suitable for the Fridge-to-Recipe Assistant than restricting the task to the 22 dataset labels. It also revealed next improvements: prompt refinement, better parsing, ingredient normalization, and possible extraction of visible quantities or counts.
+
+## Entry #5 - Streamlit UI for Preliminary VLM Trial Review
+
+**Date:** 2026-05-19
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+After running the preliminary open-vocabulary VLM trial on 50 fridge images, we needed a more intuitive way to inspect the results. Reading raw JSONL and CSV files was not convenient for manual review, error analysis, or weekly progress presentation.
+
+### Prompt / Task
+
+Asked ChatGPT whether it would be useful to create a UI at this stage and then requested code for a lightweight Streamlit review interface. The UI should focus on open-vocabulary VLM outputs rather than treating the dataset’s 22 labels as complete ground truth.
+
+### AI Output Summary
+
+ChatGPT suggested building a trial review UI instead of the final recipe assistant UI. It provided a Streamlit script that loads the preliminary VLM output file, displays each fridge image, shows predicted ingredients and uncertain items, and optionally shows dataset labels as partial reference metadata. The UI also includes raw VLM response inspection and a table of trial outputs.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The UI idea was accepted because it supports manual inspection and makes the preliminary VLM results easier to understand. The wording was adapted to emphasize that the task is open-vocabulary ingredient extraction and that dataset labels are not complete ground truth. Dataset labels are hidden by default and only shown as optional partial reference.
+
+### Impact
+
+The UI makes the current VLM trial more interpretable and presentation-friendly. It helps inspect whether predicted ingredients are clearly visible, uncertain, or possibly over-inferred. This will support the next step of prompt refinement, especially for reducing guessing and later extracting visible quantities or approximate counts.
