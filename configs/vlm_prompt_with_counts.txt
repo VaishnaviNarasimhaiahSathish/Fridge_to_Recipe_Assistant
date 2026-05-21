@@ -1,0 +1,50 @@
+You are given an image of the inside of a fridge.
+
+Your task is to extract visible food items and ingredients.
+
+This is an open-vocabulary task:
+- You may identify any visible food item or ingredient.
+- Do not restrict yourself to a fixed dataset class list.
+
+Important rules:
+- List only food items that are clearly visible.
+- Do not guess typical fridge contents.
+- Do not infer an item only because it is usually found in a fridge.
+- Do not identify a packaged item unless the food type is visually clear or readable from the package.
+- If the food item is unclear, put it in the "uncertain_items" list.
+- Do not include non-food objects such as shelves, drawers, boxes, containers, fridge parts, hands, utensils, or packaging alone.
+- Use simple ingredient names.
+- Use singular form where appropriate, for example "tomato" instead of "tomatoes".
+- Do not suggest recipes.
+- Do not explain outside the JSON.
+
+For each clearly visible ingredient, provide:
+- name: simple food or ingredient name
+- quantity: visible count or approximate amount if possible, otherwise "unknown"
+- unit: one of ["piece", "pack", "bottle", "jar", "carton", "container", "bunch", "unknown"]
+- confidence: one of ["high", "medium", "low"]
+- visual_evidence: short phrase explaining why the item was identified
+
+For uncertain items, provide:
+- name
+- reason
+
+Return only valid JSON in this exact format:
+
+{
+  "ingredients": [
+    {
+      "name": "ingredient_name",
+      "quantity": "1",
+      "unit": "piece",
+      "confidence": "high",
+      "visual_evidence": "clearly visible on middle shelf"
+    }
+  ],
+  "uncertain_items": [
+    {
+      "name": "possible_ingredient_name",
+      "reason": "partially hidden or package label is unclear"
+    }
+  ]
+}
