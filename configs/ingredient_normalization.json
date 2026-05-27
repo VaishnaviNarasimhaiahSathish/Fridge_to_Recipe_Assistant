@@ -1,0 +1,277 @@
+{
+    "egg": "egg",
+    "eggs": "egg",
+  
+    "milk": "milk",
+    "producer's organic milk": "milk",
+  
+    "almond milk": "almond milk",
+    "hyvee almondmilk": "almond milk",
+  
+    "oat milk": "oat milk",
+    "planet oat milk": "oat milk",
+  
+    "soy milk": "soy milk",
+    "soya milk": "soy milk",
+    "coconut milk": "coconut milk",
+    "milk & rice drink": "half & half",
+  
+    "yogurt": "yogurt",
+    "greek yogurt": "yogurt",
+    "alexandre organic plain yogurt": "yogurt",
+    "skyr": "yogurt",
+  
+    "tzatziki yogurt dip": "dip",
+  
+    "butter": "butter",
+    "land o'lakes butter": "butter",
+    "kerrygold butter": "butter",
+    "philadelphia butter": "butter",
+
+    "sour cream": "sour cream",
+    "daisy sour cream": "sour cream",
+    "breakstone's": "sour cream",
+  
+    "whipped cream": "whipped cream",
+    "reddi wip": "whipped cream",
+    "publix whipping cream": "whipping cream",
+  
+    "cheese": "cheese",
+    "shredded cheese": "cheese",
+  
+    "tomato": "tomato",
+    "tomatoes": "tomato",
+    "cherry tomato": "tomato",
+  
+    "bell pepper": "bell pepper",
+    "red bell pepper": "bell pepper",
+    "bellpepper": "bell pepper",
+    "capsicum": "bell pepper",
+  
+    "green apple": "apple",
+    "apple": "apple",
+    "banana": "banana",
+    "orange": "orange",
+
+    "lemon": "lemon",
+    "lime": "lime",
+    "lemon/lime": ["lemon", "lime"],
+    "lime/ lemon": ["lime", "lemon"],
+  
+    "strawberry": "strawberry",
+    "strawberries": "strawberry",
+
+    "blueberry": "blueberry",
+    "blueberries": "blueberry",
+
+    "bluberry": "blueberry",
+    "bluebbery": "blueberry",
+    "raspberry": "raspberry",
+
+    "grape": "grape",
+    "grapes": "grapes",
+    "mango": "mango",
+    "mangoes": "mango",
+
+    "kiwi": "kiwi",
+    "kiwis": "kiwi",
+
+    "pineapple": "pineapple",
+    "pineapples": "pineapple",
+
+    "avocado": "avocado",
+    "avacados": "avocado",
+  
+    "carrot": "carrot",
+    "carrots": "carrot",
+
+    "cucumber": "cucumber",
+    "cucumbers": "cucumber",
+
+    "lettuce": "lettuce",
+
+    "salad": "salad",
+    "spinach": "spinach",
+    "olivia's baby spinach": "spinach",
+
+    "onion": "onion",
+    "onions": "onion",
+
+    "spring onion": "spring onion",
+    "spring onions": "spring onion",
+
+    "garlic": "garlic",
+    "garlics": "garlic",
+
+    "minced garlic": "garlic",
+
+    "potato": "potato",
+    "potatoes": "potato",
+
+    "sweet potato": "sweet potato",
+
+    "mushroom": "mushroom",
+    "mushrooms": "mushroom",
+
+    "zucchini": "zucchini",
+    "eggplant": "eggplant",
+
+    "cabbage": "cabbage",
+    "red cabbage": "cabbage",
+
+    "green beans": "green bean",
+    "green bean": "green bean",
+
+    "beans": "beans",
+    "broccoli": "broccoli",
+    "asparagus": "asparagus",
+    "brussel sprouts": "brussels sprouts",
+    "garden basil": "basil",
+
+    "olive": "olive",
+    "olives": "olive",
+
+    "coconut": "coconut",
+    "almond": "almond",
+  
+    "chicken": "chicken",
+    "chicken breast": "chicken",
+    "roasted chicken": "chicken",
+    "meat": "meat",
+    "bacon": "bacon",
+    "beef": "beef",
+    "pork sausage": "sausage",
+
+    "sausage, chicken, bacon, chicken breast": "meat",
+
+    "al fresco": "sausage",
+    "corn dog": "corn dog",
+  
+    "bone broth": "broth",
+    "beef broth": "beef broth",
+    "organica beef broth": "beef broth",
+  
+    "bread": "bread",
+    "bread/bun": "bread",
+    "tortilla": "tortilla",
+    "noodle": "noodle",
+    "flour": "flour",
+    "sugar": "sugar",
+    "salt": "salt",
+    "cake": "cake",
+    "cookies": "cookies",
+    "rising crust four cheese pizza": "pizza",
+  
+    "ketchup": "ketchup",
+    "mayonnaise": "mayonnaise",
+    "meyonnaise": "mayonnaise",
+    "mustard": "mustard",
+    "dijon mustard": "mustard",
+    "pickle": "pickle",
+    "pickles": "pickle",
+    "lime pickle": "pickle",
+  
+    "hot sauce": "hot sauce",
+    "chilli sauce": "hot sauce",
+    "pepper sauce": "hot sauce",
+    "sweet chilli sauce": "sweet chili sauce",
+    "gochujang korean chili sauce": "gochujang",
+    "gochujhang": "gochujang",
+    "peri peri sauce": "peri peri sauce",
+  
+    "soy sauce": "soy sauce",
+    "soya sauce": "soy sauce",
+  
+    "ranch": "ranch",
+    "ranch dressing": "ranch",
+    "taco sauce": "taco sauce",
+    "steak sauce": "steak sauce",
+    "barbeque sauce": "barbeque sauce",
+    "mint sauce": "mint sauce",
+    "picante": "picante sauce",
+    "salsa dip": "salsa",
+    "tostitos dip": "dip",
+
+    "hummus": "hummus",
+    "jam": "jam",
+    "maple": "maple",
+  
+    "orange juice": "orange juice",
+    "florida's natural": "orange juice",
+    "juice": "juice",
+    "lime juice": "lime juice",
+    "water bottle": "water",
+    "water": "water",
+    "sweet tea": "sweet tea",
+    "chocolate milk": "chocolate milk",
+  
+    "coke": "cola",
+    "cocacola": "cola",
+    "soda": "soda",
+    "canned drink": "soda",
+    "canada dry": "ginger ale",
+    "ginger ale": "ginger ale",
+    "redbull": "energy drink",
+    "gatorade energy drink": "energy drink",
+    "bodyarmour lyte": "energy drink",
+    "protien shake": "protein shake",
+  
+    "beer": "beer",
+    "modelo especial": "beer",
+  
+    "chocolate": "chocolate",
+    "hersheys chocolate syrup": "chocolate syrup",
+    "hershey's chocolate syrup": "chocolate syrup",
+    "m&m": "chocolate",
+    "coffee mate snickers": "coffee creamer",
+  
+    "ice cream": "ice cream",
+    "coolhaus  dairy free peanut butter fudge chip": "ice cream",
+    "smoothie pops": "smoothie pops",
+  
+    "organic faxseed": "flaxseed",
+  
+    "hourmet": "hourmet",
+    "anderson erickson dairy": "anderson erickson dairy",
+
+    "cheddar cheese": "cheese",
+    "parmesan cheese": "cheese",
+    "blue cheese": "cheese",
+    "cheese slice": "cheese",
+    "cheese stick": "cheese",
+    "mozzarella": "cheese",
+      
+    "orange bell pepper": "bell pepper",
+    "green bell pepper": "bell pepper",
+    "roasted red pepper": "bell pepper",
+      
+    "corn dogs": "corn dog",
+      
+    "half and half": "half & half",
+    "half and half cream": "half & half",
+      
+    "bread roll": "bread",
+    "bagel": "bread",
+      
+    "pizza crust": "pizza",
+      
+    "chocolate bar": "chocolate",
+    "chocolate cake": "cake",
+      
+    "egg carton": "egg",
+    
+    "ground meat": "meat",
+    "deli meat": "meat",
+      
+    "cookie": "cookies",
+    
+    "juice shot": "juice",
+      
+    "salad cream": "salad dressing",
+      
+    "bbq sauce": "barbecue sauce",
+      
+    "avacado": "avocado",
+      
+    "coolhaus dairy free peanut butter fudge chip": "ice cream"
+  }
