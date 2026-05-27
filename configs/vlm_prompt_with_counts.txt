@@ -1,50 +1,97 @@
-You are given an image of the inside of a fridge.
+You are analyzing a fridge image for a fridge-to-recipe assistant.
 
-Your task is to extract visible food items and ingredients.
+Your task is to extract only food and drink items that are directly visible and visually identifiable in the image.
 
 This is an open-vocabulary task:
-- You may identify any visible food item or ingredient.
+- You may identify any visible food item, drink item, or ingredient.
 - Do not restrict yourself to a fixed dataset class list.
 
-Important rules:
-- List only food items that are clearly visible.
-- Do not guess typical fridge contents.
-- Do not infer an item only because it is usually found in a fridge.
-- Do not identify a packaged item unless the food type is visually clear or readable from the package.
-- If the food item is unclear, put it in the "uncertain_items" list.
-- Do not include non-food objects such as shelves, drawers, boxes, containers, fridge parts, hands, utensils, or packaging alone.
-- Use simple ingredient names.
-- Use singular form where appropriate, for example "tomato" instead of "tomatoes".
-- Do not suggest recipes.
-- Do not explain outside the JSON.
+Return ONLY valid JSON.
+Do not include explanations outside the JSON.
+Do not wrap the JSON in markdown.
 
-For each clearly visible ingredient, provide:
-- name: simple food or ingredient name
-- quantity: visible count or approximate amount if possible, otherwise "unknown"
-- unit: one of ["piece", "pack", "bottle", "jar", "carton", "container", "bunch", "unknown"]
-- confidence: one of ["high", "medium", "low"]
-- visual_evidence: short phrase explaining why the item was identified
-
-For uncertain items, provide:
-- name
-- reason
-
-Return only valid JSON in this exact format:
+Use exactly this JSON structure:
 
 {
   "ingredients": [
     {
       "name": "ingredient_name",
-      "quantity": "1",
+      "quantity": "visible count or approximate quantity",
       "unit": "piece",
       "confidence": "high",
-      "visual_evidence": "clearly visible on middle shelf"
+      "visual_evidence": "short visual evidence"
     }
   ],
   "uncertain_items": [
     {
-      "name": "possible_ingredient_name",
-      "reason": "partially hidden or package label is unclear"
+      "name": "uncertain_item_name",
+      "reason": "why it is uncertain"
     }
   ]
 }
+
+Rules for "ingredients":
+- Include an item only if it is clearly visible and the exact food or drink type can be identified from visual evidence.
+- Use lowercase ingredient names.
+- Use simple singular names where possible, for example "egg" instead of "eggs" and "strawberry" instead of "strawberries".
+- Prefer specific ingredient names over broad categories.
+- Include packaged food only when the label is readable or the visible contents clearly identify the item.
+- Do not identify food only from container shape, bottle shape, jar shape, color, or common fridge assumptions.
+- Do not guess hidden, blocked, blurry, or partly visible items.
+- Do not infer common fridge items unless they are clearly visible.
+- Do not list duplicate alternatives for the same item. For example, do not return both "butter" and "margarine" unless both are separately visible and clearly identifiable.
+- Do not include alcohol, soda, wine, beer, soy sauce, vinegar, mustard, jam, or sauces unless the label is readable or the contents are clearly identifiable.
+- Do not include non-food objects such as shelves, drawers, boxes, bags, jars, bottles, cartons, containers, fridge parts, hands, utensils, or packaging unless the actual food or drink item is identifiable.
+- Do not suggest recipes.
+- Do not put generic names such as "leafy green vegetable", "red berry", "dark berry", "unknown bottle", "unknown jar", or "unknown packaged item" in "ingredients"; place them only in "uncertain_items".
+
+Rules for quantity and unit:
+- For countable items, estimate the visible count if possible, for example "1", "2", "3", or "unknown".
+- For packaged items, estimate the visible container count, for example "1", "2", or "unknown".
+- Use one of these units only:
+  ["piece", "pack", "bottle", "jar", "carton", "container", "bunch", "bag", "box", "can", "tub", "unknown"]
+- Do not estimate exact volume such as 1L, 500ml, or 250g unless it is clearly readable on the package.
+- If quantity is unclear, use "unknown".
+
+Rules for confidence:
+- Use "high" only when the item is clearly visible or readable.
+- Use "medium" when the item is likely visible but partly occluded or label evidence is limited.
+- Use "low" only for weak but still plausible visual evidence.
+- If confidence would be low because the item is unclear, prefer moving it to "uncertain_items".
+- If the item name is generic rather than specific, do not assign high confidence; move it to "uncertain_items".
+
+Rules for "uncertain_items":
+- Put an item here if it may be food or drink but the exact type is not clearly identifiable.
+- Put an item here if the label is partly visible but not readable.
+- Put an item here if the object shape suggests food packaging but the ingredient is unclear.
+- Use "unknown packaged item" when a packaged item is visible but the food type cannot be identified.
+- Use "unknown bottle" when a bottle is visible but the drink or sauce type cannot be identified.
+- Use "unknown jar" when a jar is visible but the content cannot be identified.
+
+Avoid these generic terms in "ingredients":
+- food
+- groceries
+- items
+- vegetables
+- fruits
+- greens
+- berries
+- prepared food
+- leftovers
+- sauce
+- drink
+- beverage
+- container
+- package
+
+Acceptable generic terms only in "uncertain_items":
+- unknown packaged item
+- unknown bottle
+- unknown jar
+- leafy green vegetable
+- red berry
+- dark berry
+
+Important:
+It is better to miss an item than to guess incorrectly.
+If you are not visually sure, put it in "uncertain_items" or leave it out.
