@@ -169,3 +169,173 @@ The UI idea was accepted because it supports manual inspection and makes the pre
 ### Impact
 
 The UI makes the current VLM trial more interpretable and presentation-friendly. It helps inspect whether predicted ingredients are clearly visible, uncertain, or possibly over-inferred. This will support the next step of prompt refinement, especially for reducing guessing and later extracting visible quantities or approximate counts.
+
+## Entry #6 - Structured VLM Run with Count-Aware Prompt
+
+**Date:** 2026-05-20
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+After the preliminary open-vocabulary VLM trial, we needed a more structured VLM output format for evaluation. The first trial showed that the VLM could identify many visible fridge ingredients, but the output needed to be more consistent for comparison with manually created ground truth labels.
+
+### Prompt / Task
+
+Asked ChatGPT how to refine the VLM workflow so that the model returns structured ingredient outputs with ingredient name, approximate quantity/count, unit, confidence, and visual evidence. Also asked for code logic to resume the VLM run after connection errors or timeout failures.
+
+### AI Output Summary
+
+ChatGPT suggested using a stricter count-aware prompt and saving each image response as one JSONL line. It also suggested adding resume logic so that already completed images are skipped if the script is restarted after timeout or connection errors.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The prompt and script logic were adapted to the InnKube VLM endpoint and local repository structure. The final run was performed on the same 50-image evaluation subset to keep the VLM results comparable with the manually reviewed ground truth.
+
+### Impact
+
+This produced the final structured VLM output file used for evaluation:
+
+    reports/vlm_predictions_v1.jsonl
+
+The resume logic made the VLM run more reliable because failed or timed-out images could be retried without rerunning all completed images.
+
+
+## Entry #7 - Manual Ground Truth Review and VLM Output Adjudication
+
+**Date:** 2026-05-23
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** Claude Sonnet 4.6
+
+### Context
+
+A manually created ground truth file was needed for evaluating open-vocabulary VLM ingredient extraction. The original Roboflow labels were not sufficient because they contain only a limited set of dataset classes and do not cover all visible fridge items.
+
+### Prompt / Task
+
+Asked Claude how to create and review a manual ground truth file for the 50-image subset, how to handle extra VLM predictions, and whether extra ingredients predicted by the VLM should be added to the ground truth.
+
+### AI Output Summary
+
+Claude suggested using the same 50-image subset for manual annotation and creating a ground truth CSV with image identifiers and visible ingredient labels. It also suggested reviewing extra VLM predictions manually: if an extra prediction was clearly visible or readable in the image, it could be added to the reviewed ground truth; if it was guessed, unclear, or visually unverifiable, it should remain a false positive.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The workflow was used, but all ground truth corrections were made manually by visually inspecting the images. VLM outputs were not accepted automatically. Only clearly visible ingredients or readable labels were added to the reviewed ground truth.
+
+### Impact
+
+This produced the reviewed manual ground truth used for final evaluation:
+
+    reports/manual_ground_truth_50.csv
+
+The adjudication step made the evaluation more reliable by reducing missing ground truth labels while still keeping guessed VLM predictions as model errors.
+
+
+## Entry #8 - Ingredient Normalization and Quantitative Evaluation
+
+**Date:** 2026-05-26
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+The manually reviewed ground truth and VLM predictions contained naming variations, spelling differences, plural forms, and brand/product names. Direct string matching would incorrectly count many correct predictions as errors.
+
+### Prompt / Task
+
+Asked ChatGPT to help create an ingredient normalization strategy and an evaluation script for comparing normalized VLM predictions against normalized manual ground truth labels.
+
+### AI Output Summary
+
+ChatGPT suggested creating a normalization dictionary and applying it to both ground truth and VLM predictions before evaluation. It also provided a Python evaluation script that calculates true positives, false positives, false negatives, precision, recall, F1-score, exact match accuracy, and mean Jaccard similarity.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The normalization rules were manually reviewed and adjusted before final evaluation. Some mappings were accepted for spelling variants, plural forms, and clear synonyms, while overly broad mappings were avoided to prevent artificially improving the score.
+
+### Impact
+
+The normalization file and evaluation script were added:
+
+    configs/ingredient_normalization.json
+    src/evaluation/evaluate_vlm_predictions.py
+
+Final normalized evaluation results on the 50-image subset:
+
+| Metric | Value |
+|---|---:|
+| Micro Precision | 0.5311 |
+| Micro Recall | 0.6240 |
+| Micro F1-score | 0.5738 |
+| Macro Precision | 0.5807 |
+| Macro Recall | 0.6558 |
+| Macro F1-score | 0.5960 |
+| Exact Match Accuracy | 0.0200 |
+| Mean Jaccard Similarity | 0.4398 |
+
+The results show that the VLM detects many visible ingredients but also tends to over-predict extra items in cluttered fridge scenes.
+
+
+## Entry #9 - Evaluation Visualization and Error Analysis Support
+
+**Date:** 2026-05-27
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+After generating numerical evaluation results, we needed visualizations to make the results easier to interpret for the final report and presentation. Tables alone were not enough to explain model behavior, error patterns, and latency.
+
+### Prompt / Task
+
+Asked ChatGPT what visualizations would be useful for VLM ingredient extraction evaluation and requested code to generate them from the evaluation CSV files.
+
+### AI Output Summary
+
+ChatGPT suggested visualizing overall metrics, TP/FP/FN counts, per-image F1-score, F1-score distribution, precision-vs-recall scatter, top false positives, top false negatives, and VLM runtime. It provided a Python visualization script using Matplotlib and Pandas.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The suggested visualization set was accepted because it supports both quantitative evaluation and qualitative interpretation. The figures were generated from the final evaluation files and selected for use in the README/report.
+
+### Impact
+
+The visualization script and figures were added:
+
+    src/evaluation/visualize_vlm_evaluation.py
+    reports/evaluation/figures/
+
+The visualizations help explain that the VLM has higher recall than precision, meaning it finds many visible ingredients but also produces extra predictions. Runtime plots also show that large VLM inference through an external endpoint has practical latency limitations.
