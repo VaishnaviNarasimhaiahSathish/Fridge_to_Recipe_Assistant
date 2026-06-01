@@ -339,3 +339,35 @@ The visualization script and figures were added:
     reports/evaluation/figures/
 
 The visualizations help explain that the VLM has higher recall than precision, meaning it finds many visible ingredients but also produces extra predictions. Runtime plots also show that large VLM inference through an external endpoint has practical latency limitations.
+
+## Entry #10 - Bootstrap Confidence Intervals for Evaluation Metrics
+
+**Date:** 2026-05-27
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+After computing precision, recall, F1-score, exact match accuracy, and mean Jaccard similarity for the 50-image VLM evaluation subset, we wanted to estimate how stable these metrics are. Since the evaluation subset contains only 50 images, a single metric value does not fully show uncertainty.
+
+### Prompt / Task
+
+Asked ChatGPT how bootstrapping can be used to estimate uncertainty in recall and other evaluation metrics, and how to implement image-level bootstrap resampling using the existing per-image evaluation results.
+
+### AI Output Summary
+
+ChatGPT explained that image-level bootstrapping is appropriate because each image is one evaluation unit and ingredients within the same image are not independent. It suggested sampling 50 images with replacement, recalculating micro and macro metrics for each bootstrap sample, repeating this for 10,000 iterations, and using the 2.5th and 97.5th percentiles as 95% confidence intervals.
+
+ChatGPT also provided a Python script to perform bootstrap resampling using the existing per-image evaluation file.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The approach was accepted because it directly addresses uncertainty in the evaluation results. The bootstrap was applied at image level rather than ingredient level to preserve dependencies between predictions from the same fridge image.

@@ -58,6 +58,8 @@ The dataset contains YOLO-style labels for a limited set of ingredient classes. 
     │   │   ├── vlm_false_positives.csv
     │   │   ├── vlm_false_negatives.csv
     │   │   ├── vlm_evaluation_summary.md
+    │   │   ├── vlm_bootstrap_metrics.csv
+    │   │   ├── vlm_bootstrap_summary.md
     │   │   └── figures/
     │   │       ├── overall_metrics.png
     │   │       ├── tp_fp_fn_counts.png
@@ -94,6 +96,7 @@ The dataset contains YOLO-style labels for a limited set of ingredient classes. 
         ├── evaluation/
         │   ├── evaluate_vlm_predictions.py
         │   └── visualize_vlm_evaluation.py
+        │   │   ├── bootstrap_evaluation_metrics.py
         └── vlm/
             ├── test_innkube_vlm.py
             ├── run_vlm_baseline.py
@@ -241,6 +244,7 @@ Generated figures are saved under:
 
     reports/evaluation/figures/
 
+
 ### Figure Descriptions
 
 `overall_metrics.png` shows the main metric scores: precision, recall, F1-score, mean Jaccard similarity, and exact match accuracy.
@@ -266,6 +270,36 @@ The current results show that the VLM is useful for broad open-vocabulary ingred
 The higher recall than precision indicates that the VLM finds many relevant ingredients, but stricter prompting, better post-processing, or confidence filtering may be needed to reduce false positives.
 
 Exact match accuracy is low because it requires the complete predicted ingredient set to exactly match the ground truth set for an image. This is very strict for open-vocabulary fridge scenes. Mean Jaccard similarity is more informative because it measures partial set overlap between predicted and ground-truth ingredient sets.
+
+## Bootstrap Confidence Intervals
+
+Because the final evaluation uses a 50-image subset, image-level bootstrap resampling was used to estimate uncertainty in the evaluation metrics.
+
+In each bootstrap iteration, 50 images were sampled with replacement from the evaluated subset, and the evaluation metrics were recalculated. This was repeated for 10,000 bootstrap iterations. The 2.5th and 97.5th percentiles of the bootstrap distributions were used as 95% confidence intervals.
+
+| Metric | Original Value | Bootstrap Mean | 95% CI Lower | 95% CI Upper |
+|---|---:|---:|---:|---:|
+| Micro Precision | 0.5311 | 0.5320 | 0.4796 | 0.5877 |
+| Micro Recall | 0.6240 | 0.6241 | 0.5784 | 0.6700 |
+| Micro F1-score | 0.5738 | 0.5740 | 0.5333 | 0.6154 |
+| Macro Precision | 0.5807 | 0.5804 | 0.5308 | 0.6309 |
+| Macro Recall | 0.6558 | 0.6554 | 0.6101 | 0.7002 |
+| Macro F1-score | 0.5960 | 0.5957 | 0.5564 | 0.6347 |
+| Mean Jaccard Similarity | 0.4398 | 0.4395 | 0.3984 | 0.4826 |
+| Exact Match Accuracy | 0.0200 | 0.0198 | 0.0000 | 0.0600 |
+
+The bootstrap means are very close to the original metric values, which suggests that the reported evaluation scores are reasonably stable for the selected 50-image subset. The micro-F1 score remains within approximately 0.53 to 0.62 under bootstrap resampling.
+
+For recall, the 95% confidence interval is [0.5784, 0.6700], meaning the model consistently retrieves a moderate proportion of visible ground-truth ingredients across resampled image subsets.
+
+Bootstrap outputs:
+
+    reports/evaluation/vlm_bootstrap_metrics.csv
+    reports/evaluation/vlm_bootstrap_summary.md
+
+Bootstrap script:
+
+    src/evaluation/bootstrap_evaluation_metrics.py
 
 ### VLM Inference Latency
 
