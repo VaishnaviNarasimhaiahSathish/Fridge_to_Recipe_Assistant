@@ -7,8 +7,8 @@ import streamlit as st
 from PIL import Image
 
 
-VLM_OUTPUT_PATH = Path("reports/vlm_predictions_v1.jsonl")
-MANUAL_GT_PATH = Path("reports/manual_ground_truth_50.csv")
+VLM_OUTPUT_PATH = Path("reports/vlm_predictions_100.jsonl")
+MANUAL_GT_PATH = Path("reports/manual_ground_truth_100.csv")
 
 
 def load_jsonl_latest_success(path: Path):
