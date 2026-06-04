@@ -1,4 +1,4 @@
-## Entry #1 - Project Setup and VLM-First Planning
+## 1 - Project Setup and VLM-First Planning
 
 **Date:** 2026-04-29
 
@@ -33,7 +33,7 @@ The suggested workflow was useful, but it was simplified to avoid too many steps
 This helped create a clean project start and meaningful initial Git history. It also clarified the project direction early: VLM-first ingredient extraction, with YOLO only as a comparison baseline.
 
 
-## Entry #2 - Dataset Audit and Class Distribution Analysis
+## 2 - Dataset Audit and Class Distribution Analysis
 
 **Date:** 2026-05-07
 
@@ -68,7 +68,7 @@ The script structure was accepted but adapted to our local folder structure. We 
 This created a useful first technical output for the project. The dataset audit report now supports later evaluation because the annotations can be used as ground truth for checking VLM ingredient recognition. It also produced meaningful Git commits for the university repository.
 
 
-## Entry #3 - Sample Image Grid and Visual Dataset Inspection
+## 3 - Sample Image Grid and Visual Dataset Inspection
 
 **Date:** 2026-05-13
 
@@ -102,7 +102,7 @@ The script was used to generate sample grids for all dataset splits. The generat
 
 This helped us inspect the dataset more efficiently instead of opening individual images manually. The visual inspection confirmed that the dataset mainly contains real fridge interior images with clutter, occlusion, multiple ingredients, and packaging variation. This supports the decision to use the dataset for VLM-based ingredient recognition evaluation.
 
-## Entry #4 - Preliminary Open-Vocabulary VLM Trial and Output Analysis
+## 4 - Preliminary Open-Vocabulary VLM Trial and Output Analysis
 
 **Date:** 2026-05-17
 
@@ -136,7 +136,7 @@ The suggested workflow was used as a starting point and adapted to the project d
 
 This created the first working VLM trial for the project. The InnKube endpoint successfully processed the selected fridge images and returned structured ingredient outputs. The analysis showed that open-vocabulary extraction is more suitable for the Fridge-to-Recipe Assistant than restricting the task to the 22 dataset labels. It also revealed next improvements: prompt refinement, better parsing, ingredient normalization, and possible extraction of visible quantities or counts.
 
-## Entry #5 - Streamlit UI for Preliminary VLM Trial Review
+## 5 - Streamlit UI for Preliminary VLM Trial Review
 
 **Date:** 2026-05-19
 
@@ -170,7 +170,7 @@ The UI idea was accepted because it supports manual inspection and makes the pre
 
 The UI makes the current VLM trial more interpretable and presentation-friendly. It helps inspect whether predicted ingredients are clearly visible, uncertain, or possibly over-inferred. This will support the next step of prompt refinement, especially for reducing guessing and later extracting visible quantities or approximate counts.
 
-## Entry #6 - Structured VLM Run with Count-Aware Prompt
+## 6 - Structured VLM Run with Count-Aware Prompt
 
 **Date:** 2026-05-20
 
@@ -209,7 +209,7 @@ This produced the final structured VLM output file used for evaluation:
 The resume logic made the VLM run more reliable because failed or timed-out images could be retried without rerunning all completed images.
 
 
-## Entry #7 - Manual Ground Truth Review and VLM Output Adjudication
+## 7 - Manual Ground Truth Review and VLM Output Adjudication
 
 **Date:** 2026-05-23
 
@@ -248,7 +248,7 @@ This produced the reviewed manual ground truth used for final evaluation:
 The adjudication step made the evaluation more reliable by reducing missing ground truth labels while still keeping guessed VLM predictions as model errors.
 
 
-## Entry #8 - Ingredient Normalization and Quantitative Evaluation
+## 8 - Ingredient Normalization and Quantitative Evaluation
 
 **Date:** 2026-05-26
 
@@ -301,7 +301,7 @@ Final normalized evaluation results on the 50-image subset:
 The results show that the VLM detects many visible ingredients but also tends to over-predict extra items in cluttered fridge scenes.
 
 
-## Entry #9 - Evaluation Visualization and Error Analysis Support
+## 9 - Evaluation Visualization and Error Analysis Support
 
 **Date:** 2026-05-27
 
@@ -340,7 +340,7 @@ The visualization script and figures were added:
 
 The visualizations help explain that the VLM has higher recall than precision, meaning it finds many visible ingredients but also produces extra predictions. Runtime plots also show that large VLM inference through an external endpoint has practical latency limitations.
 
-## Entry #10 - Bootstrap Confidence Intervals for Evaluation Metrics
+## 10. - Bootstrap Confidence Intervals for Evaluation Metrics
 
 **Date:** 2026-05-27
 
@@ -371,3 +371,75 @@ ChatGPT also provided a Python script to perform bootstrap resampling using the 
 ### Reasoning
 
 The approach was accepted because it directly addresses uncertainty in the evaluation results. The bootstrap was applied at image level rather than ingredient level to preserve dependencies between predictions from the same fridge image.
+
+
+## 11 - Final Error Analysis Visualizations
+
+**Date:** 2026-06-27
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+After running the final 100-image evaluation, visualizations were needed to interpret the model’s error patterns. The focus was on false positives, false negatives, and the precision-recall behavior across images.
+
+### Prompt / Task
+
+Asked ChatGPT to provide plotting code for the top false positives, top false negatives, best/worst performing images, and precision-vs-recall pattern. Later, the best/worst image visualizations were removed because not all raw images from the second batch were available locally.
+
+### AI Output Summary
+
+ChatGPT provided a Matplotlib-based visualization script. The final retained visualizations are the top false positives, top false negatives, and precision-vs-recall scatter plot. It also helped debug why some best/worst image grids could not display images and explained that the missing images were not available in the local `data/raw/` folder.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The initial visualization script was modified to keep only the plots that do not depend on missing raw image files. Best/worst image visualizations were postponed until all raw images are available locally.
+
+### Impact
+
+These figures support the final interpretation that the VLM often detects relevant ingredients but tends to over-predict extra plausible items.
+
+
+## 12 - Repository Cleanup and Final Organization
+
+**Date:** 2026-06-04
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** ChatGPT
+
+### Context
+
+The repository needed to be organized so that the final 100-image results were clearly visible.
+
+### Prompt / Task
+
+Asked ChatGPT how to organize the repository, decide which files should remain in the main view, which files should be moved to archived folders, and which helper files should be deleted or ignored.
+
+### AI Output Summary
+
+ChatGPT suggested keeping final 100-image files directly under `reports/` and `reports/evaluation_100/`, moving the earlier 50-image evaluation into `reports/evaluation_50/`, archiving preliminary VLM trial files under `reports/preliminary_vlm_trial/`, and ignoring local intermediate files. It also suggested using separate Git commits for major cleanup steps.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The cleanup plan was followed but adjusted manually based on the actual local folder structure. Some files were moved rather than deleted to preserve reproducibility, while temporary helper files were removed or left uncommitted.
+
+### Impact
+
+The repository structure was cleaned so that the repository is easier to understand and keeps the final results clearly separated from earlier experiments.
+
+---

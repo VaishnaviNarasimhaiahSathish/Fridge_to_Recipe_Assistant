@@ -1,328 +1,391 @@
 # Fridge-to-Recipe Assistant
 
-This project builds a VLM-focused fridge-to-recipe assistant for the Applied Artificial Intelligence Lab.
+This project builds a Vision-Language Model (VLM) focused fridge-to-recipe assistant for the Applied Artificial Intelligence Lab.
 
-The goal is to identify visible ingredients from fridge images using Vision-Language Models and use the detected ingredients as the basis for recipe recommendation.
+The goal is to identify visible ingredients from fridge images using a VLM and use the extracted ingredients as the basis for recipe recommendation.
+
+The current project stage focuses on open-vocabulary ingredient extraction, normalization, and quantitative evaluation on manually reviewed fridge images.
+
+---
 
 ## Project Idea
 
-The assistant takes a fridge image as input, extracts visible ingredients using a Vision-Language Model, normalizes the detected ingredient names, and uses them to suggest relevant recipes.
+The assistant takes a fridge image as input, extracts visible ingredients using a Vision-Language Model, uses the final ingredient list for recipe recommendation.
 
-The main focus of the current project stage is open-vocabulary ingredient extraction and evaluation.
+The pipeline is:
 
-## Main Pipeline
-
-    Fridge image → VLM-based ingredient extraction → ingredient normalization → recipe retrieval or generation → recipe ranking → recipe recommendation
+```text
+Fridge image → VLM-based ingredient extraction → ingredient normalization → recipe retrieval/generation → recipe ranking → recipe recommendation
+````
 
 ## Dataset
 
-We use the Roboflow `fridge-detection-merged` dataset.
+This project uses the Roboflow `fridge-detection-merged` dataset.
 
-The raw dataset is not committed to Git and is stored locally under:
+The raw dataset is stored locally under:
 
-    data/raw/
+```text
+data/raw/
+```
+The dataset contains fridge images with cluttered shelves, occluded objects, packaging, and partially visible food items. The original YOLO-style labels cover only a limited set of ingredient classes, so they are treated as partial reference information only.
+
+The main evaluation uses manually reviewed open-vocabulary image-level ground truth labels.
 
 ### Dataset Example
-
-The fridge images contain cluttered shelves, occluded objects, packaging, and partially visible food items.
 
 ![Sample fridge images](reports/figures/sample_grid_valid.png)
 
 Dataset statistics, split sizes, class names, and class distribution are documented in:
 
-    reports/dataset_audit_report.md
+```text
+reports/dataset_audit_report.md
+```
 
-The dataset contains YOLO-style labels for a limited set of ingredient classes. These labels are used as partial reference information only. The main evaluation uses manually reviewed open-vocabulary ground truth labels created for a selected 50-image subset.
+Visual dataset inspection notes are documented in:
 
-## Current Repository Structure
+```text
+reports/dataset_visual_inspection.md
+```
 
-    fridge-to-recipe-assistant/
-    ├── README.md
-    ├── ai_tool_usage.md
-    ├── project_plan.md
-    ├── app_vlm_review.py
-    ├── configs/
-    │   ├── vlm_prompt.txt
-    │   ├── vlm_prompt_with_counts.txt
-    │   └── ingredient_normalization.json
+---
+
+## Repository Structure
+
+```text
+fridge-to-recipe-assistant/
+├── README.md
+├── ai_tool_usage.md
+├── app_vlm_review.py
+├── configs/
+│   ├── ingredient_normalization.json
+│   ├── vlm_prompt.txt
+│   └── vlm_prompt_with_counts.txt
+├── data/
+│   └── raw/                         # local only, not committed
+├── reports/
+│   ├── dataset_audit_report.md
+│   ├── dataset_visual_inspection.md
+│   ├── figures/
+│   │   ├── sample_grid_train.png
+│   │   ├── sample_grid_valid.png
+│   │   └── sample_grid_test.png
+│   ├── manual_ground_truth_100.csv
+│   ├── vlm_predictions_100.jsonl
+│   ├── evaluation_100/
+│   │   ├── vlm_per_image_evaluation.csv
+│   │   ├── vlm_false_positives.csv
+│   │   ├── vlm_false_negatives.csv
+│   │   ├── vlm_evaluation_summary.md
+│   │   ├── vlm_bootstrap_metrics.csv
+│   │   ├── vlm_bootstrap_summary.md
+│   │   └── figures/
+│   │       ├── precision_vs_recall_100.png
+│   │       ├── top_false_positives_100.png
+│   │       └── top_false_negatives_100.png
+│   ├── evaluation_50/
+│   │   ├── inputs/
+│   │   ├── vlm_per_image_evaluation.csv
+│   │   ├── vlm_false_positives.csv
+│   │   ├── vlm_false_negatives.csv
+│   │   ├── vlm_evaluation_summary.md
+│   │   ├── vlm_bootstrap_metrics.csv
+│   │   ├── vlm_bootstrap_summary.md
+│   │   └── figures/
+│   └── preliminary_vlm_trial/
+│       ├── analyze_trial_vlm_outputs.py
+│       ├── app_trial_review.py
+│       ├── vlm_predictions_raw.jsonl
+│       ├── vlm_predictions_flat.csv
+│       ├── vlm_ingredient_frequencies.csv
+│       ├── vlm_uncertain_frequencies.csv
+│       ├── vlm_item_frequencies_combined.csv
+│       ├── vlm_output_analysis.md
+│       └── figures/
+└── src/
     ├── data/
-    │   └── raw/                         # local only, not committed
-    ├── reports/
-    │   ├── dataset_audit_report.md
-    │   ├── dataset_visual_inspection.md
-    │   ├── vlm_eval_subset.csv
-    │   ├── vlm_predictions_v1.jsonl
-    │   ├── manual_ground_truth_50.csv
-    │   ├── evaluation/
-    │   │   ├── vlm_per_image_evaluation.csv
-    │   │   ├── vlm_false_positives.csv
-    │   │   ├── vlm_false_negatives.csv
-    │   │   ├── vlm_evaluation_summary.md
-    │   │   ├── vlm_bootstrap_metrics.csv
-    │   │   ├── vlm_bootstrap_summary.md
-    │   │   └── figures/
-    │   │       ├── overall_metrics.png
-    │   │       ├── tp_fp_fn_counts.png
-    │   │       ├── per_image_f1_sorted.png
-    │   │       ├── f1_score_distribution.png
-    │   │       ├── precision_vs_recall_scatter.png
-    │   │       ├── top_false_positives.png
-    │   │       ├── top_false_negatives.png
-    │   │       ├── runtime_distribution.png
-    │   │       ├── runtime_per_image.png
-    │   │       └── visual_evaluation_summary.md
-    │   ├── preliminary_vlm_trial/
-    │   │   ├── app_trial_review.py
-    │   │   ├── vlm_predictions_raw.jsonl
-    │   │   ├── vlm_predictions_flat.csv
-    │   │   ├── vlm_ingredient_frequencies.csv
-    │   │   ├── vlm_uncertain_frequencies.csv
-    │   │   ├── vlm_item_frequencies_combined.csv
-    │   │   ├── vlm_output_analysis.md
-    │   │   └── figures/
-    │   │       ├── vlm_top_ingredients.png
-    │   │       ├── vlm_top_uncertain_items.png
-    │   │       ├── vlm_predictions_per_image.png
-    │   │       └── vlm_dataset_vs_open_vocab.png
-    │   └── figures/
-    │       ├── sample_grid_train.png
-    │       ├── sample_grid_valid.png
-    │       └── sample_grid_test.png
-    └── src/
-        ├── data/
-        │   ├── dataset_audit.py
-        │   ├── create_sample_grid.py
-        │   └── create_vlm_eval_subset.py
-        ├── evaluation/
-        │   ├── evaluate_vlm_predictions.py
-        │   └── visualize_vlm_evaluation.py
-        │   │   ├── bootstrap_evaluation_metrics.py
-        └── vlm/
-            ├── test_innkube_vlm.py
-            ├── run_vlm_baseline.py
-            ├── run_vlm_counts_trial.py
-            └── analyze_trial_vlm_outputs.py
+    │   ├── dataset_audit.py
+    │   ├── create_sample_grid.py
+    │   └── create_vlm_eval_subset.py
+    ├── evaluation/
+    │   ├── evaluate_vlm_predictions.py
+    │   ├── bootstrap_evaluation_metrics.py
+    │   └── visualize_vlm_error_analysis.py
+    └── vlm/
+        ├── test_innkube_vlm.py
+        ├── run_vlm_baseline.py
+        ├── run_vlm_counts_trial.py
+        └── vlm_jsonl_to_csv.py
+```
+`reports/evaluation_50/` contains archived outputs from the earlier 50-image evaluation. The final reported results are stored under `reports/evaluation_100/`.
+---
+
+## VLM-Based Ingredient Extraction
+
+The project uses a VLM-first approach for ingredient extraction.
+
+The VLM receives a fridge image and returns structured ingredient predictions. The final structured prompt asks the model to return:
+
+* ingredient name
+* quantity
+* unit
+* confidence
+* visual evidence
+* uncertain items
+
+The structured prompt is stored in:
+
+```text
+configs/vlm_prompt_with_counts.txt
+```
+
+The VLM output is saved in JSONL format:
+
+```text
+reports/vlm_predictions_100.jsonl
+```
+
+---
+
+## Manual Ground Truth
+
+The final evaluation uses a manually reviewed 100-image ground truth file:
+
+```text
+reports/manual_ground_truth_100.csv
+```
+
+Each image is annotated at image level with visible ingredients.
+
+The manual review process follows these rules:
+
+* Include ingredients that are clearly visible.
+* Include packaged items only when the label or contents are visually identifiable.
+* Do not add guessed or unverifiable items.
+* Do not blindly accept VLM predictions.
+* If a VLM prediction is clearly visible in the image but missed in the first annotation, add it to the reviewed ground truth.
+* If a VLM prediction is plausible but not visually confirmable, keep it as a false positive.
+
+This keeps the evaluation fair while reducing incompleteness in the manual ground truth.
+
+---
+
+## Ingredient Normalization
+
+Because the task is open-vocabulary, the same ingredient can appear under different names.
+
+Examples:
+
+```text
+eggs → egg
+green bell pepper → bell pepper
+```
+
+Normalization rules are stored in:
+
+```text
+configs/ingredient_normalization.json
+```
+
+The same normalization is applied to both:
+
+```text
+manual ground truth labels
+VLM prediction labels
+```
+
+Generic or uncertain labels are excluded from the main ingredient-level evaluation, for example:
+
+```text
+unknown bottle
+prepared food
+container
+package
+```
+
+This prevents vague predictions from being counted as specific ingredient detections.
+
+---
+
+## Evaluation
+
+The final evaluation was performed on 100 manually reviewed fridge images.
+
+Since this is an open-vocabulary multi-label ingredient extraction task, standard classification accuracy is not the main metric. Precision, recall, and F1-score are used as the primary metrics. Exact match accuracy and mean Jaccard similarity are reported as additional image-level metrics.
+
+The final normalized evaluation results are:
+
+| Metric                  |  Value |
+| ----------------------- | -----: |
+| True Positives          |    477 |
+| False Positives         |    519 |
+| False Negatives         |    309 |
+| Micro Precision         | 0.4789 |
+| Micro Recall            | 0.6069 |
+| Micro F1-score          | 0.5354 |
+| Macro Precision         | 0.5007 |
+| Macro Recall            | 0.6324 |
+| Macro F1-score          | 0.5357 |
+| Exact Match Accuracy    | 0.0200 |
+| Mean Jaccard Similarity | 0.3910 |
+
+The VLM achieved higher recall than precision. This means that it detected a reasonable portion of visible ingredients, but it also produced many additional predictions that were not confirmed in the reviewed ground truth.
+
+---
+
+## Precision vs Recall
+
+![Precision vs Recall](reports/evaluation_100/figures/precision_vs_recall_100.png)
+
+This plot shows one point per image. It helps identify whether the VLM is mostly over-predicting or missing ingredients.
+
+Images with high recall but low precision indicate that the model found several correct ingredients but also added many extra predictions.
+
+## Top False Positives
+
+![Top false positives](reports/evaluation_100/figures/top_false_positives_100.png)
+
+This plot shows the most frequent extra VLM predictions that were not present in the reviewed ground truth.
+
+These false positives often come from:
+
+* plausible but unverifiable guesses
+* ambiguous packaging
+* partially visible containers
+* unreadable product labels
+* context-based assumptions about common fridge items
+
+## Top False Negatives
+
+![Top false negatives](reports/evaluation_100/figures/top_false_negatives_100.png)
+
+This plot shows the most frequent ground-truth ingredients missed by the VLM.
+
+These false negatives often occur when ingredients are:
+
+* small
+* occluded
+* in the background
+* inside transparent or unclear packaging
+* visually similar to other items
+* not easily readable from the image
+
+---
+
+## Bootstrap Confidence Intervals
+
+Image-level bootstrap resampling was used to estimate uncertainty in the final 100-image evaluation.
+
+In each bootstrap iteration, 100 images were sampled with replacement from the evaluated subset, and the metrics were recalculated. This was repeated for 10,000 bootstrap iterations. The 2.5th and 97.5th percentiles of the bootstrap distributions were used as 95% confidence intervals.
+
+| Metric                  | Original Value | Bootstrap Mean | 95% CI Lower | 95% CI Upper |
+| ----------------------- | -------------: | -------------: | -----------: | -----------: |
+| Micro Precision         |         0.4789 |         0.4789 |       0.4379 |       0.5204 |
+| Micro Recall            |         0.6069 |         0.6072 |       0.5666 |       0.6475 |
+| Micro F1-score          |         0.5354 |         0.5352 |       0.5000 |       0.5703 |
+| Macro Precision         |         0.5007 |         0.5003 |       0.4566 |       0.5444 |
+| Macro Recall            |         0.6324 |         0.6327 |       0.5878 |       0.6763 |
+| Macro F1-score          |         0.5357 |         0.5356 |       0.4961 |       0.5738 |
+| Mean Jaccard Similarity |         0.3910 |         0.3908 |       0.3537 |       0.4284 |
+| Exact Match Accuracy    |         0.0200 |         0.0200 |       0.0000 |       0.0500 |
+
+The bootstrap means are very close to the original metric values, which suggests that the reported scores are stable for the selected 100-image evaluation subset.
+
+The micro-F1 score remains within approximately 0.50 to 0.57 under bootstrap resampling. The recall confidence interval is higher than the precision confidence interval, supporting the observation that the VLM is more recall-oriented than precision-oriented.
+
+---
+
+## VLM Inference Latency
+
+The VLM was queried image-by-image through the InnKube endpoint.
+
+Runtime for each image is stored in:
+
+The runtime values are important because this project is not only about ingredient extraction quality, but also about practical usability. Large VLM inference through an external endpoint is suitable for offline or prototype-level evaluation, but latency can become a limitation for real-time recipe recommendation.
+
+Runtime varied across images, which shows the practical cost of using a large VLM for fridge image analysis.
+
+![Runtime per image](reports/evaluation/figures/runtime_per_image.png)
+
+These earlier plots show that VLM inference time varies across images and should be considered when designing the final application.
+
+---
 
 ## Preliminary VLM Trial
 
 Earlier exploratory VLM outputs and visualizations are stored under:
 
-    reports/preliminary_vlm_trial/
+```text
+reports/preliminary_vlm_trial/
+```
 
-These files document the first open-vocabulary VLM run before manual ground truth review, ingredient normalization, and final evaluation.
+These files document the first open-vocabulary VLM run before final manual ground truth review, ingredient normalization, and 100-image evaluation.
 
-A lightweight Streamlit UI is available for reviewing preliminary VLM outputs image-by-image:
+This archived folder includes:
 
-    streamlit run app_trial_review.py
+```text
+reports/preliminary_vlm_trial/vlm_predictions_raw.jsonl
+reports/preliminary_vlm_trial/vlm_predictions_flat.csv
+reports/preliminary_vlm_trial/vlm_ingredient_frequencies.csv
+reports/preliminary_vlm_trial/vlm_uncertain_frequencies.csv
+reports/preliminary_vlm_trial/vlm_item_frequencies_combined.csv
+reports/preliminary_vlm_trial/vlm_output_analysis.md
+reports/preliminary_vlm_trial/figures/
+```
 
-The UI shows the input fridge image, open-vocabulary VLM ingredient predictions, uncertain items, optional dataset reference labels, and raw VLM responses.
+The preliminary analysis script is archived in the same folder:
 
+```text
+reports/preliminary_vlm_trial/analyze_trial_vlm_outputs.py
+```
+
+---
 
 ## Structured VLM Review UI
 
-A second Streamlit UI is available for reviewing the final structured 50-image VLM run:
+A Streamlit UI is available for reviewing structured VLM outputs image by image:
 
-    streamlit run app_vlm_review.py
+```bash
+streamlit run app_vlm_review.py
+```
+This UI was used to inspect VLM predictions and support manual ground truth review.
 
-This UI shows:
+---
 
-- input fridge image
-- manual open-vocabulary ground truth
-- VLM extracted ingredients
-- quantity, unit, confidence, and visual evidence fields
-- uncertain VLM items
-- quick overlap between manual ground truth and VLM predictions
-- raw VLM response when needed
+## Interpretation of Final Results
 
-This UI was used to manually inspect extra VLM predictions and decide whether they should be added to the reviewed ground truth.
+The final 100-image evaluation shows that the VLM is useful for broad open-vocabulary ingredient discovery in fridge images.
 
-## Current Progress
+The model achieved:
 
-Completed steps:
+```text
+Micro Precision: 0.4789
+Micro Recall:    0.6069
+Micro F1-score:  0.5354
+```
 
-1. Repository initialized and connected to FIM Git.
-2. Dataset downloaded and organized locally.
-3. Initial dataset audit completed.
-4. Class distribution analysis completed.
-5. Project documentation added.
-6. Sample image grids generated for train, validation, and test splits.
-7. Visual dataset inspection completed.
-8. Created a 50-image VLM evaluation subset.
-9. Ran a preliminary open-vocabulary VLM trial on 50 images.
-10. Analyzed preliminary VLM outputs using frequency tables and visualizations.
-11. Added a Streamlit trial review UI for inspecting preliminary VLM outputs.
-12. Refined the prompt for structured ingredient extraction with quantities/counts.
-13. Ran a structured VLM extraction trial on the selected 50-image subset.
-14. Created manual open-vocabulary ground truth labels for the 50 images.
-15. Reviewed extra VLM predictions against the original images.
-16. Added clearly visible/readable ingredients missed in the first annotation to the reviewed ground truth.
-17. Kept guessed, unclear, or unverifiable VLM predictions as false positives.
-18. Created ingredient normalization rules for spelling variants, plural forms, synonyms, and selected brand/product names.
-19. Evaluated VLM predictions using normalized ingredient names.
-20. Generated visualizations for metrics, error patterns, and runtime analysis.
+The higher recall than precision indicates that the model detects many relevant ingredients, but frequently over-predicts plausible items that are not visually confirmed.
 
-## Manual Ground Truth Review
+This behavior is expected in cluttered fridge scenes because the model may rely on context, packaging cues, or common food associations. For example, a partially visible bottle or container may lead to a plausible but unverifiable prediction.
 
-The 50-image subset was manually annotated with visible ingredients.
+Exact match accuracy is low because it requires the complete predicted ingredient set to exactly match the ground truth set for an image. This is very strict for open-vocabulary multi-label ingredient extraction. Mean Jaccard similarity is more informative because it measures partial overlap between predicted and ground-truth ingredient sets.
 
-After the structured VLM run, extra VLM predictions were reviewed against the original fridge images. If an extra prediction was clearly visible in the image or readable from the label, it was added to the reviewed ground truth. If the prediction appeared to be caused by guessing, unclear packaging, unreadable labels, or unverifiable visual evidence, it was kept as a false positive.
-
-This process avoids blindly accepting VLM predictions while reducing incompleteness in the manual ground truth.
-
-The final ground truth file is:
-
-    reports/manual_ground_truth_50.csv
-
-## Ingredient Normalization
-
-Because this is an open-vocabulary extraction task, the same ingredient may appear under different names.
-
-Examples:
-
-    eggs → egg
-    soya sauce → soy sauce
-    shredded cheese → cheese
-    land o'lakes butter → butter
-
-Normalization rules are stored in:
-
-    configs/ingredient_normalization.json
-
-The normalization step is applied to both manual ground truth labels and VLM predictions before evaluation.
-
-Generic or uncertain labels such as `unknown bottle`, `unknown jar`, `beverage`, `condiment`, and `leftover food` are excluded from the main ingredient-level metrics.
-
-## Evaluation
-
-Evaluation was performed on 50 manually reviewed fridge images.
-
-Since this is an open-vocabulary multi-label ingredient extraction task, standard classification accuracy is not the main metric. Precision, recall, and F1-score are used as the primary metrics. Exact match accuracy and mean Jaccard similarity are reported as additional image level metrics.
-
-The final normalized evaluation results are:
-
-| Metric | Value |
-|---|---:|
-| Micro Precision | 0.5311 |
-| Micro Recall | 0.6240 |
-| Micro F1-score | 0.5738 |
-| Macro Precision | 0.5807 |
-| Macro Recall | 0.6558 |
-| Macro F1-score | 0.5960 |
-| Exact Match Accuracy | 0.0200 |
-| Mean Jaccard Similarity | 0.4398 |
-
-The VLM achieved higher recall than precision. This means that it detected many visible ingredients, but it also produced additional predictions that were not confirmed in the reviewed ground truth.
-
-## Evaluation Outputs
-
-The evaluation outputs are stored in:
-
-    reports/evaluation/vlm_per_image_evaluation.csv
-    reports/evaluation/vlm_false_positives.csv
-    reports/evaluation/vlm_false_negatives.csv
-    reports/evaluation/vlm_evaluation_summary.md
-
-The main evaluation script is:
-
-    src/evaluation/evaluate_vlm_predictions.py
-
-Run evaluation with:
-
-    python src/evaluation/evaluate_vlm_predictions.py
-
-## Evaluation Visualizations
-
-Evaluation visualizations are generated using:
-
-    src/evaluation/visualize_vlm_evaluation.py
-
-Run visualization generation with:
-
-    python src/evaluation/visualize_vlm_evaluation.py
-
-Generated figures are saved under:
-
-    reports/evaluation/figures/
-
-
-### Figure Descriptions
-
-`overall_metrics.png` shows the main metric scores: precision, recall, F1-score, mean Jaccard similarity, and exact match accuracy.
-
-`tp_fp_fn_counts.png` shows the total number of true positives, false positives, and false negatives.
-
-`per_image_f1_sorted.png` shows image-level F1-scores sorted from highest to lowest.
-
-`f1_score_distribution.png` shows how the image-level F1-scores are distributed across the 50-image subset.
-
-`precision_vs_recall_scatter.png` shows one point per image, making it easier to see whether the VLM is over-predicting or missing ingredients.
-
-`top_false_positives.png` shows the most frequent extra VLM predictions that were not present in the reviewed ground truth.
-
-`top_false_negatives.png` shows the most frequent ground-truth ingredients missed by the VLM.
-
-`runtime_distribution.png` and `runtime_per_image.png` summarize inference time and show the practical runtime cost of VLM-based extraction.
-
-## Interpretation of Current Results
-
-The current results show that the VLM is useful for broad open-vocabulary ingredient discovery in fridge images. However, it still tends to over-predict in cluttered scenes, especially when objects are partially visible, packaging is ambiguous, or labels are difficult to read.
-
-The higher recall than precision indicates that the VLM finds many relevant ingredients, but stricter prompting, better post-processing, or confidence filtering may be needed to reduce false positives.
-
-Exact match accuracy is low because it requires the complete predicted ingredient set to exactly match the ground truth set for an image. This is very strict for open-vocabulary fridge scenes. Mean Jaccard similarity is more informative because it measures partial set overlap between predicted and ground-truth ingredient sets.
-
-## Bootstrap Confidence Intervals
-
-Because the final evaluation uses a 50-image subset, image-level bootstrap resampling was used to estimate uncertainty in the evaluation metrics.
-
-In each bootstrap iteration, 50 images were sampled with replacement from the evaluated subset, and the evaluation metrics were recalculated. This was repeated for 10,000 bootstrap iterations. The 2.5th and 97.5th percentiles of the bootstrap distributions were used as 95% confidence intervals.
-
-| Metric | Original Value | Bootstrap Mean | 95% CI Lower | 95% CI Upper |
-|---|---:|---:|---:|---:|
-| Micro Precision | 0.5311 | 0.5320 | 0.4796 | 0.5877 |
-| Micro Recall | 0.6240 | 0.6241 | 0.5784 | 0.6700 |
-| Micro F1-score | 0.5738 | 0.5740 | 0.5333 | 0.6154 |
-| Macro Precision | 0.5807 | 0.5804 | 0.5308 | 0.6309 |
-| Macro Recall | 0.6558 | 0.6554 | 0.6101 | 0.7002 |
-| Macro F1-score | 0.5960 | 0.5957 | 0.5564 | 0.6347 |
-| Mean Jaccard Similarity | 0.4398 | 0.4395 | 0.3984 | 0.4826 |
-| Exact Match Accuracy | 0.0200 | 0.0198 | 0.0000 | 0.0600 |
-
-The bootstrap means are very close to the original metric values, which suggests that the reported evaluation scores are reasonably stable for the selected 50-image subset. The micro-F1 score remains within approximately 0.53 to 0.62 under bootstrap resampling.
-
-For recall, the 95% confidence interval is [0.5784, 0.6700], meaning the model consistently retrieves a moderate proportion of visible ground-truth ingredients across resampled image subsets.
-
-Bootstrap outputs:
-
-    reports/evaluation/vlm_bootstrap_metrics.csv
-    reports/evaluation/vlm_bootstrap_summary.md
-
-Bootstrap script:
-
-    src/evaluation/bootstrap_evaluation_metrics.py
-
-### VLM Inference Latency
-
-The VLM was queried image-by-image through the InnKube endpoint. Runtime varied across images, which shows the practical cost of using a large VLM for fridge image analysis.
-
-![Runtime per image](reports/evaluation/figures/runtime_per_image.png)
+---
 
 ## Limitations
 
 Current limitations:
 
-- Evaluation is based on a 50-image subset. Planned to extend upto 200.
-- Manual ground truth is image-level, not bounding-box-level.
-- Some ingredients are difficult to verify due to occlusion, unreadable labels, transparent packaging, or clutter.
-- VLM outputs may include plausible but unverifiable guesses.
-- Quantity extraction is approximate and not yet evaluated separately.
-- Inference time is high because large VLMs are used through an external endpoint.
+* Some ingredients are difficult to verify due to occlusion, clutter, transparent packaging, or unreadable labels.
+* VLM outputs may include plausible but unverifiable guesses.
+* The model sometimes predicts broad or generic food categories.
+* Inference time is high because a large VLM is queried through an external endpoint.
+
+---
 
 ## Next Steps
 
-1. Conduct detailed error analysis.
-2. Summarize the most common false positives and false negatives.
-3. Compare the VLM-based approach with a YOLO/object-detection baseline if time permits.
-5. Add confidence filtering or post-processing rules.
-6. Extend evaluation to a larger manually annotated subset if time allows.
-7. Build the recipe recommendation module using normalized extracted ingredients.
+1. Perform deeper qualitative error analysis on the most frequent false positives and false negatives.
+2. Add confidence filtering or stricter post-processing to reduce over-prediction.
+3. Build the recipe recommendation module using normalized extracted ingredients.
+4. Explore runtime reduction strategies for practical deployment.
+
