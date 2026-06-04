@@ -303,7 +303,7 @@ The runtime values are important because this project is not only about ingredie
 
 Runtime varied across images, which shows the practical cost of using a large VLM for fridge image analysis.
 
-![Runtime per image](reports/evaluation/figures/runtime_per_image.png)
+![Runtime per image](reports/evaluation_50/figures/runtime_per_image.png)
 
 These earlier plots show that VLM inference time varies across images and should be considered when designing the final application.
 
