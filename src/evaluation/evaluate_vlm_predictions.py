@@ -4,11 +4,11 @@ import re
 from pathlib import Path
 
 
-GROUND_TRUTH_PATH = Path("reports/manual_ground_truth_50.csv")
-VLM_OUTPUT_PATH = Path("reports/vlm_predictions_v1.jsonl")
+GROUND_TRUTH_PATH = Path("reports/manual_ground_truth_100.csv")
+VLM_OUTPUT_PATH = Path("reports/vlm_predictions_100.jsonl")
 NORMALIZATION_PATH = Path("configs/ingredient_normalization.json")
 
-OUTPUT_DIR = Path("reports/evaluation")
+OUTPUT_DIR = Path("reports/evaluation_100")
 PER_IMAGE_OUTPUT = OUTPUT_DIR / "vlm_per_image_evaluation.csv"
 SUMMARY_OUTPUT = OUTPUT_DIR / "vlm_evaluation_summary.md"
 FALSE_POSITIVES_OUTPUT = OUTPUT_DIR / "vlm_false_positives.csv"
@@ -31,12 +31,16 @@ GENERIC_IGNORE_TERMS = {
     "package",
     "packaged item",
     "prepared food",
+    "prepared meal",
+    "prepared salad",
     "leftover food",
     "frozen food",
+    "canned food",
+    "canned fruit",
+
     "sauce",
     "bottle",
     "jar",
-    
     "grocery",
     "item",
     "green",
@@ -45,13 +49,15 @@ GENERIC_IGNORE_TERMS = {
     "fruit",
     "vegetable",
     "vegetables",
+    "chopped vegetables",
+    "frozen vegetable",
+    "leafy green vegetable",
     "dressing",
     "dips",
     "snack",
+    "dessert",
     "spread",
-    "preserve",
-    "canned food",
-    "canned fruit"
+    "preserve"
 }
 
 
@@ -88,7 +94,9 @@ def basic_clean_name(name):
 def normalize_item(name, normalization_map):
     """
     Returns a list because one raw label can map to multiple labels.
-    Example: lemon/lime -> ["lemon", "lime"]
+
+    Example:
+        lemon/lime -> ["lemon", "lime"]
     """
     name = basic_clean_name(name)
 
@@ -118,6 +126,7 @@ def normalize_items(items, normalization_map, ignore_generic=True):
 
             normalized.append(mapped_item)
 
+    # Remove duplicates while preserving order
     seen = set()
     unique_items = []
 
@@ -138,8 +147,18 @@ def load_ground_truth(path: Path, normalization_map):
     with open(path, "r", newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file)
 
+        required_columns = {"image_id", "image_path", "visible_ingredients"}
+        missing_columns = required_columns - set(reader.fieldnames or [])
+
+        if missing_columns:
+            raise ValueError(f"Ground truth file is missing columns: {missing_columns}")
+
         for row in reader:
-            image_id = row["image_id"]
+            image_id = row["image_id"].strip()
+
+            if not image_id:
+                continue
+
             raw_items = split_ingredient_list(row.get("visible_ingredients", ""))
             normalized_items = normalize_items(raw_items, normalization_map)
 
@@ -312,6 +331,13 @@ def list_to_string(items):
     return "; ".join(items)
 
 
+def write_csv(path: Path, rows, fieldnames):
+    with open(path, "w", newline="", encoding="utf-8") as file:
+        writer = csv.DictWriter(file, fieldnames=fieldnames)
+        writer.writeheader()
+        writer.writerows(rows)
+
+
 def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -327,6 +353,8 @@ def main():
     total_fp = 0
     total_fn = 0
 
+    missing_prediction_count = 0
+
     for image_id, gt_info in ground_truth.items():
         pred_info = vlm_predictions.get(
             image_id,
@@ -339,6 +367,9 @@ def main():
                 "finish_reason": "",
             },
         )
+
+        if pred_info["status"] == "missing":
+            missing_prediction_count += 1
 
         gt_items = gt_info["normalized_ground_truth"]
         vlm_items = pred_info["normalized_vlm_predictions"]
@@ -397,6 +428,9 @@ def main():
                 }
             )
 
+    if not per_image_rows:
+        raise ValueError("No images were evaluated. Check your ground truth file.")
+
     micro_precision = safe_divide(total_tp, total_tp + total_fp)
     micro_recall = safe_divide(total_tp, total_tp + total_fn)
     micro_f1 = safe_divide(
@@ -427,34 +461,35 @@ def main():
         len(per_image_rows),
     )
 
-    with open(PER_IMAGE_OUTPUT, "w", newline="", encoding="utf-8") as file:
-        writer = csv.DictWriter(file, fieldnames=per_image_rows[0].keys())
-        writer.writeheader()
-        writer.writerows(per_image_rows)
+    write_csv(
+        PER_IMAGE_OUTPUT,
+        per_image_rows,
+        fieldnames=list(per_image_rows[0].keys()),
+    )
 
-    with open(FALSE_POSITIVES_OUTPUT, "w", newline="", encoding="utf-8") as file:
-        fieldnames = [
+    write_csv(
+        FALSE_POSITIVES_OUTPUT,
+        false_positive_rows,
+        fieldnames=[
             "image_id",
             "image_path",
             "false_positive",
             "normalized_ground_truth",
             "normalized_vlm_predictions",
-        ]
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(false_positive_rows)
+        ],
+    )
 
-    with open(FALSE_NEGATIVES_OUTPUT, "w", newline="", encoding="utf-8") as file:
-        fieldnames = [
+    write_csv(
+        FALSE_NEGATIVES_OUTPUT,
+        false_negative_rows,
+        fieldnames=[
             "image_id",
             "image_path",
             "false_negative",
             "normalized_ground_truth",
             "normalized_vlm_predictions",
-        ]
-        writer = csv.DictWriter(file, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(false_negative_rows)
+        ],
+    )
 
     summary = f"""# VLM Ingredient Extraction Evaluation Summary
 
@@ -467,6 +502,7 @@ def main():
 ## Dataset
 
 - Number of evaluated images: {len(per_image_rows)}
+- Missing VLM prediction rows: {missing_prediction_count}
 
 ## Micro-Averaged Metrics
 
@@ -509,7 +545,7 @@ These are reported because standard classification accuracy is not suitable for 
 ## Notes
 
 - Evaluation is based on normalized ingredient names.
-- Generic uncertain items such as `unknown bottle`, `unknown jar`, `beverage`, `condiment`, and `leftover food` are excluded from the main ingredient metrics.
+- Generic uncertain items such as `unknown bottle`, `unknown jar`, `beverage`, `condiment`, `prepared food`, and `leftover food` are excluded from the main ingredient metrics.
 - Exact match accuracy checks whether the complete predicted ingredient set exactly matches the ground truth set for an image.
 - Mean Jaccard similarity measures average set overlap between predicted and ground-truth ingredients.
 """
@@ -521,6 +557,9 @@ These are reported because standard classification accuracy is not suitable for 
     print(f"Summary report: {SUMMARY_OUTPUT}")
     print(f"False positives: {FALSE_POSITIVES_OUTPUT}")
     print(f"False negatives: {FALSE_NEGATIVES_OUTPUT}")
+    print()
+    print(f"Evaluated images: {len(per_image_rows)}")
+    print(f"Missing VLM prediction rows: {missing_prediction_count}")
     print()
     print("Micro metrics:")
     print(f"Precision: {micro_precision:.4f}")

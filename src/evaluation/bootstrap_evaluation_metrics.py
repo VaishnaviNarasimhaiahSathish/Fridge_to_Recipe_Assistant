@@ -5,8 +5,8 @@ import numpy as np
 import pandas as pd
 
 
-INPUT_PATH = Path("reports/evaluation/vlm_per_image_evaluation.csv")
-OUTPUT_DIR = Path("reports/evaluation")
+INPUT_PATH = Path("reports/evaluation_100/vlm_per_image_evaluation.csv")
+OUTPUT_DIR = Path("reports/evaluation_100")
 BOOTSTRAP_OUTPUT = OUTPUT_DIR / "vlm_bootstrap_metrics.csv"
 SUMMARY_OUTPUT = OUTPUT_DIR / "vlm_bootstrap_summary.md"
 
@@ -144,8 +144,8 @@ def main():
     summary_markdown = "# Bootstrap Confidence Intervals for VLM Evaluation\n\n"
 
     summary_markdown += (
-        "Image-level bootstrap resampling was applied to the 50-image evaluation set. "
-        "In each bootstrap iteration, 50 images were sampled with replacement and evaluation "
+        "Image-level bootstrap resampling was applied to the 100-image evaluation set. "
+        "In each bootstrap iteration, 100 images were sampled with replacement and evaluation "
         "metrics were recalculated. The 2.5th and 97.5th percentiles of the bootstrap "
         "distribution are reported as 95% confidence intervals.\n\n"
     )
