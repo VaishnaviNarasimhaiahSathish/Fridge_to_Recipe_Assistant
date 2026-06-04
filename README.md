@@ -116,7 +116,7 @@ fridge-to-recipe-assistant/
         ├── run_vlm_counts_trial.py
         └── vlm_jsonl_to_csv.py
 ```
-reports/evaluation_50/` contains archived outputs from the earlier 50-image evaluation. The final reported results are stored under `reports/evaluation_100/
+reports/evaluation_50/ contains archived outputs from the earlier 50-image evaluation. The final reported results are stored under reports/evaluation_100/
 ---
 
 ## VLM-Based Ingredient Extraction
