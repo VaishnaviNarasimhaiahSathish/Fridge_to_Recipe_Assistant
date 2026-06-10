@@ -4,19 +4,21 @@ This project builds a Vision-Language Model (VLM) focused fridge-to-recipe assis
 
 The goal is to identify visible ingredients from fridge images using a VLM and use the extracted ingredients as the basis for recipe recommendation.
 
-The current project stage focuses on open-vocabulary ingredient extraction, normalization, and quantitative evaluation on manually reviewed fridge images.
+The project covers open-vocabulary ingredient extraction, normalization, quantitative evaluation, qualitative error analysis, confidence filtering, and recipe retrieval and recommendation.
 
 ---
 
 ## Project Idea
 
-The assistant takes a fridge image as input, extracts visible ingredients using a Vision-Language Model, uses the final ingredient list for recipe recommendation.
+The assistant takes a fridge image as input, extracts visible ingredients using a Vision-Language Model, and uses the final ingredient list for recipe recommendation.
 
 The pipeline is:
 
 ```text
-Fridge image → VLM-based ingredient extraction → ingredient normalization → recipe retrieval/generation → recipe ranking → recipe recommendation
-````
+Fridge image → VLM-based ingredient extraction → confidence filtering → ingredient normalization → recipe retrieval → recipe ranking → recipe recommendation
+```
+
+---
 
 ## Dataset
 
@@ -27,6 +29,7 @@ The raw dataset is stored locally under:
 ```text
 data/raw/
 ```
+
 The dataset contains fridge images with cluttered shelves, occluded objects, packaging, and partially visible food items. The original YOLO-style labels cover only a limited set of ingredient classes, so they are treated as partial reference information only.
 
 The main evaluation uses manually reviewed open-vocabulary image-level ground truth labels.
@@ -56,12 +59,14 @@ fridge-to-recipe-assistant/
 ├── README.md
 ├── ai_tool_usage.md
 ├── app_vlm_review.py
+├── app_recipe_ui.py
 ├── configs/
 │   ├── ingredient_normalization.json
 │   ├── vlm_prompt.txt
 │   └── vlm_prompt_with_counts.txt
 ├── data/
-│   └── raw/                         # local only, not committed
+│   ├── raw/                              # local only, not committed
+│   └── recipes.json                      # local recipe dataset (40 recipes)
 ├── reports/
 │   ├── dataset_audit_report.md
 │   ├── dataset_visual_inspection.md
@@ -82,6 +87,18 @@ fridge-to-recipe-assistant/
 │   │       ├── precision_vs_recall_100.png
 │   │       ├── top_false_positives_100.png
 │   │       └── top_false_negatives_100.png
+│   ├── error_analysis_100/
+│   │   ├── vlm_error_analysis_summary.md
+│   │   ├── vlm_fp_categorized.csv
+│   │   ├── vlm_worst_images.csv
+│   │   └── figures/
+│   │       ├── vlm_fp_error_categories.png
+│   │       ├── vlm_top_false_positives.png
+│   │       ├── vlm_top_false_negatives.png
+│   │       └── vlm_f1_distribution.png
+│   ├── confidence_filtering_100/
+│   │   ├── vlm_confidence_filtering_summary.md
+│   │   └── vlm_confidence_per_image.csv
 │   ├── evaluation_50/
 │   │   ├── inputs/
 │   │   ├── vlm_per_image_evaluation.csv
@@ -109,13 +126,20 @@ fridge-to-recipe-assistant/
     ├── evaluation/
     │   ├── evaluate_vlm_predictions.py
     │   ├── bootstrap_evaluation_metrics.py
-    │   └── visualize_vlm_error_analysis.py
+    │   ├── visualize_vlm_evaluation.py
+    │   ├── visualize_vlm_error_analysis.py
+    │   ├── analyze_vlm_error_analysis.py
+    │   └── filter_vlm_by_confidence.py
+    ├── recipe/
+    │   ├── __init__.py
+    │   └── retrieve_recipes.py
     └── vlm/
         ├── test_innkube_vlm.py
         ├── run_vlm_baseline.py
         ├── run_vlm_counts_trial.py
         └── vlm_jsonl_to_csv.py
 ```
+
 ---
 
 ## VLM-Based Ingredient Extraction
@@ -185,12 +209,7 @@ Normalization rules are stored in:
 configs/ingredient_normalization.json
 ```
 
-The same normalization is applied to both:
-
-```text
-manual ground truth labels
-VLM prediction labels
-```
+The same normalization is applied to both manual ground truth labels and VLM prediction labels.
 
 Generic or uncertain labels are excluded from the main ingredient-level evaluation, for example:
 
@@ -293,19 +312,117 @@ The micro-F1 score remains within approximately 0.50 to 0.57 under bootstrap res
 
 ---
 
+## Phase 1 — Error Analysis
+
+Qualitative error analysis was performed on the 519 false positives and 309 false negatives from the 100-image evaluation.
+
+False positives were categorized into four error types:
+
+| Category | Count | Share | Description |
+| ----------------------- | -----: | -----: | --- |
+| Common fridge default | 162 | 31% | Model predicts staples (cheese, butter, yogurt) without visual confirmation |
+| Ambiguous visual | 153 | 29% | Ingredients easily confused with others in a cluttered fridge |
+| Other | 164 | 32% | Specific items the model over-predicts for unclear reasons |
+| Context guess | 40 | 8% | Liquids inferred from context (water, juice, soda) rather than visual evidence |
+
+The analysis script and outputs are in:
+
+```text
+src/evaluation/analyze_vlm_error_analysis.py
+reports/error_analysis_100/
+```
+
+Run:
+
+```bash
+python src/evaluation/analyze_vlm_error_analysis.py
+```
+
+---
+
+## Phase 2 — Confidence Filtering
+
+VLM predictions include a per-ingredient confidence field (`high` or `medium`). Filtering out medium-confidence predictions reduces false positives at the cost of slightly lower recall.
+
+| Strategy | TP | FP | FN | Precision | Recall | Micro F1 |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Baseline (high + medium) | 458 | 482 | 298 | 0.4872 | 0.6058 | 0.5401 |
+| High confidence only | 419 | 340 | 337 | 0.5520 | 0.5542 | **0.5531** |
+
+Filtering medium-confidence predictions reduces false positives by 29% and improves precision by 6.5 points. For recipe recommendation, high-confidence-only is preferred because fewer incorrect ingredients produce more trustworthy recipe suggestions.
+
+The filtering script and outputs are in:
+
+```text
+src/evaluation/filter_vlm_by_confidence.py
+reports/confidence_filtering_100/
+```
+
+Run:
+
+```bash
+python src/evaluation/filter_vlm_by_confidence.py
+```
+
+---
+
+## Phase 3 — Recipe Retrieval and Recommendation
+
+Normalized high-confidence ingredients are matched against a local recipe dataset to produce ranked recipe recommendations.
+
+The recipe dataset contains 40 recipes covering the most common ingredients found in VLM predictions. Each recipe includes a title, ingredient list, cuisine, meal type, prep time, and instructions.
+
+Recipes are ranked by ingredient coverage — the share of recipe ingredients confirmed in the fridge. Ties are broken by number of missing ingredients, then by prep time.
+
+The recipe dataset is stored in:
+
+```text
+data/recipes.json
+```
+
+The retrieval and ranking module is in:
+
+```text
+src/recipe/retrieve_recipes.py
+```
+
+Run a quick test:
+
+```bash
+python src/recipe/retrieve_recipes.py
+```
+
+---
+
+## Streamlit UIs
+
+### VLM Review UI
+
+Used to inspect VLM predictions and support manual ground truth review:
+
+```bash
+streamlit run app_vlm_review.py
+```
+
+### Recipe Recommendation UI
+
+Full end-to-end pipeline: select a fridge image, review extracted ingredients, and get ranked recipe recommendations with coverage percentage and missing ingredient list:
+
+```bash
+streamlit run app_recipe_ui.py
+```
+
+The UI includes a toggle to switch between high-confidence-only and all-predictions mode, and a slider to control the number of recipes shown.
+
+---
+
 ## VLM Inference Latency
 
 The VLM was queried image-by-image through the InnKube endpoint.
 
-Runtime for each image is stored in:
-
-The runtime values are important because this project is not only about ingredient extraction quality, but also about practical usability. Large VLM inference through an external endpoint is suitable for offline or prototype-level evaluation, but latency can become a limitation for real-time recipe recommendation.
-
-Runtime varied across images, which shows the practical cost of using a large VLM for fridge image analysis.
+Runtime varied across images and can reach up to 247 seconds per image. This is the primary practical limitation for real-time deployment. Large VLM inference through an external endpoint is suitable for offline or prototype-level evaluation but is not appropriate for interactive use without latency reduction strategies.
 
 ![Runtime per image](reports/evaluation_50/figures/runtime_per_image.png)
-
-These earlier plots show that VLM inference time varies across images and should be considered when designing the final application.
 
 ---
 
@@ -319,42 +436,13 @@ reports/preliminary_vlm_trial/
 
 These files document the first open-vocabulary VLM run before final manual ground truth review, ingredient normalization, and 100-image evaluation.
 
-This archived folder includes:
-
-```text
-reports/preliminary_vlm_trial/vlm_predictions_raw.jsonl
-reports/preliminary_vlm_trial/vlm_predictions_flat.csv
-reports/preliminary_vlm_trial/vlm_ingredient_frequencies.csv
-reports/preliminary_vlm_trial/vlm_uncertain_frequencies.csv
-reports/preliminary_vlm_trial/vlm_item_frequencies_combined.csv
-reports/preliminary_vlm_trial/vlm_output_analysis.md
-reports/preliminary_vlm_trial/figures/
-```
-
-The preliminary analysis script is archived in the same folder:
-
-```text
-reports/preliminary_vlm_trial/analyze_trial_vlm_outputs.py
-```
-
----
-
-## Structured VLM Review UI
-
-A Streamlit UI is available for reviewing structured VLM outputs image by image:
-
-```bash
-streamlit run app_vlm_review.py
-```
-This UI was used to inspect VLM predictions and support manual ground truth review.
-
 ---
 
 ## Interpretation of Final Results
 
 The final 100-image evaluation shows that the VLM is useful for broad open-vocabulary ingredient discovery in fridge images.
 
-The model achieved:
+The baseline model achieved:
 
 ```text
 Micro Precision: 0.4789
@@ -362,9 +450,15 @@ Micro Recall:    0.6069
 Micro F1-score:  0.5354
 ```
 
-The higher recall than precision indicates that the model detects many relevant ingredients, but frequently over-predicts plausible items that are not visually confirmed.
+After Phase 2 confidence filtering:
 
-This behavior is expected in cluttered fridge scenes because the model may rely on context, packaging cues, or common food associations. For example, a partially visible bottle or container may lead to a plausible but unverifiable prediction.
+```text
+Micro Precision: 0.5520
+Micro Recall:    0.5542
+Micro F1-score:  0.5531
+```
+
+The higher recall than precision in the baseline indicates that the model detects many relevant ingredients but frequently over-predicts plausible items that are not visually confirmed. Confidence filtering addresses this by discarding medium-confidence predictions, which are the primary source of common fridge defaults and context guesses.
 
 Exact match accuracy is low because it requires the complete predicted ingredient set to exactly match the ground truth set for an image. This is very strict for open-vocabulary multi-label ingredient extraction. Mean Jaccard similarity is more informative because it measures partial overlap between predicted and ground-truth ingredient sets.
 
@@ -372,19 +466,16 @@ Exact match accuracy is low because it requires the complete predicted ingredien
 
 ## Limitations
 
-Current limitations:
-
 * Some ingredients are difficult to verify due to occlusion, clutter, transparent packaging, or unreadable labels.
-* VLM outputs may include plausible but unverifiable guesses.
-* The model sometimes predicts broad or generic food categories.
+* VLM outputs may include plausible but unverifiable guesses even at high confidence.
+* The recipe dataset is limited to 40 manually curated recipes and does not cover all possible ingredient combinations.
 * Inference time is high because a large VLM is queried through an external endpoint.
 
 ---
 
 ## Next Steps
 
-1. Perform deeper qualitative error analysis on the most frequent false positives and false negatives.
-2. Add confidence filtering or stricter post-processing to reduce over-prediction.
-3. Build the recipe recommendation module using normalized extracted ingredients.
-4. Explore runtime reduction strategies for practical deployment.
-
+1. Explore runtime reduction strategies for practical deployment.
+2. Expand the recipe dataset with a larger open-source recipe corpus.
+3. Add dietary preference filtering to the recipe recommendation module.
+4. Refine the VLM prompt to further reduce common fridge default predictions.
