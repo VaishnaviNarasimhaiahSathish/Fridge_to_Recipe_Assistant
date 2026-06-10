@@ -418,11 +418,43 @@ The UI includes a toggle to switch between high-confidence-only and all-predicti
 
 ## VLM Inference Latency
 
-The VLM was queried image-by-image through the InnKube endpoint.
+The VLM was queried image-by-image through the InnKube endpoint. Latency analysis
+was performed on 50 images.
 
-Runtime varied across images and can reach up to 247 seconds per image. This is the primary practical limitation for real-time deployment. Large VLM inference through an external endpoint is suitable for offline or prototype-level evaluation but is not appropriate for interactive use without latency reduction strategies.
+| Metric | Value |
+|---|---:|
+| Min | 0.7s |
+| Max | 292.9s |
+| Mean | 49.0s |
+| Median | 17.8s |
+| Stdev | 67.2s |
 
-![Runtime per image](reports/evaluation_50/figures/runtime_per_image.png)
+| Range | Images |
+|---|---:|
+| Under 10s | 12 |
+| 10 – 30s | 22 |
+| 30 – 60s | 5 |
+| 60 – 120s | 5 |
+| Over 120s | 6 |
+
+The large gap between mean (49s) and median (17.8s) indicates that latency is
+driven by server load variability rather than image complexity. Six extreme
+outliers (over 120s) account for most of the total inference time. When the
+server is under low load, responses arrive in under 10 seconds.
+
+Three strategies are implemented to reduce effective latency:
+
+1. **Prediction caching** — predictions are stored by image hash in
+   `reports/vlm_prediction_cache.json`. Repeated queries return instantly
+   without hitting the API. See `src/vlm/vlm_prediction_cache.py`.
+2. **Image resizing** — images are resized to 512px on the longest side
+   before sending, reducing token count and inference time.
+   See `src/vlm/run_vlm_cached.py`.
+3. **Offline batch processing** — run inference overnight for all images,
+   store results in cache. The Streamlit UI reads from cache with zero latency.
+
+![Runtime per image](reports/latency_analysis/figures/vlm_runtime_per_image.png)
+![Runtime distribution](reports/latency_analysis/figures/vlm_runtime_distribution.png)
 
 ---
 
