@@ -443,3 +443,39 @@ The cleanup plan was followed but adjusted manually based on the actual local fo
 The repository structure was cleaned so that the repository is easier to understand and keeps the final results clearly separated from earlier experiments.
 
 ---
+
+## 13 - Gemma 4 Batch Restructuring, Model Comparison, and Recipe Prediction Prompt
+
+**Date:** 2026-06-25
+
+**Team member(s):** Vaishnavi Narasimhaiah Sathish
+
+**AI Tool used:** Claude Sonnet 4.6
+
+### Context
+
+A new 100-image Gemma 4 (`gemma4-31b-it`) annotation batch and a Streamlit review tool had been added but were not yet integrated: annotation CSVs were loose files under `reports/`, and there was no comparison against the existing Qwen baseline or its inference latency.
+
+### Prompt / Task
+
+Asked Claude to clean up file naming, split ground-truth and Gemma annotations into separate `data/annotations/` folders, generate a Gemma-vs-Qwen ingredient comparison report and a Gemma 4 latency report, write a structured few-shot recipe-prediction prompt, and update hardcoded paths across the repo to match.
+
+### AI Output Summary
+
+While exploring the review tool, Claude found that the "Auto-Review with Qwen" button actually called the Gemma model ID instead of Qwen's, meaning the existing `corrected_visible_ingredients` column reflected Gemma reviewing itself rather than independent Qwen review. Claude proposed fixing the bug and regenerating that column with genuine Qwen output before building the comparison report, moved the annotation CSVs into `data/annotations/manual_ground_truth_100/` and `data/annotations/gemma4_batch_100/`, renamed `tools/review_gemma_annotations_streamlit.py` to `app_gemma_review.py` (matching the existing `app_*.py` Streamlit convention) and `src/vlm/test_innkube_vlm.py` to `check_innkube_connection.py` (removing a `test_` prefix that risked pytest auto-collection), and added `src/evaluation/compare_gemma_vs_qwen.py`, `src/evaluation/analyze_gemma4_latency.py`, and `configs/recipe_prediction_prompt.txt`.
+
+### Decision
+
+- [ ] Accepted as-is
+- [x] Modified before use
+- [ ] Rejected
+
+### Reasoning
+
+The renaming scope was deliberately kept light-touch: established, README-documented folders like `evaluation_50/100`, `error_analysis_100`, and `confidence_filtering_100` were left untouched to avoid breaking already-published metrics and cross-references, while only the new/confusing items were renamed or relocated.
+
+### Impact
+
+The Gemma 4 batch is now reproducible and comparable: `reports/gemma4_batch_100/` holds the ingredient-agreement and latency reports, the data/annotations split makes it clear which CSV is manual ground truth versus model-generated, and the recipe-prediction prompt gives the project an LLM-based alternative to the deterministic coverage ranking in `src/recipe/retrieve_recipes.py`.
+
+---

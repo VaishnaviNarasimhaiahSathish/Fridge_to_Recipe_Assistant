@@ -4,7 +4,7 @@ import re
 from pathlib import Path
 
 
-GROUND_TRUTH_PATH = Path("reports/manual_ground_truth_100.csv")
+GROUND_TRUTH_PATH = Path("data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv")
 VLM_OUTPUT_PATH = Path("reports/vlm_predictions_100.jsonl")
 NORMALIZATION_PATH = Path("configs/ingredient_normalization.json")
 

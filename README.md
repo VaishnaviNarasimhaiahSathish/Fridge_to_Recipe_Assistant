@@ -60,13 +60,21 @@ fridge-to-recipe-assistant/
 ├── ai_tool_usage.md
 ├── app_vlm_review.py
 ├── app_recipe_ui.py
+├── app_gemma_review.py
 ├── configs/
 │   ├── ingredient_normalization.json
 │   ├── vlm_prompt.txt
-│   └── vlm_prompt_with_counts.txt
+│   ├── vlm_prompt_with_counts.txt
+│   └── recipe_prediction_prompt.txt
 ├── data/
 │   ├── raw/                              # local only, not committed
-│   └── recipes.json                      # local recipe dataset (40 recipes)
+│   ├── recipes.json                      # local recipe dataset (40 recipes)
+│   └── annotations/
+│       ├── manual_ground_truth_100/
+│       │   └── manual_ground_truth_100.csv
+│       └── gemma4_batch_100/
+│           ├── gemma4_annotations_raw.csv
+│           └── gemma4_annotations_reviewed.csv
 ├── reports/
 │   ├── dataset_audit_report.md
 │   ├── dataset_visual_inspection.md
@@ -74,8 +82,13 @@ fridge-to-recipe-assistant/
 │   │   ├── sample_grid_train.png
 │   │   ├── sample_grid_valid.png
 │   │   └── sample_grid_test.png
-│   ├── manual_ground_truth_100.csv
 │   ├── vlm_predictions_100.jsonl
+│   ├── gemma4_batch_100/
+│   │   ├── gemma_vs_qwen_summary.md
+│   │   ├── gemma_vs_qwen_per_image.csv
+│   │   ├── gemma_missed_ingredients.csv
+│   │   ├── gemma4_latency_summary.md
+│   │   └── figures/
 │   ├── evaluation_100/
 │   │   ├── vlm_per_image_evaluation.csv
 │   │   ├── vlm_false_positives.csv
@@ -134,9 +147,10 @@ fridge-to-recipe-assistant/
     │   ├── __init__.py
     │   └── retrieve_recipes.py
     └── vlm/
-        ├── test_innkube_vlm.py
+        ├── check_innkube_connection.py
         ├── run_vlm_baseline.py
         ├── run_vlm_counts_trial.py
+        ├── run_gemma4_annotation_batch.py
         └── vlm_jsonl_to_csv.py
 ```
 
@@ -174,7 +188,7 @@ reports/vlm_predictions_100.jsonl
 The final evaluation uses a manually reviewed 100-image ground truth file:
 
 ```text
-reports/manual_ground_truth_100.csv
+data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv
 ```
 
 Each image is annotated at image level with visible ingredients.
@@ -413,6 +427,77 @@ streamlit run app_recipe_ui.py
 ```
 
 The UI includes a toggle to switch between high-confidence-only and all-predictions mode, and a slider to control the number of recipes shown.
+
+### Gemma 4 Annotation Review UI
+
+Used to manually review and correct a separate 100-image Gemma 4 annotation batch, with an optional Qwen auto-review pass:
+
+```bash
+streamlit run app_gemma_review.py
+```
+
+---
+
+## Phase 4 — Gemma 4 Batch and Model Comparison
+
+A second, non-overlapping 100-image batch was annotated with Gemma 4 (`gemma4-31b-it`) to compare against the Qwen baseline (`qwen35-397b`) used for the main evaluation above. The batch was generated with:
+
+```text
+src/vlm/run_gemma4_annotation_batch.py
+```
+
+and is stored under:
+
+```text
+data/annotations/gemma4_batch_100/gemma4_annotations_raw.csv
+data/annotations/gemma4_batch_100/gemma4_annotations_reviewed.csv
+```
+
+Each image's Gemma prediction was reviewed using Qwen as an independent second model via `app_gemma_review.py`, producing a `corrected_visible_ingredients` column. Since this batch has no independent manual ground truth, the Qwen-reviewed column is used as a ground-truth proxy when scoring Gemma.
+
+> Note: an earlier version of the review tool had a bug where the "Qwen auto-review" button called the Gemma model ID instead of Qwen's. This has been fixed (`app_gemma_review.py` now calls `qwen35-397b`), and the existing reviewed CSV was regenerated with genuine Qwen output.
+
+### Gemma vs Qwen Ingredient Comparison
+
+```bash
+python src/evaluation/compare_gemma_vs_qwen.py
+```
+
+Gemma's raw predictions are scored against Qwen's review, used as a ground-truth proxy:
+
+| Metric | Value |
+|---|---:|
+| Micro Precision | 0.7241 |
+| Micro Recall | 0.2263 |
+| Micro F1-score | 0.3448 |
+| Macro F1-score | 0.3314 |
+| Mean Jaccard Similarity | 0.2160 |
+| Avg. ingredients detected — Gemma | 3.95 |
+| Avg. ingredients detected — Qwen | 12.64 |
+
+Gemma is precise but conservative: when it names an ingredient it is usually correct (precision 0.72), but it detects only about a third of the ingredient count Qwen confirms per image (recall 0.23). The most frequently missed ingredients are pantry/condiment items such as yogurt, butter, cheese, mustard, and pickles — items Gemma appears reluctant to report without very clear visual evidence. Full breakdown in `reports/gemma4_batch_100/gemma_vs_qwen_summary.md`.
+
+### Gemma 4 Latency Analysis
+
+```bash
+python src/evaluation/analyze_gemma4_latency.py
+```
+
+| Metric | Value |
+|---|---:|
+| Mean inference time | 7.06s |
+| Median inference time | 6.42s |
+| Min / Max | 3.06s / 17.53s |
+
+Latency scales with ingredient count: images with 10+ detected ingredients average 15.4s versus 5.4s for images with 0-3. Full breakdown in `reports/gemma4_batch_100/gemma4_latency_summary.md`.
+
+### Recipe Prediction Prompt
+
+A structured, few-shot recipe-prediction prompt (4 worked ingredient → recipe examples) is available for LLM-based recipe suggestion as an alternative to the deterministic coverage-ranking in `src/recipe/retrieve_recipes.py`:
+
+```text
+configs/recipe_prediction_prompt.txt
+```
 
 ---
 

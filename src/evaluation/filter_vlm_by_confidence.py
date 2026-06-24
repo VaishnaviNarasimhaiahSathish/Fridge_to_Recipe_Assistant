@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 VLM_OUTPUT_PATH    = Path("reports/vlm_predictions_100.jsonl")
-GROUND_TRUTH_PATH  = Path("reports/manual_ground_truth_100.csv")
+GROUND_TRUTH_PATH  = Path("data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv")
 NORMALIZATION_PATH = Path("configs/ingredient_normalization.json")
 
 OUTPUT_DIR = Path("reports/confidence_filtering_100")
@@ -198,7 +198,7 @@ cider, lemonade, ice, orange juice, lime juice).
 ## Input Files
 
 - VLM predictions: `reports/vlm_predictions_100.jsonl`
-- Ground truth: `reports/manual_ground_truth_100.csv`
+- Ground truth: `data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv`
 - Normalization: `configs/ingredient_normalization.json`
 
 ## Output Files

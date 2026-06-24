@@ -23,7 +23,7 @@ cider, lemonade, ice, orange juice, lime juice).
 ## Input Files
 
 - VLM predictions: `reports/vlm_predictions_100.jsonl`
-- Ground truth: `reports/manual_ground_truth_100.csv`
+- Ground truth: `data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv`
 - Normalization: `configs/ingredient_normalization.json`
 
 ## Output Files

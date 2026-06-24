@@ -2,7 +2,7 @@
 
 ## Input Files
 
-- Ground truth: `reports/manual_ground_truth_100.csv`
+- Ground truth: `data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv`
 - VLM predictions: `reports/vlm_predictions_100.jsonl`
 - Normalization file: `configs/ingredient_normalization.json`
 
