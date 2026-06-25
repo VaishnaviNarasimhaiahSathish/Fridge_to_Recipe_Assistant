@@ -374,9 +374,27 @@ def main():
     if not vlm_rows:
         st.stop()
 
-    image_ids = [row.get("image_id") for row in vlm_rows if row.get("image_id")]
+    # Some ground truth images live only on a teammate's machine and haven't
+    # been pushed to the repo yet — only offer images we can actually display.
+    available_rows = [
+        row for row in vlm_rows
+        if resolve_image_path(row.get("image_path", "")) is not None
+    ]
+    skipped_missing_image = len(vlm_rows) - len(available_rows)
+
+    if not available_rows:
+        st.error("No locally available images found in train/valid/test splits.")
+        st.stop()
+
+    image_ids = [row.get("image_id") for row in available_rows if row.get("image_id")]
 
     st.sidebar.header("Controls")
+
+    if skipped_missing_image:
+        st.sidebar.warning(
+            f"Skipping {skipped_missing_image} images not found locally "
+            "(teammate images pending upload)"
+        )
 
     selected_image_id = st.sidebar.selectbox(
         "Select image",
@@ -391,7 +409,7 @@ def main():
     show_all_rows = st.sidebar.checkbox("Show run status table", value=False)
 
     selected_row = next(
-        row for row in vlm_rows
+        row for row in available_rows
         if row.get("image_id") == selected_image_id
     )
 

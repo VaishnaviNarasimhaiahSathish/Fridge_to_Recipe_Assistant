@@ -1,7 +1,11 @@
 import csv
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from src.data.image_resolver import resolve_image_path
 
 
 VLM_OUTPUT_PATH    = Path("reports/vlm_predictions_100.jsonl")
@@ -36,15 +40,23 @@ def load_normalization_map(path: Path) -> dict:
         return json.load(f)
 
 
-def load_ground_truth(path: Path) -> dict:
+def load_ground_truth(path: Path) -> tuple[dict, int]:
     gt = {}
+    skipped_missing_image = 0
     with open(path, newline="", encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
             image_id = row["image_id"]
+
+            # Some ground truth images live only on a teammate's machine and
+            # haven't been pushed to the repo yet — skip them instead of failing.
+            if resolve_image_path(row.get("image_path", "")) is None:
+                skipped_missing_image += 1
+                continue
+
             raw = row.get("visible_ingredients", "")
             gt[image_id] = raw
-    return gt
+    return gt, skipped_missing_image
 
 
 def split_ingredients(value: str) -> list[str]:
@@ -164,7 +176,7 @@ def evaluate(gt: dict, predictions: dict, norm_map: dict, min_confidence: str) -
     }
 
 
-def write_summary(results: list[dict], output_dir: Path):
+def write_summary(results: list[dict], output_dir: Path, skipped_missing_image: int = 0):
     out_path = output_dir / "vlm_confidence_filtering_summary.md"
 
     rows = ""
@@ -200,6 +212,7 @@ cider, lemonade, ice, orange juice, lime juice).
 - VLM predictions: `reports/vlm_predictions_100.jsonl`
 - Ground truth: `data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv`
 - Normalization: `configs/ingredient_normalization.json`
+- Skipped (image not found locally, teammate images pending upload): {skipped_missing_image}
 
 ## Output Files
 
@@ -238,8 +251,14 @@ def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     norm_map    = load_normalization_map(NORMALIZATION_PATH)
-    gt          = load_ground_truth(GROUND_TRUTH_PATH)
+    gt, skipped_missing_image = load_ground_truth(GROUND_TRUTH_PATH)
     predictions = load_vlm_predictions(VLM_OUTPUT_PATH)
+
+    if skipped_missing_image:
+        print(
+            f"Skipping {skipped_missing_image} images not found locally "
+            "(teammate images pending upload)"
+        )
 
     results = []
     for level in CONFIDENCE_LEVELS:
@@ -254,7 +273,7 @@ def main():
         print(f"  Micro F1  : {result['micro_f1']:.4f}")
 
     write_per_image_csv(results, OUTPUT_DIR)
-    write_summary(results, OUTPUT_DIR)
+    write_summary(results, OUTPUT_DIR, skipped_missing_image)
 
     print()
     print("Confidence filtering complete.")

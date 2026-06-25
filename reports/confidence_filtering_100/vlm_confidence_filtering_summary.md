@@ -17,14 +17,15 @@ cider, lemonade, ice, orange juice, lime juice).
 
 | Strategy | TP | FP | FN | Precision | Recall | Micro F1 |
 |---|---:|---:|---:|---:|---:|---:|
-| high only | 419 | 340 | 337 | 0.5520 | 0.5542 | 0.5531 |
-| high + medium (baseline) | 458 | 482 | 298 | 0.4872 | 0.6058 | 0.5401 |
+| high only | 152 | 154 | 130 | 0.4967 | 0.5390 | 0.5170 |
+| high + medium (baseline) | 166 | 239 | 116 | 0.4099 | 0.5887 | 0.4833 |
 
 ## Input Files
 
 - VLM predictions: `reports/vlm_predictions_100.jsonl`
 - Ground truth: `data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv`
 - Normalization: `configs/ingredient_normalization.json`
+- Skipped (image not found locally, teammate images pending upload): 50
 
 ## Output Files
 

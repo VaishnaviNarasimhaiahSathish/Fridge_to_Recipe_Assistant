@@ -1,7 +1,11 @@
 import csv
 import json
 import re
+import sys
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from src.data.image_resolver import resolve_image_path
 
 
 GROUND_TRUTH_PATH = Path("data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv")
@@ -143,6 +147,7 @@ def load_ground_truth(path: Path, normalization_map):
         raise FileNotFoundError(f"Ground truth file not found: {path}")
 
     ground_truth = {}
+    skipped_missing_image = 0
 
     with open(path, "r", newline="", encoding="utf-8") as file:
         reader = csv.DictReader(file)
@@ -159,6 +164,12 @@ def load_ground_truth(path: Path, normalization_map):
             if not image_id:
                 continue
 
+            # Some ground truth images live only on a teammate's machine and
+            # haven't been pushed to the repo yet — skip them instead of failing.
+            if resolve_image_path(row.get("image_path", "")) is None:
+                skipped_missing_image += 1
+                continue
+
             raw_items = split_ingredient_list(row.get("visible_ingredients", ""))
             normalized_items = normalize_items(raw_items, normalization_map)
 
@@ -169,7 +180,7 @@ def load_ground_truth(path: Path, normalization_map):
                 "normalized_ground_truth": normalized_items,
             }
 
-    return ground_truth
+    return ground_truth, skipped_missing_image
 
 
 def extract_json_from_text(text):
@@ -342,8 +353,14 @@ def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     normalization_map = load_normalization_map(NORMALIZATION_PATH)
-    ground_truth = load_ground_truth(GROUND_TRUTH_PATH, normalization_map)
+    ground_truth, skipped_missing_image = load_ground_truth(GROUND_TRUTH_PATH, normalization_map)
     vlm_predictions = load_vlm_predictions(VLM_OUTPUT_PATH, normalization_map)
+
+    if skipped_missing_image:
+        print(
+            f"Skipping {skipped_missing_image} images not found locally "
+            "(teammate images pending upload)"
+        )
 
     per_image_rows = []
     false_positive_rows = []
@@ -503,6 +520,7 @@ def main():
 
 - Number of evaluated images: {len(per_image_rows)}
 - Missing VLM prediction rows: {missing_prediction_count}
+- Skipped (image not found locally, teammate images pending upload): {skipped_missing_image}
 
 ## Micro-Averaged Metrics
 
@@ -560,6 +578,7 @@ These are reported because standard classification accuracy is not suitable for 
     print()
     print(f"Evaluated images: {len(per_image_rows)}")
     print(f"Missing VLM prediction rows: {missing_prediction_count}")
+    print(f"Skipped (image not found locally): {skipped_missing_image}")
     print()
     print("Micro metrics:")
     print(f"Precision: {micro_precision:.4f}")

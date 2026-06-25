@@ -1,4 +1,5 @@
 import json
+import re
 from pathlib import Path
 
 
@@ -12,6 +13,46 @@ def load_recipes(path: Path = RECIPES_PATH) -> list[dict]:
         return json.load(f)
 
 
+def _tokenize(text: str) -> list[str]:
+    return re.findall(r"[a-z]+", text.lower())
+
+
+def _singularize(word: str) -> str:
+    if word.endswith("ies") and len(word) > 4:
+        return word[:-3] + "y"
+    if word.endswith("es") and len(word) > 4:
+        return word[:-2]
+    if word.endswith("s") and not word.endswith("ss") and len(word) > 3:
+        return word[:-1]
+    return word
+
+
+def ingredient_in_text(ingredient: str, text: str) -> bool:
+    """
+    Whole-word match: true if every token of ``ingredient`` appears as a
+    contiguous run inside ``text``'s tokens (after naive singularization).
+
+    Recipe ingredient lines are raw descriptive phrases (e.g. "medium
+    tomato", "crumbled feta cheese") rather than canonical names, so exact
+    string equality against a normalized fridge ingredient like "tomato"
+    almost never matches. Token containment catches these cases while
+    avoiding false positives like "egg" inside "eggplant" or "milk" inside
+    "buttermilk", since those don't tokenize into a matching word.
+    """
+    ingredient_tokens = [_singularize(t) for t in _tokenize(ingredient)]
+    text_tokens = [_singularize(t) for t in _tokenize(text)]
+
+    n = len(ingredient_tokens)
+
+    if n == 0:
+        return False
+
+    return any(
+        text_tokens[i:i + n] == ingredient_tokens
+        for i in range(len(text_tokens) - n + 1)
+    )
+
+
 def score_recipe(recipe: dict, available_ingredients: set[str], idx: int) -> dict:
     """
     Score a recipe against available ingredients.
@@ -21,8 +62,11 @@ def score_recipe(recipe: dict, available_ingredients: set[str], idx: int) -> dic
     Matched list    = recipe ingredients confirmed in the fridge
     """
     recipe_ingredients = set(recipe["ingredients"])
-    matched  = recipe_ingredients & available_ingredients
-    missing  = recipe_ingredients - available_ingredients
+    matched = {
+        ing for ing in recipe_ingredients
+        if any(ingredient_in_text(available, ing) for available in available_ingredients)
+    }
+    missing = recipe_ingredients - matched
 
     coverage = len(matched) / len(recipe_ingredients) if recipe_ingredients else 0.0
 

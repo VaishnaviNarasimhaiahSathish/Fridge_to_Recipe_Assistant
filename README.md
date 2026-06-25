@@ -186,6 +186,9 @@ reports/vlm_predictions_100.jsonl
 
 ## Manual Ground Truth
 
+<!-- TODO: teammate to push 50 missing images to repo -->
+Local evaluation currently uses 50 of 100 ground truth images. Full evaluation will be re-run once all images are committed.
+
 The final evaluation uses a manually reviewed 100-image ground truth file:
 
 ```text

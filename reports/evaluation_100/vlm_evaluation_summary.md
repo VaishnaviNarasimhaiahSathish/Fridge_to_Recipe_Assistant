@@ -2,14 +2,15 @@
 
 ## Input Files
 
-- Ground truth: `data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv`
-- VLM predictions: `reports/vlm_predictions_100.jsonl`
-- Normalization file: `configs/ingredient_normalization.json`
+- Ground truth: `data\annotations\manual_ground_truth_100\manual_ground_truth_100.csv`
+- VLM predictions: `reports\vlm_predictions_100.jsonl`
+- Normalization file: `configs\ingredient_normalization.json`
 
 ## Dataset
 
-- Number of evaluated images: 100
+- Number of evaluated images: 50
 - Missing VLM prediction rows: 0
+- Skipped (image not found locally, teammate images pending upload): 50
 
 ## Micro-Averaged Metrics
 
@@ -17,12 +18,12 @@ Micro metrics aggregate true positives, false positives, and false negatives acr
 
 | Metric | Value |
 |---|---:|
-| True Positives | 477 |
-| False Positives | 519 |
-| False Negatives | 309 |
-| Precision | 0.4789 |
-| Recall | 0.6069 |
-| F1-score | 0.5354 |
+| True Positives | 169 |
+| False Positives | 258 |
+| False Negatives | 125 |
+| Precision | 0.3958 |
+| Recall | 0.5748 |
+| F1-score | 0.4688 |
 
 ## Macro-Averaged Metrics
 
@@ -30,9 +31,9 @@ Macro metrics calculate the metric per image and average across images.
 
 | Metric | Value |
 |---|---:|
-| Precision | 0.5007 |
-| Recall | 0.6324 |
-| F1-score | 0.5357 |
+| Precision | 0.4135 |
+| Recall | 0.6104 |
+| F1-score | 0.4714 |
 
 ## Accuracy-Like Metrics
 
@@ -41,13 +42,13 @@ These are reported because standard classification accuracy is not suitable for 
 | Metric | Value |
 |---|---:|
 | Exact Match Accuracy | 0.0200 |
-| Mean Jaccard Similarity | 0.3910 |
+| Mean Jaccard Similarity | 0.3385 |
 
 ## Output Files
 
-- Per-image results: `reports/evaluation_100/vlm_per_image_evaluation.csv`
-- False positives: `reports/evaluation_100/vlm_false_positives.csv`
-- False negatives: `reports/evaluation_100/vlm_false_negatives.csv`
+- Per-image results: `reports\evaluation_100\vlm_per_image_evaluation.csv`
+- False positives: `reports\evaluation_100\vlm_false_positives.csv`
+- False negatives: `reports\evaluation_100\vlm_false_negatives.csv`
 
 ## Notes
 
