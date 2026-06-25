@@ -68,7 +68,8 @@ fridge-to-recipe-assistant/
 │   └── recipe_prediction_prompt.txt
 ├── data/
 │   ├── raw/                              # local only, not committed
-│   ├── recipes.json                      # local recipe dataset (40 recipes)
+│   ├── recipes.json                      # local recipe dataset (500 recipes from RecipeNLG Lite)
+│   ├── recipes_manual_40.json             # original 40 hand-written recipes (kept for reference)
 │   └── annotations/
 │       ├── manual_ground_truth_100/
 │       │   └── manual_ground_truth_100.csv
@@ -384,7 +385,7 @@ python src/evaluation/filter_vlm_by_confidence.py
 
 Normalized high-confidence ingredients are matched against a local recipe dataset to produce ranked recipe recommendations.
 
-The recipe dataset contains 40 recipes covering the most common ingredients found in VLM predictions. Each recipe includes a title, ingredient list, cuisine, meal type, prep time, and instructions.
+The recipe dataset contains 500 recipes sourced from the [RecipeNLG Lite](https://huggingface.co/datasets/m3hrdadfi/recipe_nlg_lite) dataset on Hugging Face, filtered to recipes that overlap with common fridge ingredients found in VLM predictions (egg, milk, butter, cheese, tomato, carrot, apple, lemon, cucumber, yogurt, chicken, onion, garlic, pepper) and ranked by ingredient coverage. Each recipe includes a title, ingredient list, cuisine, meal type, prep time, and step-by-step instructions. The original 40 hand-written recipes are kept for reference in `data/recipes_manual_40.json`.
 
 Recipes are ranked by ingredient coverage — the share of recipe ingredients confirmed in the fridge. Ties are broken by number of missing ingredients, then by prep time.
 
@@ -392,6 +393,19 @@ The recipe dataset is stored in:
 
 ```text
 data/recipes.json
+```
+
+It is built by:
+
+```text
+scripts/build_recipe_dataset.py
+```
+
+Run it to regenerate the dataset:
+
+```bash
+pip install datasets
+python scripts/build_recipe_dataset.py
 ```
 
 The retrieval and ranking module is in:
@@ -426,7 +440,7 @@ Full end-to-end pipeline: select a fridge image, review extracted ingredients, a
 streamlit run app_recipe_ui.py
 ```
 
-The UI includes a toggle to switch between high-confidence-only and all-predictions mode, and a slider to control the number of recipes shown.
+The UI includes a toggle to switch between high-confidence-only and all-predictions mode, a sidebar slider (5-20) to control the number of recipes shown, a search bar to filter recipes by name, and a dietary filter (All / Vegetarian / Quick (<30min)). Recipe cards show coverage %, matched ingredients (green), missing ingredients (red), and expandable step-by-step instructions.
 
 ### Gemma 4 Annotation Review UI
 
@@ -585,7 +599,7 @@ Exact match accuracy is low because it requires the complete predicted ingredien
 
 * Some ingredients are difficult to verify due to occlusion, clutter, transparent packaging, or unreadable labels.
 * VLM outputs may include plausible but unverifiable guesses even at high confidence.
-* The recipe dataset is limited to 40 manually curated recipes and does not cover all possible ingredient combinations.
+* The recipe dataset (500 recipes from RecipeNLG Lite) does not cover all possible ingredient combinations, and cuisine/meal type are unlabeled in the source data ("unknown").
 * Inference time is high because a large VLM is queried through an external endpoint.
 
 ---
@@ -593,6 +607,5 @@ Exact match accuracy is low because it requires the complete predicted ingredien
 ## Next Steps
 
 1. Explore runtime reduction strategies for practical deployment.
-2. Expand the recipe dataset with a larger open-source recipe corpus.
-3. Add dietary preference filtering to the recipe recommendation module.
-4. Refine the VLM prompt to further reduce common fridge default predictions.
+2. Refine the VLM prompt to further reduce common fridge default predictions.
+3. Label cuisine and meal type for the RecipeNLG-derived recipes (currently "unknown") to enable richer filtering.

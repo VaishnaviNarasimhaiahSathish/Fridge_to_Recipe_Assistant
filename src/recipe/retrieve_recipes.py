@@ -12,7 +12,7 @@ def load_recipes(path: Path = RECIPES_PATH) -> list[dict]:
         return json.load(f)
 
 
-def score_recipe(recipe: dict, available_ingredients: set[str]) -> dict:
+def score_recipe(recipe: dict, available_ingredients: set[str], idx: int) -> dict:
     """
     Score a recipe against available ingredients.
 
@@ -27,11 +27,11 @@ def score_recipe(recipe: dict, available_ingredients: set[str]) -> dict:
     coverage = len(matched) / len(recipe_ingredients) if recipe_ingredients else 0.0
 
     return {
-        "id":               recipe["id"],
+        "id":               recipe.get("id", f"r{idx:04d}"),
         "title":            recipe["title"],
         "cuisine":          recipe["cuisine"],
         "meal_type":        recipe["meal_type"],
-        "prep_minutes":     recipe["prep_minutes"],
+        "prep_time":        recipe["prep_time"],
         "instructions":     recipe["instructions"],
         "coverage":         round(coverage, 4),
         "matched_count":    len(matched),
@@ -58,12 +58,12 @@ def retrieve_recipes(
 
     ingredient_set = {i.strip().lower() for i in available_ingredients if i.strip()}
 
-    scored = [score_recipe(r, ingredient_set) for r in recipes]
+    scored = [score_recipe(r, ingredient_set, idx) for idx, r in enumerate(recipes)]
 
     scored.sort(key=lambda r: (
         -r["coverage"],
          r["missing_count"],
-         r["prep_minutes"],
+         r["prep_time"],
     ))
 
     return scored[:top_n]
@@ -77,8 +77,10 @@ def format_results(results: list[dict]) -> str:
         lines.append(f"   Coverage    : {coverage_pct} ({r['matched_count']}/{r['total_ingredients']} ingredients)")
         lines.append(f"   Have        : {', '.join(r['matched']) or 'none'}")
         lines.append(f"   Missing     : {', '.join(r['missing']) or 'none'}")
-        lines.append(f"   Prep time   : {r['prep_minutes']} min")
-        lines.append(f"   Instructions: {r['instructions']}")
+        lines.append(f"   Prep time   : {r['prep_time']} min")
+        lines.append(f"   Instructions:")
+        for step_num, step in enumerate(r["instructions"], start=1):
+            lines.append(f"     {step_num}. {step}")
         lines.append("")
     return "\n".join(lines)
 
@@ -86,7 +88,7 @@ def format_results(results: list[dict]) -> str:
 def main():
     # Example: run with a sample ingredient list for quick testing
     sample_ingredients = [
-        "egg", "butter", "cheese", "milk", "tomato", "lettuce", "mustard"
+        "egg", "milk", "butter", "tomato", "cheese", "carrot"
     ]
 
     print("Available ingredients:", ", ".join(sample_ingredients))

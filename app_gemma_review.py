@@ -2,11 +2,15 @@ from pathlib import Path
 import base64
 import json
 import re
+import sys
 from io import BytesIO
 
 import pandas as pd
 import streamlit as st
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).parent))
+from src.data.image_resolver import resolve_image_path
 
 st.set_page_config(page_title="Gemma VLM Annotation Review", layout="wide")
 
@@ -159,7 +163,11 @@ if api_key:
 
             for i, (idx_val, row) in enumerate(unreviewed_df.iterrows()):
                 status_text.text(f"Processing {i+1}/{len(unreviewed_df)}: {row['image_id'][:35]}...")
-                image_path = PROJECT_ROOT / str(row["image_path"])
+                image_path = resolve_image_path(row["image_path"])
+                if image_path is None:
+                    errors.append(f"Row {idx_val}: Image not found in train/valid/test splits: {row['image_path']}")
+                    progress_bar.progress((i + 1) / len(unreviewed_df))
+                    continue
                 result = auto_review_image(image_path, str(row["visible_ingredients"]), api_key)
 
                 if "error" in result:
@@ -209,7 +217,7 @@ else:
 
 idx = st.session_state.idx
 row = df.loc[idx]
-image_path = PROJECT_ROOT / str(row["image_path"])
+image_path = resolve_image_path(row["image_path"])
 
 # ── Main layout ────────────────────────────────────────────────────────────
 left, right = st.columns([1.3, 1])
@@ -218,10 +226,10 @@ with left:
     st.subheader(f"Image {idx + 1} of {total}")
     st.write(f"Image ID: `{row['image_id']}`")
     st.write(f"Image path: `{row['image_path']}`")
-    if image_path.exists():
+    if image_path is not None:
         st.image(Image.open(image_path), use_container_width=True)
     else:
-        st.error(f"Image not found: {image_path}")
+        st.error(f"Image not found in train/valid/test splits: {row['image_path']}")
 
 with right:
     st.subheader("Gemma prediction")
@@ -229,7 +237,7 @@ with right:
                  value=str(row["visible_ingredients"]), height=120, disabled=True)
 
     # Single image auto-review
-    if api_key and image_path.exists():
+    if api_key and image_path is not None:
         if st.button("Auto-review this image with Qwen"):
             with st.spinner("Asking Qwen to review..."):
                 result = auto_review_image(image_path, str(row["visible_ingredients"]), api_key)

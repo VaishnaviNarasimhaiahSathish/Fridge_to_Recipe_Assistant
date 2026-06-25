@@ -1,11 +1,14 @@
 import json
 import re
+import sys
 from pathlib import Path
 
 import pandas as pd
 import streamlit as st
 from PIL import Image
 
+sys.path.insert(0, str(Path(__file__).parent))
+from src.data.image_resolver import resolve_image_path
 
 VLM_OUTPUT_PATH = Path("reports/vlm_predictions_100.jsonl")
 MANUAL_GT_PATH = Path("data/annotations/manual_ground_truth_100/manual_ground_truth_100.csv")
@@ -403,14 +406,14 @@ def main():
     gt_info = manual_gt.get(selected_image_id, {})
     manual_items = gt_info.get("visible_ingredients", [])
 
-    image_path = Path(selected_row.get("image_path", ""))
+    image_path = resolve_image_path(selected_row.get("image_path", ""))
 
     col1, col2 = st.columns([1.15, 1])
 
     with col1:
         st.subheader("Input Image")
 
-        if image_path.exists():
+        if image_path is not None:
             image = Image.open(image_path)
 
             try:
@@ -426,7 +429,7 @@ def main():
                     use_column_width=True,
                 )
         else:
-            st.error(f"Image not found: {image_path}")
+            st.error(f"Image not found in train/valid/test splits: {selected_row.get('image_path', '')}")
 
     with col2:
         st.subheader("Run Info")
