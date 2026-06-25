@@ -1,0 +1,16 @@
+image_id,f1,precision,recall,tp,fp,fn,normalized_ground_truth,normalized_vlm_predictions
+w1r3mnziyhvd1_jpeg.rf.870f4e05ef1ab64284545f1446f44923.jpg,0.0,0.0,0.0,0,7,3,juice; ketchup; pickle,broth; milk; mayonnaise; lime juice; salad dressing; butter; yogurt
+0lbxdi753y7f1_jpeg.rf.68180848402318fcecc913cd0d18effe.jpg,0.0,0.0,0.0,0,4,3,butter; juice; tomato,water; margarine; pie; cider
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,0.0,0.0,0.0,0,8,6,apple; barbecue sauce; chocolate syrup; egg; hot sauce; juice,cream cheese; mustard; milk; butter; ketchup; pesto; mayonnaise; yogurt
+8d25lpb35lvd1_jpeg.rf.59982d82e26271b3e447e0d960a1b7fd.jpg,0.1429,0.3333,0.0909,1,2,10,apple; cream cheese; egg; hot sauce; lemon; lettuce; mayonnaise; milk; orange; salsa; spinach,hemp hearts; lime; orange
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,0.2,0.125,0.5,1,7,1,barbecue sauce; milk,fish; pea; cheese; cream cheese; beer; ham; milk; butter
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,0.2105,0.1538,0.3333,2,11,4,barbecue sauce; hot sauce; lime; salad dressing; salsa; sour cream,egg; butter; tomato; sour cream; meat; carrot; pineapple; milk; lettuce; lime; bread; cheese; pickle
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,0.2222,0.2,0.25,2,8,6,asparagus; barbecue sauce; chicken; egg; hot sauce; lemonade; lettuce; lime,egg; margarine; yogurt; cheese; spinach; ice; salad; carrot; bell pepper; lime
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,0.2353,0.1667,0.4,2,10,3,apple; avocado; hot sauce; pasta sauce; strawberry,blueberry; strawberry; yogurt; ground beef; lettuce; hot sauce; ketchup; pickle; salsa; cream cheese; water; orange juice
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,0.2609,0.2727,0.25,3,8,9,apple; barbecue sauce; blueberry; bread; egg; grape; hot sauce; ketchup; lemon; mayonnaise; salad dressing; salsa,milk; butter; egg; yogurt; grape; olive; mushroom; bacon; salad; mustard; mayonnaise
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,0.2727,0.2308,0.3333,3,10,6,butter; cheese; chocolate syrup; egg; hot sauce; mustard; pasta sauce; salad dressing; salsa,mayonnaise; egg; almond milk; ketchup; cheese; barbecue sauce; orange juice; soy sauce; mustard; garlic; lettuce; broccoli; meat
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,0.2857,0.2,0.5,2,8,2,carrot; cheese; grape; pickle,cheese; butter; mustard; mayonnaise; pickle; jam; orange juice; lettuce; meat; salsa
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,0.3077,0.2,0.6667,2,8,1,asparagus; carrot; lime,carrot; lettuce; blueberry; ham; pickle; yogurt; lime; bell pepper; banana; cheese
+naid6xbl9t5f1_jpeg.rf.3e8593e6c185e7edf10d9f187eab5d05.jpg,0.3077,0.25,0.4,2,6,3,hot sauce; juice; lemonade; milk; yogurt,milk; almond milk; juice; egg; blueberry; broccoli; bell pepper; lemon juice
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,0.3077,0.2857,0.3333,2,5,4,bell pepper; carrot; cream cheese; milk; orange; pasta sauce,corn flakes; lettuce; butter; orange; cheese; broccoli; milk
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,0.3529,0.3333,0.375,3,6,5,apple; bell pepper; bread; cheese; hot sauce; juice; lettuce; lime,orange juice; milk; juice; cheese; pickle; lettuce; orange; lemon; yogurt
