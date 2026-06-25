@@ -122,16 +122,19 @@ fridge-to-recipe-assistant/
 │   │   ├── vlm_bootstrap_metrics.csv
 │   │   ├── vlm_bootstrap_summary.md
 │   │   └── figures/
-│   └── preliminary_vlm_trial/
-│       ├── analyze_trial_vlm_outputs.py
-│       ├── app_trial_review.py
-│       ├── vlm_predictions_raw.jsonl
-│       ├── vlm_predictions_flat.csv
-│       ├── vlm_ingredient_frequencies.csv
-│       ├── vlm_uncertain_frequencies.csv
-│       ├── vlm_item_frequencies_combined.csv
-│       ├── vlm_output_analysis.md
-│       └── figures/
+│   ├── preliminary_vlm_trial/
+│   │   ├── analyze_trial_vlm_outputs.py
+│   │   ├── app_trial_review.py
+│   │   ├── vlm_predictions_raw.jsonl
+│   │   ├── vlm_predictions_flat.csv
+│   │   ├── vlm_ingredient_frequencies.csv
+│   │   ├── vlm_uncertain_frequencies.csv
+│   │   ├── vlm_item_frequencies_combined.csv
+│   │   ├── vlm_output_analysis.md
+│   │   └── figures/
+│   └── missing_images.txt
+├── scripts/
+│   └── build_recipe_dataset.py
 └── src/
     ├── data/
     │   ├── dataset_audit.py
@@ -187,7 +190,7 @@ reports/vlm_predictions_100.jsonl
 ## Manual Ground Truth
 
 <!-- TODO: teammate to push 50 missing images to repo -->
-Local evaluation currently uses 50 of 100 ground truth images. Full evaluation will be re-run once all images are committed.
+50 of the 100 ground truth images are not yet pushed to this repo (pending upload from a teammate's machine). `src/evaluation/evaluate_vlm_predictions.py` and `src/evaluation/filter_vlm_by_confidence.py` detect this automatically — rows whose image isn't found in `data/raw/{train,valid,test}/images` are skipped with a console warning (`Skipping N images not found locally (teammate images pending upload)`), and evaluation continues on the remaining images instead of crashing. The metrics reported below were computed on the full 100-image set before the local image gap appeared; running either script locally right now will reproduce only the 50-image subset (different, lower numbers) until the teammate's images are committed — see `reports/missing_images.txt`. Re-run both scripts once they're pushed to refresh the full 100-image numbers.
 
 The final evaluation uses a manually reviewed 100-image ground truth file:
 
@@ -392,6 +395,8 @@ The recipe dataset contains 500 recipes sourced from the [RecipeNLG Lite](https:
 
 Recipes are ranked by ingredient coverage — the share of recipe ingredients confirmed in the fridge. Ties are broken by number of missing ingredients, then by prep time.
 
+**Ingredient matching.** Recipe ingredient lines in `data/recipes.json` are raw descriptive phrases as scraped from RecipeNLG Lite (e.g. `"medium tomato"`, `"crumbled feta cheese"`, `"2% milk"`), not canonical ingredient names. Matching these against the normalized fridge ingredients (e.g. `"tomato"`, `"cheese"`, `"milk"`) with exact string equality almost never succeeds, which previously produced very low coverage (12-16%) and only 1-2 matched ingredients per recipe even when the right items were extracted. `ingredient_in_text()` in `src/recipe/retrieve_recipes.py` fixes this with whole-word, plural-tolerant token matching: a fridge ingredient is counted as present if its word(s) appear as a contiguous run inside the recipe ingredient phrase (after naive singularization), while still rejecting unrelated containment such as `"egg"` inside `"eggplant"` or `"milk"` inside `"buttermilk"`. This raised coverage to a realistic 30-40%+ range for the same extracted ingredients.
+
 The recipe dataset is stored in:
 
 ```text
@@ -443,7 +448,19 @@ Full end-to-end pipeline: select a fridge image, review extracted ingredients, a
 streamlit run app_recipe_ui.py
 ```
 
-The UI includes a toggle to switch between high-confidence-only and all-predictions mode, a sidebar slider (5-20) to control the number of recipes shown, a search bar to filter recipes by name, and a dietary filter (All / Vegetarian / Quick (<30min)). Recipe cards show coverage %, matched ingredients (green), missing ingredients (red), and expandable step-by-step instructions.
+The UI uses a dark, card-based layout:
+
+* **Step 1 card** — image selector with the fridge photo previewed underneath.
+* **Step 2 card** — extracted ingredients shown as green pill badges (🟢 high confidence) and amber pills (🟡 medium confidence, only when "High confidence only" is off), with a "Filtered out" expander listing predictions dropped by the confidence threshold or the generic-term ignore list.
+* **Step 3 cards** — one card per recommended recipe: large title, a big color-coded coverage number (green ≥50%, orange 30-49%, red <30%), "You have" ingredients as green pills, "You need" ingredients as red pills, a cuisine/meal-type/prep-time meta line, and an expander with the full numbered instructions.
+
+The sidebar is organized into three sections:
+
+* **⚙️ Filters** — high-confidence-only toggle, dietary filter (All / Vegetarian / Quick (<30min)), and a recipe-count slider (5-20).
+* **🖼️ Dataset** — count of locally available images and a train/valid/test split breakdown, plus a warning if any ground truth images are pending upload (see [Manual Ground Truth](#manual-ground-truth)).
+* **🐞 Debug** — a "Show debug info" toggle that reveals the extraction → normalization → matching pipeline trace per ingredient (raw name, normalized name, confidence, kept/filtered reason) and the matched ingredients behind the top 3 recipe results, useful for diagnosing low-coverage cases.
+
+A search box to filter recipes by name sits above the recipe list in the main column.
 
 ### Gemma 4 Annotation Review UI
 
@@ -604,11 +621,16 @@ Exact match accuracy is low because it requires the complete predicted ingredien
 * VLM outputs may include plausible but unverifiable guesses even at high confidence.
 * The recipe dataset (500 recipes from RecipeNLG Lite) does not cover all possible ingredient combinations, and cuisine/meal type are unlabeled in the source data ("unknown").
 * Inference time is high because a large VLM is queried through an external endpoint.
+* Recipe ingredient matching uses a naive suffix-stripping singularizer rather than a real lemmatizer, so a few irregular plurals (e.g. "leaves" → "leav" instead of "leaf") fail to match even when the ingredient is present.
+* 50 of the 100 manual ground truth images are not yet committed to this repo, so local evaluation runs currently cover only half the set until they're pushed (see [Manual Ground Truth](#manual-ground-truth)).
 
 ---
 
 ## Next Steps
 
-1. Explore runtime reduction strategies for practical deployment.
-2. Refine the VLM prompt to further reduce common fridge default predictions.
-3. Label cuisine and meal type for the RecipeNLG-derived recipes (currently "unknown") to enable richer filtering.
+1. Re-run the full 100-image evaluation and confidence-filtering scripts once the teammate's 50 pending images are pushed, and refresh the headline metrics above.
+2. Explore runtime reduction strategies for practical deployment.
+3. Refine the VLM prompt to further reduce common fridge default predictions.
+4. Label cuisine and meal type for the RecipeNLG-derived recipes (currently "unknown") to enable richer filtering.
+5. Replace the naive singularization in `ingredient_in_text()` with a proper lemmatizer or a small synonym table to catch the remaining irregular-plural and synonym mismatches in recipe ingredient matching.
+6. Visually QA the redesigned `app_recipe_ui.py` in a real browser session (current verification used Streamlit's headless `AppTest`, which confirms no runtime errors and correct data but not pixel-level styling).
