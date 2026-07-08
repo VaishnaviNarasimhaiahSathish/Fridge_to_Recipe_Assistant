@@ -14,3 +14,7 @@ reports/manual_annotation_images/
 src/data/create_manual_ground_truth_template.py
 src/data/export_vlm_subset_images.py
 reports/intermediate_files/
+
+# Frontend dependencies/build
+frontend/node_modules/
+frontend/dist/
