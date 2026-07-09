@@ -150,10 +150,9 @@ fridge-to-recipe-assistant/
 │       ├── main.jsx
 │       └── styles.css
 ├── archive/
-│   └── streamlit_apps/
-│       ├── app_recipe_ui.py
-│       ├── app_vlm_review.py
-│       └── app_gemma_review.py
+|   ├── evaluation_50/
+│   ├── preliminary_vlm_trial/
+│   └── streamlit_apps/         
 ├── configs/
 │   ├── ingredient_normalization.json
 │   ├── vlm_prompt.txt
@@ -524,39 +523,11 @@ The large gap between mean and median indicates that latency is affected by serv
 
 ---
 
-## Archived Streamlit Apps
-
-Earlier Streamlit tools are archived under:
-
-```text
-archive/streamlit_apps/
-```
-
-These include:
-
-- VLM prediction review UI
-- recipe recommendation prototype UI
-- Gemma annotation review UI
-
-They are kept for reproducibility and review but are no longer the main user-facing application.
-
-The active application is now:
-
-```text
-backend/
-frontend/
-```
-
----
-
 ## Limitations
 
 - Some ingredients are difficult to verify because of occlusion, clutter, transparent packaging, or unreadable labels.
 - VLM outputs may include plausible but visually unverifiable guesses.
-- The recipe dataset currently contains 500 recipes, so coverage is still limited.
-- Cuisine and meal type metadata are incomplete or unknown for many recipes.
 - Current recipe matching uses lightweight normalization and token matching, not a full ingredient ontology.
-- The demo uses saved VLM predictions instead of live image upload and live VLM inference.
 - Store suggestions are static local guidance, not real-time inventory or opening-hour information.
 - Large-scale retrieval and deployment are future improvements.
 
