@@ -11,13 +11,32 @@ TOP_N = 5
 CANDIDATE_LIMIT = 50
 
 
-PASSAU_GROCERY_STORES = [
-    "REWE",
-    "EDEKA",
-    "Netto",
-    "Penny",
-    "Kaufland",
-]
+STORE_RECOMMENDATIONS = {
+    "basic_staple": {
+        "recommended_store_type": "Budget or regular supermarket",
+        "suggested_stores": ["ALDI", "Lidl", "Penny", "Netto", "REWE", "EDEKA"],
+        "shopping_note": "Usually easy to find in most supermarkets or discount stores.",
+        "priority": "low",
+    },
+    "common_grocery": {
+        "recommended_store_type": "Regular supermarket",
+        "suggested_stores": ["REWE", "EDEKA", "Kaufland", "Lidl", "ALDI"],
+        "shopping_note": "Common grocery item; most supermarkets should carry it.",
+        "priority": "medium",
+    },
+    "specific_grocery": {
+        "recommended_store_type": "Regular or wider-selection supermarket",
+        "suggested_stores": ["REWE", "EDEKA", "Kaufland"],
+        "shopping_note": "Specific packaged or recipe item; a larger supermarket is safer.",
+        "priority": "medium",
+    },
+    "special_ingredient": {
+        "recommended_store_type": "Wider-selection supermarket",
+        "suggested_stores": ["REWE", "EDEKA", "Kaufland"],
+        "shopping_note": "More specific ingredient; check a wider-selection store first.",
+        "priority": "high",
+    },
+}
 
 
 PRICE_ESTIMATES_EUR = {
@@ -659,19 +678,35 @@ def estimate_missing_item_price(item: str) -> str:
     return "price varies"
 
 
-def suggest_grocery_options(missing_items: list[str], max_items: int = 3) -> list[dict]:
+def suggest_grocery_options(missing_items: list[str], max_items: int = 4) -> list[dict]:
     """
-    Suggest simple grocery options for the first few missing ingredients.
+    Suggest grocery options for missing ingredients.
 
-    This is a static Passau-oriented suggestion, not live store lookup.
+    Suggestions are static and demo-friendly, but now depend on ingredient type:
+    - basic staples can be bought almost anywhere
+    - common groceries are normal supermarket items
+    - specific groceries are better searched in larger stores
+    - special ingredients are best checked in wider-selection stores
+
+    This is not live price, stock, or opening-hour data.
     """
     suggestions = []
 
     for item in missing_items[:max_items]:
+        category = categorize_missing_item(item)
+        store_info = STORE_RECOMMENDATIONS.get(
+            category,
+            STORE_RECOMMENDATIONS["common_grocery"],
+        )
+
         suggestions.append({
             "missing_item": item,
+            "ingredient_category": category,
             "estimated_price": estimate_missing_item_price(item),
-            "suggested_stores": PASSAU_GROCERY_STORES,
+            "recommended_store_type": store_info["recommended_store_type"],
+            "suggested_stores": store_info["suggested_stores"],
+            "shopping_note": store_info["shopping_note"],
+            "priority": store_info["priority"],
             "note": "Static demo suggestion for Passau; not live price or inventory data.",
         })
 
@@ -731,7 +766,7 @@ def retrieve_recipes_hybrid(
 
         scored["grocery_suggestions"] = suggest_grocery_options(
             scored["missing"],
-            max_items=3,
+            max_items=4,
         )
 
         scored_results.append(scored)
@@ -793,7 +828,14 @@ def format_results(results: list[dict]) -> str:
                 stores = ", ".join(suggestion["suggested_stores"])
                 lines.append(
                     f"     - {suggestion['missing_item']} "
-                    f"({suggestion['estimated_price']}): {stores}"
+                    f"({suggestion['ingredient_category']}, "
+                    f"{suggestion['estimated_price']}): {stores}"
+                )
+                lines.append(
+                    f"       Store type: {suggestion['recommended_store_type']}"
+                )
+                lines.append(
+                    f"       Note      : {suggestion['shopping_note']}"
                 )
 
         lines.append("")
