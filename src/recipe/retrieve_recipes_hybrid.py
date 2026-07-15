@@ -490,6 +490,81 @@ def get_bm25_candidates(
     return candidates[:candidate_limit]
 
 
+def get_difficulty_penalty(difficulty: str) -> int:
+    """
+    Convert missing-ingredient difficulty into a small ranking penalty.
+
+    The values are intentionally simple:
+    - easy recipes get no penalty
+    - medium recipes get a small penalty
+    - hard recipes get a stronger penalty
+
+    This makes the final ranking prefer recipes that are easier to complete,
+    without ignoring ingredient coverage.
+    """
+    difficulty = str(difficulty).strip().lower()
+
+    if difficulty == "easy":
+        return 0
+
+    if difficulty == "medium":
+        return 6
+
+    if difficulty == "hard":
+        return 14
+
+    return 6
+
+
+def get_difficulty_rank(difficulty: str) -> int:
+    """
+    Lower rank is better.
+
+    Used as a stable tie-breaker after cookability score.
+    """
+    difficulty = str(difficulty).strip().lower()
+
+    if difficulty == "easy":
+        return 0
+
+    if difficulty == "medium":
+        return 1
+
+    if difficulty == "hard":
+        return 2
+
+    return 1
+
+
+def calculate_cookability_score(
+    coverage: float,
+    missing_count: int,
+    difficulty: str,
+) -> float:
+    """
+    Calculate an explainable final score for recipe ranking.
+
+    The score rewards:
+    - high ingredient coverage
+
+    The score penalizes:
+    - many missing ingredients
+    - difficult/specific missing ingredients
+
+    Example:
+    A recipe with 60% coverage and easy missing items can rank above
+    a recipe with similar coverage but hard-to-find missing items.
+    """
+    coverage_points = coverage * 100
+    missing_penalty = missing_count * 2
+    difficulty_penalty = get_difficulty_penalty(difficulty)
+
+    return round(
+        coverage_points - missing_penalty - difficulty_penalty,
+        4,
+    )
+
+
 def score_recipe_by_coverage(
     recipe: dict,
     available_ingredients: set[str],
@@ -500,11 +575,15 @@ def score_recipe_by_coverage(
     """
     Final recipe scoring.
 
-    Coverage is still the main score because the user wants recipes based on
-    ingredients already present in the fridge.
+    Coverage measures how many recipe ingredients are already available.
 
-    Missing ingredient difficulty is now added as an explanation field.
-    Ranking will use it more strongly in the next upgrade.
+    Missing ingredient difficulty estimates whether the remaining ingredients
+    are basic, common, specific, or special.
+
+    Cookability score combines both:
+    - high coverage is good
+    - fewer missing ingredients is good
+    - easier missing ingredients are better
     """
     recipe_ingredients = set(recipe.get("ingredients", []))
 
@@ -528,6 +607,16 @@ def score_recipe_by_coverage(
     missing_sorted = sorted(missing)
     difficulty_info = score_missing_difficulty(missing_sorted)
 
+    missing_difficulty = difficulty_info["missing_difficulty"]
+    difficulty_penalty = get_difficulty_penalty(missing_difficulty)
+    difficulty_rank = get_difficulty_rank(missing_difficulty)
+
+    cookability_score = calculate_cookability_score(
+        coverage=coverage,
+        missing_count=len(missing),
+        difficulty=missing_difficulty,
+    )
+
     return {
         "id": recipe.get("id", f"r{idx:04d}"),
         "title": recipe.get("title", "unknown"),
@@ -544,9 +633,12 @@ def score_recipe_by_coverage(
         "missing": missing_sorted,
         "bm25_score": bm25_score_value,
         "matched_query_terms": matched_query_terms,
-        "missing_difficulty": difficulty_info["missing_difficulty"],
+        "missing_difficulty": missing_difficulty,
         "missing_difficulty_reason": difficulty_info["missing_difficulty_reason"],
         "missing_difficulty_details": difficulty_info["missing_difficulty_details"],
+        "difficulty_penalty": difficulty_penalty,
+        "difficulty_rank": difficulty_rank,
+        "cookability_score": cookability_score,
     }
 
 
@@ -591,6 +683,7 @@ def retrieve_recipes_hybrid(
     top_n: int = TOP_N,
     candidate_limit: int = CANDIDATE_LIMIT,
     recipes: list[dict] | None = None,
+    ranking_mode: str = "all",
 ) -> list[dict]:
     """
     Hybrid recipe retrieval.
@@ -599,20 +692,17 @@ def retrieve_recipes_hybrid(
     BM25-style search finds relevant candidate recipes.
 
     Step 2:
-    Coverage-based ranking decides which recipes are most cookable
-    with the detected fridge ingredients.
+    Coverage-based scoring estimates how cookable each recipe is.
 
-    Current ranking priority:
-    1. Higher ingredient coverage
-    2. Fewer missing ingredients
-    3. Higher BM25 relevance
-    4. Shorter prep time
-
-    Missing ingredient difficulty is calculated now and will be used more
-    strongly in the next ranking upgrade.
+    Ranking modes:
+    - all: prioritize fridge ingredient match and cookability
+    - quick: keep only recipes up to 30 minutes, then rank by cookability
+    - vegetarian: same ranking as all; vegetarian filtering is handled in backend
     """
     if recipes is None:
         recipes = load_recipes()
+
+    ranking_mode = str(ranking_mode).strip().lower()
 
     available_set = {
         ingredient.strip().lower()
@@ -646,12 +736,30 @@ def retrieve_recipes_hybrid(
 
         scored_results.append(scored)
 
-    scored_results.sort(key=lambda result: (
-        -result["coverage"],
-        result["missing_count"],
-        -result["bm25_score"],
-        result["prep_time"] if result["prep_time"] is not None else 9999,
-    ))
+    if ranking_mode == "quick":
+        scored_results = [
+            result for result in scored_results
+            if result.get("prep_time") is not None and result.get("prep_time") <= 30
+        ]
+
+        scored_results.sort(key=lambda result: (
+            -result["cookability_score"],
+            -result["coverage"],
+            result["difficulty_rank"],
+            result["missing_count"],
+            result["prep_time"] if result["prep_time"] is not None else 9999,
+            -result["bm25_score"],
+        ))
+
+    else:
+        scored_results.sort(key=lambda result: (
+            -result["cookability_score"],
+            -result["coverage"],
+            result["difficulty_rank"],
+            result["missing_count"],
+            result["prep_time"] if result["prep_time"] is not None else 9999,
+            -result["bm25_score"],
+        ))
 
     return scored_results[:top_n]
 
@@ -669,6 +777,7 @@ def format_results(results: list[dict]) -> str:
         )
         lines.append(f"   Difficulty     : {recipe['missing_difficulty']}")
         lines.append(f"   Reason         : {recipe['missing_difficulty_reason']}")
+        lines.append(f"   Cookability    : {recipe['cookability_score']}")
         lines.append(f"   BM25 score     : {recipe['bm25_score']}")
         lines.append(f"   Prep time      : {recipe['prep_time']} min")
         lines.append(

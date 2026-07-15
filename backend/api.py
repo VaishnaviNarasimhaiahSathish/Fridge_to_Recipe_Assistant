@@ -314,14 +314,17 @@ def get_recipes(request: RecipeRequest):
 
     recipes = load_recipes()
 
+    preference = request.preference.strip().lower()
+
+    ranking_mode = preference if preference in {"all", "quick", "vegetarian"} else "all"
+
     ranked = retrieve_recipes_hybrid(
         available_ingredients=ingredients,
-        top_n=50,
-        candidate_limit=120,
+        top_n=100,
+        candidate_limit=250,
         recipes=recipes,
+        ranking_mode=ranking_mode,
     )
-
-    preference = request.preference.strip().lower()
 
     if preference == "vegetarian":
         ranked = [recipe for recipe in ranked if is_vegetarian_recipe(recipe)]
