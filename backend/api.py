@@ -13,6 +13,11 @@ from pydantic import BaseModel
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT))
 
+from src.grocery.shops import PASSAU_SHOPS, SHOP_DISCLAIMER
+from src.ingredients.prediction_processing import (
+    extract_detected_ingredients as extract_prediction_ingredients,
+    load_normalization_map,
+)
 from src.recipe.retrieve_recipes_hybrid import load_recipes, retrieve_recipes_hybrid
 
 
@@ -29,150 +34,23 @@ IMAGE_SEARCH_DIRS = [
 ]
 
 
-GENERIC_IGNORE_TERMS = {
-    "unknown jar", "unknown bottle", "unknown packaged item",
-    "unknown container", "unknown item", "unknown food item",
-    "food", "drink", "beverage", "condiment", "container",
-    "package", "packaged item", "prepared food", "prepared meal",
-    "prepared salad", "leftover food", "frozen food", "canned food",
-    "canned fruit", "sauce", "bottle", "jar", "grocery", "item",
-    "green", "liquid", "leftover", "fruit", "vegetable", "vegetables",
-    "chopped vegetables", "frozen vegetable", "leafy green vegetable",
-    "dressing", "dips", "snack", "dessert", "spread", "preserve",
-    "water", "juice", "orange juice", "lime juice", "soda",
-    "broth", "beer", "wine", "cider", "lemonade", "ice",
-}
-
-
-PASSAU_SHOPS = {
-    "Innstadt": [
-        {
-            "name": "EDEKA Maier",
-            "address": "Kapuzinerstraße 30",
-            "type": "Wider selection",
-            "note": "Good for fresh items and recipe-specific ingredients.",
-        },
-        {
-            "name": "NORMA",
-            "address": "Kapuzinerstraße 42",
-            "type": "Budget",
-            "note": "Good for basic groceries and staples.",
-        },
-    ],
-    "Altstadt / City Centre": [
-        {
-            "name": "REWE",
-            "address": "Nibelungenplatz 5",
-            "type": "Wider selection",
-            "note": "Convenient central option for most missing ingredients.",
-        },
-        {
-            "name": "Netto Marken-Discount",
-            "address": "Bahnhofstraße 24",
-            "type": "Budget",
-            "note": "Good for simple staples and cheaper basics.",
-        },
-        {
-            "name": "nah & gut Escherich",
-            "address": "Residenzplatz 13",
-            "type": "Wider selection",
-            "note": "Small central store. Check opening hours before going.",
-        },
-    ],
-    "Haidenhof-Nord (Neuburger Straße)": [
-        {
-            "name": "EDEKA Schwaiberger",
-            "address": "Neuburger Straße 104B",
-            "type": "Wider selection",
-            "note": "Good for fresh produce and recipe-specific items.",
-        },
-        {
-            "name": "Kaufland",
-            "address": "Neuburger Straße 128",
-            "type": "Wider selection",
-            "note": "Large store, useful for bigger shopping trips.",
-        },
-    ],
-    "Spitalhof": [
-        {
-            "name": "REWE",
-            "address": "Spitalhofstraße 94",
-            "type": "Wider selection",
-            "note": "Good general-purpose supermarket.",
-        },
-        {
-            "name": "PENNY",
-            "address": "Spitalhofstraße 76",
-            "type": "Budget",
-            "note": "Good for affordable basics.",
-        },
-    ],
-    "Grubweg / Lindau": [
-        {
-            "name": "Netto Marken-Discount",
-            "address": "Schulbergstraße 63",
-            "type": "Budget",
-            "note": "Good for simple missing items.",
-        },
-        {
-            "name": "NORMA Filiale",
-            "address": "Dr.-Fritz-Ebbert-Straße 1",
-            "type": "Budget",
-            "note": "Good for staples and everyday groceries.",
-        },
-        {
-            "name": "Lidl",
-            "address": "Lindau 9",
-            "type": "Budget",
-            "note": "Good for vegetables, dairy, and basic pantry items.",
-        },
-    ],
-    "Neustift / Auerbach": [
-        {
-            "name": "Lidl",
-            "address": "Graneckerstraße 6",
-            "type": "Budget",
-            "note": "Good for basic ingredients at low prices.",
-        },
-        {
-            "name": "ALDI SÜD",
-            "address": "Graneckerstraße 2",
-            "type": "Budget",
-            "note": "Right next to Lidl, useful for quick comparison.",
-        },
-        {
-            "name": "ALDI",
-            "address": "Neuburger Straße 137",
-            "type": "Budget",
-            "note": "Good for staples and simple groceries.",
-        },
-        {
-            "name": "REWE",
-            "address": "Steinbachstraße 60",
-            "type": "Wider selection",
-            "note": "Better option for less common ingredients.",
-        },
-        {
-            "name": "PENNY",
-            "address": "Max-Matheis-Straße 2A",
-            "type": "Budget",
-            "note": "Good for cheaper everyday items.",
-        },
-    ],
-    "Hacklberg": [
-        {
-            "name": "EDEKA Hehenberger",
-            "address": "Glockenstraße 6",
-            "type": "Wider selection",
-            "note": "Good local option. Check opening hours before going.",
-        },
-    ],
-}
-
-
 MEAT_KEYWORDS = {
-    "chicken", "beef", "pork", "fish", "shrimp", "bacon", "turkey", "lamb",
-    "meat", "sausage", "ham", "salmon", "tuna", "anchovy", "steak", "veal",
+    "chicken",
+    "beef",
+    "pork",
+    "fish",
+    "shrimp",
+    "bacon",
+    "turkey",
+    "lamb",
+    "meat",
+    "sausage",
+    "ham",
+    "salmon",
+    "tuna",
+    "anchovy",
+    "steak",
+    "veal",
 }
 
 
@@ -188,6 +66,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
+        "http://localhost:5174",
+        "http://127.0.0.1:5174",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -222,24 +102,6 @@ def resolve_image_path(original_path: str) -> Path | None:
             return candidate
 
     return None
-
-
-def load_normalization_map() -> dict[str, Any]:
-    if not NORMALIZATION_PATH.exists():
-        return {}
-
-    with open(NORMALIZATION_PATH, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def normalize_ingredient(name: str, normalization_map: dict[str, Any]) -> str:
-    cleaned = name.strip().lower()
-    normalized = normalization_map.get(cleaned, cleaned)
-
-    if isinstance(normalized, list):
-        return normalized[0] if normalized else cleaned
-
-    return str(normalized).strip().lower()
 
 
 def load_predictions(include_missing_images: bool = False) -> dict[str, dict[str, Any]]:
@@ -278,36 +140,20 @@ def load_predictions(include_missing_images: bool = False) -> dict[str, dict[str
 
 
 def extract_detected_ingredients(prediction_row: dict[str, Any]) -> list[str]:
-    normalization_map = load_normalization_map()
-    parsed = prediction_row.get("parsed_response", {})
-    raw_ingredients = parsed.get("ingredients", [])
+    """
+    Extract the user-facing ingredient list from a saved VLM prediction row.
 
-    detected = []
+    The actual extraction, normalization, confidence filtering, and generic-term
+    filtering live in src/ingredients/prediction_processing.py.
+    This wrapper keeps backend API behavior unchanged.
+    """
+    normalization_map = load_normalization_map(NORMALIZATION_PATH)
 
-    for ingredient in raw_ingredients:
-        raw_name = str(ingredient.get("name", "")).strip().lower()
-        confidence = str(ingredient.get("confidence", "")).strip().lower()
-
-        if not raw_name:
-            continue
-
-        normalized = normalize_ingredient(raw_name, normalization_map)
-
-        if not normalized:
-            continue
-
-        if normalized in GENERIC_IGNORE_TERMS:
-            continue
-
-        # User-facing app uses the strongest VLM detections only.
-        # This is not shown as an editable step in the UI.
-        if confidence != "high":
-            continue
-
-        if normalized not in detected:
-            detected.append(normalized)
-
-    return detected
+    return extract_prediction_ingredients(
+        prediction_row=prediction_row,
+        normalization_map=normalization_map,
+        allowed_confidences={"high"},
+    )
 
 
 def is_vegetarian_recipe(recipe: dict[str, Any]) -> bool:
@@ -487,5 +333,5 @@ def get_recipes(request: RecipeRequest):
 def get_shops():
     return {
         "areas": PASSAU_SHOPS,
-        "disclaimer": "Store suggestions are static local guidance. Opening hours, prices, and availability may vary.",
+        "disclaimer": SHOP_DISCLAIMER,
     }
