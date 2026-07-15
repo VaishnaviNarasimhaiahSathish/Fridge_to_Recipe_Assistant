@@ -1157,6 +1157,42 @@
   .compact-selected-shop div span {
     font-size: 13px;
   }
+
+  .recipe-score-stack {
+    display: grid;
+    gap: 12px;
+    justify-items: end;
+    min-width: 138px;
+  }
+  
+  .difficulty-badge {
+    width: 138px;
+    border-radius: 16px;
+    padding: 10px 12px;
+    font-size: 12px;
+    font-weight: 900;
+    text-align: center;
+    line-height: 1.25;
+    border: 1px solid rgba(148, 163, 184, 0.22);
+  }
+  
+  .difficulty-easy {
+    color: #bbf7d0;
+    background: rgba(34, 197, 94, 0.12);
+    border-color: rgba(34, 197, 94, 0.32);
+  }
+  
+  .difficulty-medium {
+    color: #fef3c7;
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.32);
+  }
+  
+  .difficulty-hard {
+    color: #fecaca;
+    background: rgba(248, 113, 113, 0.12);
+    border-color: rgba(248, 113, 113, 0.32);
+  }
   
   /* ─────────────────────────────────────────────
      Responsive
@@ -1196,6 +1232,15 @@
   
     .hero-copy {
       padding: 32px;
+    }
+
+    .recipe-score-stack {
+      justify-items: stretch;
+      min-width: 0;
+    }
+    
+    .difficulty-badge {
+      width: 100%;
     }
   
     .step-line {

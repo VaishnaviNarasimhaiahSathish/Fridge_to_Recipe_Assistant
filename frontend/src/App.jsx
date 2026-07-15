@@ -746,7 +746,14 @@ function RecipesScreen({
 }
 
 function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
-  const missingPreview = (recipe.missing_ingredients || []).slice(0, 4).join(", ");
+  const difficultyLabel = getDifficultyLabel(recipe.missing_difficulty);
+  const difficultyClass = getDifficultyClass(recipe.missing_difficulty);
+
+  const matchedIngredients = recipe.matched_ingredients || [];
+  const missingIngredients = recipe.missing_ingredients || [];
+  const instructions = recipe.instructions || [];
+
+  const missingPreview = missingIngredients.slice(0, 4).join(", ");
 
   return (
     <motion.article
@@ -758,6 +765,7 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
       <div className="recipe-top">
         <div>
           <h2>{recipe.title}</h2>
+
           <div className="recipe-meta">
             {recipe.cuisine &&
               recipe.cuisine.toLowerCase() !== "unknown" &&
@@ -786,18 +794,25 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
           </div>
         </div>
 
-        <div className="match-score">
-          <strong>{recipe.match_percentage}%</strong>
-          <span>match</span>
+        <div className="recipe-score-stack">
+          <div className="match-score">
+            <strong>{recipe.match_percentage}%</strong>
+            <span>match</span>
+          </div>
+
+          <div className={`difficulty-badge ${difficultyClass}`}>
+            {difficultyLabel}
+          </div>
         </div>
       </div>
 
       <div className="ingredient-columns">
         <div>
           <h3>Matched ingredients</h3>
+
           <div className="chips compact-chips">
-            {(recipe.matched_ingredients || []).length > 0 ? (
-              recipe.matched_ingredients.map((item) => (
+            {matchedIngredients.length > 0 ? (
+              matchedIngredients.map((item) => (
                 <span className="chip success" key={item}>
                   {item}
                 </span>
@@ -810,9 +825,10 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
 
         <div>
           <h3>Still needed</h3>
+
           <div className="chips compact-chips">
-            {(recipe.missing_ingredients || []).length > 0 ? (
-              recipe.missing_ingredients.map((item) => (
+            {missingIngredients.length > 0 ? (
+              missingIngredients.map((item) => (
                 <span className="chip warning" key={item}>
                   {item}
                 </span>
@@ -824,18 +840,20 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
         </div>
       </div>
 
-      {selectedShop && (recipe.missing_ingredients || []).length > 0 && (
+      {selectedShop && missingIngredients.length > 0 && (
         <div className="shopping-suggestion">
           <div className="shopping-icon">
             <Store size={18} />
           </div>
+
           <div>
             <strong>Shopping suggestion</strong>
             <p>
               Check {selectedShop.name} for {missingPreview}
-              {(recipe.missing_ingredients || []).length > 4 ? "..." : ""}.
+              {missingIngredients.length > 4 ? "..." : ""}.
             </p>
           </div>
+
           <span className={getShopBadgeClass(selectedShop.type)}>
             {selectedShop.type}
           </span>
@@ -855,8 +873,8 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
           >
-            {(recipe.instructions || []).length > 0 ? (
-              recipe.instructions.map((step, stepIndex) => (
+            {instructions.length > 0 ? (
+              instructions.map((step, stepIndex) => (
                 <div className="instruction-step" key={`${stepIndex}-${step}`}>
                   <span>{stepIndex + 1}</span>
                   <p>{step}</p>
@@ -870,6 +888,34 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
       </AnimatePresence>
     </motion.article>
   );
+}
+
+function getDifficultyLabel(difficulty) {
+  const normalized = String(difficulty || "").toLowerCase();
+
+  if (normalized === "easy") {
+    return "Easy to complete";
+  }
+
+  if (normalized === "hard") {
+    return "Needs specific ingredients";
+  }
+
+  return "Needs a few groceries";
+}
+
+function getDifficultyClass(difficulty) {
+  const normalized = String(difficulty || "").toLowerCase();
+
+  if (normalized === "easy") {
+    return "difficulty-easy";
+  }
+
+  if (normalized === "hard") {
+    return "difficulty-hard";
+  }
+
+  return "difficulty-medium";
 }
 
 function wait(ms) {
