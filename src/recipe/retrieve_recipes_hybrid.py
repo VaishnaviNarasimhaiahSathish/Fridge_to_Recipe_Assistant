@@ -62,6 +62,45 @@ PRICE_ESTIMATES_EUR = {
     "rice": "€1–3",
 }
 
+NOISY_INGREDIENT_PHRASES = {
+    "or a combination",
+    "to taste",
+    "as needed",
+    "optional",
+}
+
+
+INGREDIENT_DISPLAY_REPLACEMENTS = {
+    "tyson premium selects breaded chicken nuggets": "chicken nuggets",
+    "vermont bread company organic multigrain bread": "multigrain bread",
+    "nellie's cage free eggs": "eggs",
+    "stonyfield farm organic whole milk plain yogurt": "plain yogurt",
+    "ragú robusto chopped tomato": "tomato sauce",
+    "ragu robusto chopped tomato": "tomato sauce",
+    "prepared garlic tomato sauce": "tomato sauce",
+    "light mayonnaise": "mayonnaise",
+    "fat free greek yogurt": "greek yogurt",
+    "crumbled blue cheese": "blue cheese",
+    "shredded mozzarella cheese": "mozzarella cheese",
+    "shredded parmesan cheese": "parmesan cheese",
+    "grated parmesan cheese": "parmesan cheese",
+    "reduced fat swiss cheese": "swiss cheese",
+    "large egg whites": "egg whites",
+    "large eggs": "eggs",
+    "whole milk": "milk",
+    "milk or water": "milk",
+    "whole milk or water": "milk",
+    "or butter": "butter",
+    "salt and pepper to taste": "salt and pepper",
+    "salt and fresh pepper to taste": "salt and pepper",
+    "salt and freshly ground black pepper": "salt and black pepper",
+    "freshly ground black pepper": "black pepper",
+    "ground black pepper": "black pepper",
+    "fresh grated pecorino romano": "pecorino romano",
+    "fresh parsley leaves": "parsley",
+    "jumbo shells pasta": "pasta shells",
+    "olive oil and garlic pasta sauce": "garlic pasta sauce",
+}
 
 BASIC_STAPLES = {
     "salt",
@@ -224,6 +263,54 @@ def normalized_phrase(text: str) -> str:
     "large tomatoes" -> "large tomato"
     """
     return " ".join(normalize_text(text))
+
+def clean_recipe_ingredient_for_display(ingredient: str) -> str:
+    """
+    Clean noisy recipe ingredient phrases for display, scoring, and grocery suggestions.
+
+    This is not meant to fully rewrite the recipe dataset.
+    It only removes common brand names, instruction fragments, and overly long
+    ingredient phrases that make the demo harder to read.
+    """
+    cleaned = str(ingredient).strip().lower()
+
+    if not cleaned:
+        return ""
+
+    cleaned = cleaned.replace("  ", " ")
+
+    if cleaned in INGREDIENT_DISPLAY_REPLACEMENTS:
+        return INGREDIENT_DISPLAY_REPLACEMENTS[cleaned]
+
+    for noisy_phrase in NOISY_INGREDIENT_PHRASES:
+        cleaned = cleaned.replace(noisy_phrase, "").strip()
+
+    cleaned = cleaned.replace(" ,", ",")
+    cleaned = cleaned.strip(" ,.-")
+
+    if cleaned in INGREDIENT_DISPLAY_REPLACEMENTS:
+        return INGREDIENT_DISPLAY_REPLACEMENTS[cleaned]
+
+    return cleaned
+
+
+def clean_recipe_ingredients_for_display(ingredients: list[str]) -> list[str]:
+    """
+    Clean a list of recipe ingredient phrases and remove empty/noisy results.
+    Duplicates are removed while preserving sorted display stability later.
+    """
+    cleaned_items = []
+
+    for ingredient in ingredients:
+        cleaned = clean_recipe_ingredient_for_display(ingredient)
+
+        if not cleaned:
+            continue
+
+        if cleaned not in cleaned_items:
+            cleaned_items.append(cleaned)
+
+    return cleaned_items
 
 
 def recipe_to_search_text(recipe: dict) -> str:
@@ -604,7 +691,9 @@ def score_recipe_by_coverage(
     - fewer missing ingredients is good
     - easier missing ingredients are better
     """
-    recipe_ingredients = set(recipe.get("ingredients", []))
+    recipe_ingredients = set(
+        clean_recipe_ingredients_for_display(recipe.get("ingredients", []))
+)
 
     matched = {
         recipe_ingredient
