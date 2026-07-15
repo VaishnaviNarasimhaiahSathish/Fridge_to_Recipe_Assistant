@@ -10,7 +10,7 @@
 
 ## False Positive Analysis
 
-**Total false positives: 519**
+**Total false positives: 520**
 
 ### Error category breakdown
 
@@ -18,7 +18,7 @@
 |---|---:|---:|
 | Common fridge default | 164 | 32% |
 | Ambiguous visual | 173 | 33% |
-| Other | 140 | 27% |
+| Other | 141 | 27% |
 | Context guess | 42 | 8% |
 
 ### Top false positives by category
@@ -63,7 +63,7 @@ This is the primary target for confidence filtering in Phase 2.
 
 ## False Negative Analysis
 
-**Total false negatives: 309**
+**Total false negatives: 310**
 
 ### Top 15 most frequently missed ingredients
 
@@ -73,17 +73,17 @@ This is the primary target for confidence filtering in Phase 2.
 | `hot sauce` | 13 |
 | `lemon` | 12 |
 | `ketchup` | 11 |
+| `milk` | 11 |
 | `apple` | 11 |
-| `milk` | 10 |
 | `bell pepper` | 9 |
-| `blueberry` | 7 |
-| `chicken` | 7 |
-| `meat` | 7 |
-| `spinach` | 7 |
 | `butter` | 7 |
+| `chicken` | 7 |
+| `blueberry` | 7 |
+| `spinach` | 7 |
 | `barbecue sauce` | 7 |
-| `carrot` | 6 |
+| `meat` | 7 |
 | `whipped cream` | 6 |
+| `carrot` | 6 |
 
 ### Key finding
 
@@ -97,12 +97,12 @@ visually similar to other items.
 
 | Metric | Value |
 |---|---|
-| Mean F1 | 0.536 |
+| Mean F1 | 0.534 |
 | Median F1 | 0.539 |
 | Min F1 | 0.000 |
 | Max F1 | 1.000 |
 | Images with F1 = 0.0 | 3 |
-| Images with F1 < 0.3 | 8 |
+| Images with F1 < 0.3 | 9 |
 
 ---
 
@@ -135,7 +135,7 @@ Add the following instruction to `configs/vlm_prompt_with_counts.txt`:
 | File | Description |
 |---|---|
 | `reports/error_analysis_100/vlm_error_analysis_summary.md` | This report |
-| `reports/error_analysis_100/vlm_fp_categorized.csv` | All 519 FPs with error category label |
+| `reports/error_analysis_100/vlm_fp_categorized.csv` | All 520 FPs with error category label |
 | `reports/error_analysis_100/vlm_worst_images.csv` | 15 lowest F1 images |
 | `reports/error_analysis_100/figures/vlm_fp_error_categories.png` | FP category breakdown |
 | `reports/error_analysis_100/figures/vlm_top_false_positives.png` | Top 20 FPs |

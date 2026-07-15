@@ -2,7 +2,7 @@
 
 ## Input File
 
-- `data\annotations\gemma4_batch_100\gemma4_annotations_raw.csv`
+- `data/annotations/gemma4_batch_100/gemma4_annotations_raw.csv`
 
 ## Summary Statistics
 
