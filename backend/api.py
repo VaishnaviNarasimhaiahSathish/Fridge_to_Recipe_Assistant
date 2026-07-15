@@ -180,6 +180,19 @@ def simplify_recipe_for_ui(recipe: dict[str, Any]) -> dict[str, Any]:
         "match_percentage": int(round(recipe.get("coverage", 0) * 100)),
         "matched_ingredients": recipe.get("matched", []),
         "missing_ingredients": recipe.get("missing", []),
+        "missing_difficulty": recipe.get("missing_difficulty", "medium"),
+        "missing_difficulty_reason": recipe.get(
+            "missing_difficulty_reason",
+            "Some recipe ingredients are still missing.",
+        ),
+        "missing_difficulty_details": recipe.get(
+            "missing_difficulty_details",
+            {
+                "basic_staples": [],
+                "common_grocery": [],
+                "special_ingredients": [],
+            },
+        ),
         "instructions": recipe.get("instructions", []),
     }
 

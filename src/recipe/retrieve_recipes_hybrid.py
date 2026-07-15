@@ -44,6 +44,106 @@ PRICE_ESTIMATES_EUR = {
 }
 
 
+BASIC_STAPLES = {
+    "salt",
+    "pepper",
+    "black pepper",
+    "oil",
+    "olive oil",
+    "vegetable oil",
+    "sugar",
+    "flour",
+    "water",
+    "butter",
+}
+
+
+COMMON_GROCERY = {
+    "egg",
+    "milk",
+    "cheese",
+    "yogurt",
+    "tomato",
+    "cucumber",
+    "carrot",
+    "onion",
+    "garlic",
+    "potato",
+    "lettuce",
+    "spinach",
+    "bell pepper",
+    "lemon",
+    "lime",
+    "apple",
+    "banana",
+    "orange",
+    "bread",
+    "pasta",
+    "rice",
+    "mushroom",
+    "chicken",
+    "pickle",
+    "mustard",
+    "mayonnaise",
+    "ketchup",
+}
+
+
+SPECIAL_INGREDIENTS = {
+    "smoked salmon",
+    "salmon",
+    "goat cheese",
+    "feta",
+    "feta cheese",
+    "blue cheese",
+    "parmesan",
+    "parmesan cheese",
+    "asparagus",
+    "capers",
+    "fresh herbs",
+    "basil",
+    "parsley",
+    "cilantro",
+    "coriander",
+    "mint",
+    "pecorino",
+    "prosciutto",
+    "anchovy",
+    "anchovies",
+    "shrimp",
+    "tuna",
+    "avocado",
+    "hummus",
+    "sour cream",
+    "cream cheese",
+    "coconut milk",
+    "almond milk",
+    "oat milk",
+    "soy milk",
+    "arugula",
+    "dill",
+    "fresh dill",
+    "shallot",
+    "shallots",
+}
+
+
+SPECIFIC_GROCERY = {
+    "pepperoni",
+    "corn muffin mix",
+    "muffin mix",
+    "hash brown",
+    "hash brown potato",
+    "hash brown potatoes",
+    "frozen hash brown",
+    "frozen hash brown potatoes",
+    "nonstick cooking spray",
+    "cooking spray",
+    "labaneh",
+    "swiss cheese",
+}
+
+
 def load_recipes(path: Path = RECIPES_PATH) -> list[dict]:
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
@@ -97,6 +197,16 @@ def normalize_text(text: str) -> list[str]:
     return normalize_tokens(tokenize(text))
 
 
+def normalized_phrase(text: str) -> str:
+    """
+    Normalize a phrase into a simple token-based phrase.
+
+    Example:
+    "large tomatoes" -> "large tomato"
+    """
+    return " ".join(normalize_text(text))
+
+
 def recipe_to_search_text(recipe: dict) -> str:
     """
     Build searchable recipe text.
@@ -133,6 +243,115 @@ def ingredient_in_text(ingredient: str, text: str) -> bool:
         text_tokens[i:i + n] == ingredient_tokens
         for i in range(len(text_tokens) - n + 1)
     )
+
+
+def phrase_matches_item(phrase: str, item: str) -> bool:
+    """
+    Check whether a category keyword appears in a missing recipe ingredient.
+
+    This is used for difficulty scoring.
+
+    Example:
+    phrase "goat cheese" matches item "crumbled goat cheese"
+    phrase "salt" matches item "kosher salt"
+    """
+    return ingredient_in_text(phrase, item)
+
+
+def categorize_missing_item(item: str) -> str:
+    """
+    Categorize one missing ingredient by practical shopping difficulty.
+
+    The categories are intentionally simple and explainable:
+    - basic_staple: usually available at home or easy to buy cheaply
+    - common_grocery: normal supermarket ingredient
+    - specific_grocery: packaged/specific item that is not rare but not a basic staple
+    - special_ingredient: more specific, fresh, or less commonly available item
+    """
+    item_clean = normalized_phrase(item)
+
+    for special in SPECIAL_INGREDIENTS:
+        if phrase_matches_item(special, item_clean):
+            return "special_ingredient"
+
+    for specific in SPECIFIC_GROCERY:
+        if phrase_matches_item(specific, item_clean):
+            return "specific_grocery"
+
+    for staple in BASIC_STAPLES:
+        if phrase_matches_item(staple, item_clean):
+            return "basic_staple"
+
+    for common in COMMON_GROCERY:
+        if phrase_matches_item(common, item_clean):
+            return "common_grocery"
+
+    return "common_grocery"
+
+
+def score_missing_difficulty(missing_items: list[str]) -> dict:
+    """
+    Summarize how difficult a recipe is to complete based on missing items.
+
+    This does not claim real store availability.
+    It only estimates practical difficulty using ingredient categories.
+    """
+    basic_staples = []
+    common_grocery = []
+    specific_grocery = []
+    special_ingredients = []
+
+    for item in missing_items:
+        category = categorize_missing_item(item)
+
+        if category == "basic_staple":
+            basic_staples.append(item)
+        elif category == "special_ingredient":
+            special_ingredients.append(item)
+        elif category == "specific_grocery":
+            specific_grocery.append(item)
+        else:
+            common_grocery.append(item)
+
+    missing_count = len(missing_items)
+    special_count = len(special_ingredients)
+    specific_count = len(specific_grocery)
+    common_count = len(common_grocery)
+
+    if missing_count == 0:
+        difficulty = "easy"
+        reason = "All listed recipe ingredients are matched."
+
+    elif special_count > 0:
+        difficulty = "hard"
+        reason = "Some missing ingredients are more specific and may need a wider-selection store."
+
+    elif specific_count > 0:
+        difficulty = "medium"
+        reason = "Some missing ingredients are specific grocery items, but should still be possible to find."
+
+    elif missing_count <= 2 and common_count <= 2:
+        difficulty = "easy"
+        reason = "Only a small number of basic or common grocery items are missing."
+
+    elif missing_count <= 5:
+        difficulty = "medium"
+        reason = "Several common grocery items are missing."
+
+    else:
+        difficulty = "hard"
+        reason = "Many ingredients are missing, so this recipe may need a larger grocery trip."
+
+    return {
+        "missing_difficulty": difficulty,
+        "missing_difficulty_reason": reason,
+        "missing_difficulty_details": {
+            "basic_staples": sorted(basic_staples),
+            "common_grocery": sorted(common_grocery),
+            "specific_grocery": sorted(specific_grocery),
+            "special_ingredients": sorted(special_ingredients),
+        },
+    }
 
 
 def build_bm25_index(recipes: list[dict]) -> dict:
@@ -281,10 +500,11 @@ def score_recipe_by_coverage(
     """
     Final recipe scoring.
 
-    Coverage is the main score because the user wants recipes based on
+    Coverage is still the main score because the user wants recipes based on
     ingredients already present in the fridge.
 
-    BM25 is used as a supporting score for candidate search and tie-breaking.
+    Missing ingredient difficulty is now added as an explanation field.
+    Ranking will use it more strongly in the next upgrade.
     """
     recipe_ingredients = set(recipe.get("ingredients", []))
 
@@ -305,6 +525,9 @@ def score_recipe_by_coverage(
         if total_ingredients else 0.0
     )
 
+    missing_sorted = sorted(missing)
+    difficulty_info = score_missing_difficulty(missing_sorted)
+
     return {
         "id": recipe.get("id", f"r{idx:04d}"),
         "title": recipe.get("title", "unknown"),
@@ -318,9 +541,12 @@ def score_recipe_by_coverage(
         "missing_count": len(missing),
         "total_ingredients": total_ingredients,
         "matched": sorted(matched),
-        "missing": sorted(missing),
+        "missing": missing_sorted,
         "bm25_score": bm25_score_value,
         "matched_query_terms": matched_query_terms,
+        "missing_difficulty": difficulty_info["missing_difficulty"],
+        "missing_difficulty_reason": difficulty_info["missing_difficulty_reason"],
+        "missing_difficulty_details": difficulty_info["missing_difficulty_details"],
     }
 
 
@@ -376,11 +602,14 @@ def retrieve_recipes_hybrid(
     Coverage-based ranking decides which recipes are most cookable
     with the detected fridge ingredients.
 
-    Final ranking priority:
+    Current ranking priority:
     1. Higher ingredient coverage
     2. Fewer missing ingredients
     3. Higher BM25 relevance
     4. Shorter prep time
+
+    Missing ingredient difficulty is calculated now and will be used more
+    strongly in the next ranking upgrade.
     """
     if recipes is None:
         recipes = load_recipes()
@@ -438,6 +667,8 @@ def format_results(results: list[dict]) -> str:
             f"   Coverage       : {coverage_pct} "
             f"({recipe['matched_count']}/{recipe['total_ingredients']} ingredients)"
         )
+        lines.append(f"   Difficulty     : {recipe['missing_difficulty']}")
+        lines.append(f"   Reason         : {recipe['missing_difficulty_reason']}")
         lines.append(f"   BM25 score     : {recipe['bm25_score']}")
         lines.append(f"   Prep time      : {recipe['prep_time']} min")
         lines.append(
