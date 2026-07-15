@@ -1,0 +1,946 @@
+image_id,confidence,raw_name,normalized_name,result,is_true_positive
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,high,yogurt,yogurt,tp,1
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,high,ketchup,ketchup,tp,1
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,high,butter,butter,tp,1
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,high,milk,milk,tp,1
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,medium,lettuce,lettuce,fp,0
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,medium,pickle,pickle,tp,1
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,medium,mayonnaise,mayonnaise,tp,1
+pwhztabat8v31_jpg.rf.22b0e388b2350081380800e2bea63480.jpg,medium,jam,jam,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,milk,milk,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,salad dressing,salad dressing,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,cheddar cheese,cheese,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,hot sauce,hot sauce,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,mustard,mustard,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,mayonnaise,mayonnaise,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,yogurt,yogurt,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,egg,egg,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,tomato,tomato,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,orange bell pepper,bell pepper,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,pickle,pickle,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,jam,jam,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,relish,relish,fp,0
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,high,soy sauce,soy sauce,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,medium,bagel,bread,tp,1
+1nhihsok6b0e1_jpeg.rf.595e2683febc8f54deb37b43ba7e9503.jpg,medium,ice cream,ice cream,fp,0
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,milk,milk,tp,1
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,egg,egg,tp,1
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,mustard,mustard,tp,1
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,vinegar,vinegar,fp,0
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,salad dressing,salad dressing,fp,0
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,pasta,pasta,fp,0
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,butter,butter,tp,1
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,yogurt,yogurt,fp,0
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,cheese,cheese,tp,1
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,lettuce,lettuce,fp,0
+0254_jpeg.rf.965543c5fa074e6572b93b733847c236.jpg,high,carrot,carrot,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,high,egg,egg,tp,1
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,high,butter,butter,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,high,yogurt,yogurt,tp,1
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,high,blueberry,blueberry,tp,1
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,cheese,cheese,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,milk,milk,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,high,chicken,chicken,tp,1
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,high,mayonnaise,mayonnaise,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,high,mustard,mustard,tp,1
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,jam,jam,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,pickle,pickle,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,salad dressing,salad dressing,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,soy sauce,soy sauce,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,hot sauce,hot sauce,fp,0
+4mvnskt72n8e1_jpeg.rf.d6d6a59ab65353f694b0bc1d89c348c1.jpg,medium,bread,bread,fp,0
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,lettuce,lettuce,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,tomato,tomato,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,potato,potato,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,cucumber,cucumber,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,banana,banana,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,cheese,cheese,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,bell pepper,bell pepper,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,lime,lime,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,apple,apple,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,peach,peach,fp,0
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,ketchup,ketchup,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,yogurt,yogurt,tp,1
+20250621_150036_jpg.rf.a973c2823304b1209f3edfe6f40eb2d8.jpg,high,meat,meat,fp,0
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,tomato,tomato,tp,1
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,carrot,carrot,tp,1
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,spinach,spinach,tp,1
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,yogurt,yogurt,tp,1
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,cheese,cheese,fp,0
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,chicken breast,chicken,fp,0
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,butter,butter,tp,1
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,cucumber,cucumber,tp,1
+20250620_232903_jpg.rf.738732a82979928a2e5a2495f2729304.jpg,high,blueberry,blueberry,tp,1
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,high,carrot,carrot,tp,1
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,high,yogurt,yogurt,fp,0
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,high,jam,jam,tp,1
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,high,pickle,pickle,tp,1
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,high,mustard,mustard,fp,0
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,high,hot sauce,hot sauce,tp,1
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,medium,honey,honey,fp,0
+20250619_171703_jpg.rf.f2c98ffe198a124c809789b5af90b5fb.jpg,medium,pesto,pesto,fp,0
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,almond milk,almond milk,tp,1
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,oat milk,oat milk,tp,1
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,hummus,hummus,fp,0
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,prepared salad,salad,fp,0
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,pickle,pickle,tp,1
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,mango,mango,fp,0
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,mushroom,mushroom,fp,0
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,strawberry,strawberry,tp,1
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,cheese,cheese,fp,0
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,grape,grape,fp,0
+0990_jpeg.rf.97fa096fb84d3aa9f434177b9ae78c52.jpg,high,soy sauce,soy sauce,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,half and half,half & half,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,parmesan cheese,cheese,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,yogurt,yogurt,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,pickle,pickle,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,mustard,mustard,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,mayonnaise,mayonnaise,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,ketchup,ketchup,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,avocado,avocado,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,lime,lime,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,orange,orange,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,tomato,tomato,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,onion,onion,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,egg,egg,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,bread,bread,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,hummus,hummus,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,strawberry,strawberry,tp,1
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,carrot,carrot,fp,0
+t8c0bd9je7351_jpg.rf.49ef46ac4d7e7a3d4f0816027d599b7a.jpg,high,lemon,lemon,fp,0
+cb729pj3e34e1_jpeg.rf.cccc83aabe2e8a7871fbe5234bd4619d.jpg,high,corn dogs,corn dog,tp,1
+cb729pj3e34e1_jpeg.rf.cccc83aabe2e8a7871fbe5234bd4619d.jpg,high,yogurt,yogurt,tp,1
+cb729pj3e34e1_jpeg.rf.cccc83aabe2e8a7871fbe5234bd4619d.jpg,high,mustard,mustard,tp,1
+cb729pj3e34e1_jpeg.rf.cccc83aabe2e8a7871fbe5234bd4619d.jpg,high,relish,relish,fp,0
+cb729pj3e34e1_jpeg.rf.cccc83aabe2e8a7871fbe5234bd4619d.jpg,high,jam,jam,tp,1
+cb729pj3e34e1_jpeg.rf.cccc83aabe2e8a7871fbe5234bd4619d.jpg,high,pickle,pickle,fp,0
+cb729pj3e34e1_jpeg.rf.cccc83aabe2e8a7871fbe5234bd4619d.jpg,high,butter,butter,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,egg,egg,tp,1
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,lunchable,lunchable,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,yogurt,yogurt,tp,1
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,hummus,hummus,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,salad,salad,tp,1
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,protein shake,protein shake,tp,1
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,kombucha,kombucha,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,tomato,tomato,tp,1
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,lettuce,lettuce,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,orange,orange,tp,1
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,bread roll,bread,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,pasta sauce,pasta sauce,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,italian dressing,salad dressing,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,butter,butter,fp,0
+0827_jpeg.rf.85776737bff4d474bd78b4624c5b9693.jpg,high,cheese slice,cheese,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,milk,milk,tp,1
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,salsa,salsa,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,cheddar cheese,cheese,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,cream cheese,cream cheese,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,butter,butter,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,yogurt,yogurt,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,coconut milk,coconut milk,tp,1
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,egg,egg,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,celery,celery,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,medium,lettuce,lettuce,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,pie,pie,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,hot sauce,hot sauce,tp,1
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,pickle,pickle,tp,1
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,jam,jam,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,mustard,mustard,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,ketchup,ketchup,tp,1
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,soy sauce,soy sauce,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,salad dressing,salad dressing,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,mayonnaise,mayonnaise,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,hummus,hummus,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,high,tofu,tofu,fp,0
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,medium,meat,meat,tp,1
+jm5m4firr78e1_jpeg.rf.0fcdeae246653bf2c4a495df2eb74685.jpg,medium,sausage,sausage,fp,0
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,tomato,tomato,tp,1
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,carrot,carrot,tp,1
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,lime,lime,fp,0
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,egg,egg,tp,1
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,cheese,cheese,tp,1
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,potato,potato,tp,1
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,salmon,salmon,fp,0
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,milk,milk,tp,1
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,high,flour,flour,tp,1
+DSC_6037_JPG_jpg.rf.e2101670d0bbd45cf7da6475f555ec29.jpg,medium,spinach,spinach,fp,0
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,milk,milk,tp,1
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,energy drink,energy drink,tp,1
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,pasta sauce,pasta sauce,fp,0
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,cabbage,cabbage,tp,1
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,medium,lettuce,lettuce,fp,0
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,butter,butter,tp,1
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,pickle,pickle,fp,0
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,egg,egg,tp,1
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,medium,yogurt,yogurt,fp,0
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,medium,peach,peach,fp,0
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,high,noodle,noodle,tp,1
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,medium,meat,meat,tp,1
+0300_jpeg.rf.59609d1423cad492f6c67278fc4ac662.jpg,medium,sausage,sausage,fp,0
+0299_jpeg.rf.d49f98a6eaa13c6ba5b4ac91a30dee95.jpg,high,egg,egg,tp,1
+0299_jpeg.rf.d49f98a6eaa13c6ba5b4ac91a30dee95.jpg,high,half and half cream,half & half,fp,0
+0299_jpeg.rf.d49f98a6eaa13c6ba5b4ac91a30dee95.jpg,high,milk,milk,fp,0
+0299_jpeg.rf.d49f98a6eaa13c6ba5b4ac91a30dee95.jpg,high,potato,potato,tp,1
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,high,yogurt,yogurt,fp,0
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,high,lettuce,lettuce,tp,1
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,high,chocolate syrup,chocolate syrup,tp,1
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,high,ketchup,ketchup,tp,1
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,high,mustard,mustard,tp,1
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,medium,mayonnaise,mayonnaise,fp,0
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,medium,pickle,pickle,fp,0
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,high,egg,egg,tp,1
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,medium,butter,butter,tp,1
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,medium,deli meat,meat,fp,0
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,medium,cream cheese,cream cheese,fp,0
+0861_jpeg.rf.0b3edf4571a0f7b914542343f5611dc1.jpg,medium,hot sauce,hot sauce,fp,0
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,orange,orange,fp,0
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,mayonnaise,mayonnaise,tp,1
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,lime,lime,fp,0
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,avocado,avocado,tp,1
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,egg,egg,tp,1
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,peach,peach,fp,0
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,apple,apple,tp,1
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,banana,banana,tp,1
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,tomato,tomato,tp,1
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,lettuce,lettuce,fp,0
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,carrot,carrot,tp,1
+20250620_232535_jpg.rf.64b76bb20e5863b60bdca52244cb5799.jpg,high,cucumber,cucumber,tp,1
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,tomato,tomato,tp,1
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,ham,ham,fp,0
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,carrot,carrot,tp,1
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,dijon mustard,mustard,tp,1
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,blue cheese,cheese,tp,1
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,bell pepper,bell pepper,tp,1
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,banana,banana,tp,1
+20250621_003504_jpg.rf.1e8f0ad8e4a09e24b3ee5be9be636643.jpg,high,mushroom,mushroom,fp,0
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,high,bread,bread,tp,1
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,high,orange,orange,fp,0
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,high,mushroom,mushroom,tp,1
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,high,green apple,apple,tp,1
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,high,potato,potato,tp,1
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,high,yogurt,yogurt,fp,0
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,medium,sugar,sugar,tp,1
+DSC_6179_JPG_jpg.rf.8bdda49c3e4a5c8995a0f5005e80e92b.jpg,medium,butter,butter,fp,0
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,high,ginger ale,ginger ale,tp,1
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,high,egg,egg,tp,1
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,medium,lettuce,lettuce,fp,0
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,high,sour cream,sour cream,tp,1
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,high,milk,milk,tp,1
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,high,mustard,mustard,tp,1
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,medium,hot sauce,hot sauce,fp,0
+lk0o3x3c3t8e1_jpeg.rf.463cdb941831a325bdd27bec3e7cb8ad.jpg,medium,smoothie,smoothie,fp,0
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,high,pizza crust,pizza,tp,1
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,high,strawberry,strawberry,fp,0
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,high,blueberry,blueberry,tp,1
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,high,milk,milk,tp,1
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,high,cheese,cheese,fp,0
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,high,lettuce,lettuce,fp,0
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,medium,zucchini,zucchini,tp,1
+0288_jpeg.rf.eb98932e6e080af25142040913b7a85f.jpg,medium,onion,onion,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,butter,butter,tp,1
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,mustard,mustard,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,ketchup,ketchup,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,salad dressing,salad dressing,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,hot sauce,hot sauce,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,mayonnaise,mayonnaise,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,chocolate bar,chocolate,tp,1
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,yogurt,yogurt,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,jam,jam,tp,1
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,pickle,pickle,tp,1
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,soy sauce,soy sauce,tp,1
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,milk,milk,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,cheese,cheese,tp,1
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,meat,meat,fp,0
+enetmscx30971_jpg.rf.2f8b543a3db5ac13fdae28f8ec78ab84.jpg,high,egg,egg,fp,0
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,carrot,carrot,tp,1
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,orange,orange,tp,1
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,apple,apple,tp,1
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,yogurt,yogurt,tp,1
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,lime,lime,fp,0
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,tangerine,tangerine,fp,0
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,cucumber,cucumber,tp,1
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,blueberry,blueberry,tp,1
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,hazelnut spread,hazelnut spread,fp,0
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,high,pickle,pickle,tp,1
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,medium,lettuce,lettuce,fp,0
+20250619_232842_jpg.rf.9c57487915939de0d9e83603ac5ff1df.jpg,medium,bell pepper,bell pepper,tp,1
+qus214j0so7e1_jpeg.rf.a5de4b042cd8e9380831cce3b183e31c.jpg,high,tomato,tomato,tp,1
+qus214j0so7e1_jpeg.rf.a5de4b042cd8e9380831cce3b183e31c.jpg,high,mozzarella,cheese,fp,0
+qus214j0so7e1_jpeg.rf.a5de4b042cd8e9380831cce3b183e31c.jpg,high,carrot,carrot,tp,1
+qus214j0so7e1_jpeg.rf.a5de4b042cd8e9380831cce3b183e31c.jpg,high,bell pepper,bell pepper,tp,1
+qus214j0so7e1_jpeg.rf.a5de4b042cd8e9380831cce3b183e31c.jpg,high,orange,orange,tp,1
+qus214j0so7e1_jpeg.rf.a5de4b042cd8e9380831cce3b183e31c.jpg,high,grape,grape,fp,0
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,pork sausage,sausage,tp,1
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,hash brown,hash brown,fp,0
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,ice cream,ice cream,tp,1
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,chocolate syrup,chocolate syrup,tp,1
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,peanut butter,peanut butter,fp,0
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,red cabbage,cabbage,tp,1
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,green bell pepper,bell pepper,tp,1
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,milk,milk,fp,0
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,high,oat milk,oat milk,tp,1
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,medium,yogurt,yogurt,fp,0
+xpne72f2b7561_jpg.rf.237e54834aedda4fd4df61eb9ee14366.jpg,medium,butter,butter,fp,0
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,mushroom,mushroom,tp,1
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,tomato,tomato,tp,1
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,banana,banana,tp,1
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,egg,egg,tp,1
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,chicken breast,chicken,fp,0
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,butter,butter,fp,0
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,bread roll,bread,fp,0
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,milk,milk,tp,1
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,flour,flour,tp,1
+DSC_6028_JPG_jpg.rf.4128319ec41fa3d1c67d76ae8f167932.jpg,high,chocolate cake,cake,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,mayonnaise,mayonnaise,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,apple,apple,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,carrot,carrot,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,cucumber,cucumber,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,egg,egg,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,strawberry,strawberry,fp,0
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,lettuce,lettuce,fp,0
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,lime,lime,fp,0
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,avocado,avocado,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,tomato,tomato,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,butter,butter,tp,1
+20250620_232559_jpg.rf.c8269223f51722c7893bea3b5ae28175.jpg,high,yogurt,yogurt,fp,0
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,high,bread roll,bread,fp,0
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,high,soy milk,soy milk,tp,1
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,high,almond milk,almond milk,fp,0
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,high,blueberry,blueberry,tp,1
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,high,coconut milk,coconut milk,tp,1
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,medium,meat,meat,tp,1
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,high,chicken breast,chicken,tp,1
+DSC_6088_JPG_jpg.rf.fae5cb616201a492e7bb51ff056e7c11.jpg,high,strawberry,strawberry,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,cottage cheese,cheese,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,margarine,margarine,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,tortilla,tortilla,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,lettuce,lettuce,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,medium,pizza,pizza,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,zucchini,zucchini,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,mushroom,mushroom,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,milk,milk,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,carrot,carrot,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,medium,green bean,green bean,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,celery,celery,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,medium,tomato,tomato,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,orange,orange,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,garlic,garlic,fp,0
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,medium,beef,beef,tp,1
+j1pfsemgagce1_jpeg.rf.e7dd3c6fab42bce2f9a6e18ceacac212.jpg,high,bacon,bacon,fp,0
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,egg,egg,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,bread,bread,fp,0
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,lettuce,lettuce,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,strawberry,strawberry,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,almond milk,almond milk,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,butter,butter,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,yogurt,yogurt,fp,0
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,mayonnaise,mayonnaise,fp,0
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,ketchup,ketchup,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,high,mustard,mustard,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,medium,cheese,cheese,tp,1
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,medium,salad,salad,fp,0
+544pc5m6hm9e1_jpeg.rf.1031e131876f7959e7c714ee8d527dcb.jpg,medium,meat,meat,fp,0
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,milk,milk,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,yogurt,yogurt,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,egg,egg,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,cheddar cheese,cheese,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,strawberry,strawberry,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,blueberry,blueberry,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,lettuce,lettuce,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,tortilla chip,tortilla chip,fp,0
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,mustard,mustard,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,high,mayonnaise,mayonnaise,fp,0
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,medium,hot sauce,hot sauce,fp,0
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,medium,butter,butter,tp,1
+0080_jpeg.rf.90eae1d71a74e5341b00f86d3db84833.jpg,medium,cheese stick,cheese,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,tomato,tomato,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,carrot,carrot,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,avocado,avocado,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,bell pepper,bell pepper,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,cucumber,cucumber,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,lettuce,lettuce,fp,0
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,eggplant,eggplant,fp,0
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,high,yogurt,yogurt,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,medium,jam,jam,fp,0
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,medium,pickle,pickle,tp,1
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,medium,honey,honey,fp,0
+20250619_172819_jpg.rf.797f92ebb9da0ec6fe321da1b0e9a8c2.jpg,medium,meat,meat,tp,1
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,high,raspberry,raspberry,tp,1
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,high,mango,mango,tp,1
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,blueberry,blueberry,tp,1
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,french fry,french fry,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,high,cookie,cookies,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,dip,dip,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,berry,berry,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,salsa,salsa,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,high,salad,salad,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,butter,butter,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,high,yogurt,yogurt,tp,1
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,jam,jam,fp,0
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,mustard,mustard,tp,1
+xgzzcfjmxp5e1_jpeg.rf.abd269b99cd032d9793dce0ce002b703.jpg,medium,dressing,salad dressing,fp,0
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,high,milk,milk,tp,1
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,high,bread roll,bread,tp,1
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,medium,apricot,apricot,fp,0
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,high,blueberry,blueberry,tp,1
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,medium,cheese,cheese,fp,0
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,high,tomato,tomato,tp,1
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,medium,meat,meat,tp,1
+DSC_6083_JPG_jpg.rf.df29adfe178065c77312d399adf207ea.jpg,high,chicken breast,chicken,tp,1
+DSC_5945_JPG_jpg.rf.4251f764e472849445aa75da2d78d06b.jpg,high,apple,apple,tp,1
+DSC_5945_JPG_jpg.rf.4251f764e472849445aa75da2d78d06b.jpg,high,cucumber,cucumber,fp,0
+DSC_5945_JPG_jpg.rf.4251f764e472849445aa75da2d78d06b.jpg,high,carrot,carrot,tp,1
+DSC_5945_JPG_jpg.rf.4251f764e472849445aa75da2d78d06b.jpg,high,tomato,tomato,tp,1
+DSC_5945_JPG_jpg.rf.4251f764e472849445aa75da2d78d06b.jpg,high,strawberry,strawberry,tp,1
+DSC_5945_JPG_jpg.rf.4251f764e472849445aa75da2d78d06b.jpg,medium,meat,meat,tp,1
+DSC_5945_JPG_jpg.rf.4251f764e472849445aa75da2d78d06b.jpg,medium,sandwich,sandwich,fp,0
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,asparagus,asparagus,tp,1
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,yogurt,yogurt,fp,0
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,oat milk,oat milk,tp,1
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,sparkling water,sparkling water,fp,0
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,soy sauce,soy sauce,fp,0
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,hot sauce,hot sauce,fp,0
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,mayonnaise,mayonnaise,tp,1
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,high,pasta,pasta,fp,0
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,medium,butter,butter,tp,1
+4a4awnmnx2de1_jpeg.rf.1908b305d0d936807037dbb1b0a7c6d2.jpg,medium,cheddar cheese,cheese,fp,0
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,mayonnaise,mayonnaise,tp,1
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,syrup,syrup,fp,0
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,pickle,pickle,tp,1
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,mustard,mustard,fp,0
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,hot sauce,hot sauce,tp,1
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,jam,jam,tp,1
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,butter,butter,fp,0
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,yogurt,yogurt,fp,0
+20250619_172603_jpg.rf.e2989fe292b58d32319d6269dfa93833.jpg,high,cheese,cheese,fp,0
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,carrot,carrot,tp,1
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,orange,orange,tp,1
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,cucumber,cucumber,tp,1
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,yogurt,yogurt,tp,1
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,egg,egg,tp,1
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,lime,lime,fp,0
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,strawberry,strawberry,fp,0
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,tomato,tomato,tp,1
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,lettuce,lettuce,fp,0
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,medium,meat,meat,tp,1
+20250620_192116_jpg.rf.8331f9f5b12682011836323ff4238095.jpg,high,butter,butter,tp,1
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,high,carrot,carrot,tp,1
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,high,strawberry,strawberry,tp,1
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,high,lime,lime,fp,0
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,medium,meat,meat,tp,1
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,high,bread,bread,tp,1
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,high,apple,apple,tp,1
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,high,asparagus,asparagus,fp,0
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,medium,cheese,cheese,fp,0
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,medium,flour,flour,tp,1
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,medium,yogurt,yogurt,fp,0
+DSC_5941_JPG_jpg.rf.9b0e937713fe04dfeb532595e4ed72b9.jpg,high,tomato,tomato,tp,1
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,high,tomato,tomato,tp,1
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,high,banana,banana,tp,1
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,high,yogurt,yogurt,tp,1
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,high,blueberry,blueberry,tp,1
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,high,lettuce,lettuce,fp,0
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,high,bell pepper,bell pepper,tp,1
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,high,broccoli,broccoli,fp,0
+20250618_222535_jpg.rf.99f96018db8deed916555c4381d69261.jpg,medium,carrot,carrot,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,egg,egg,tp,1
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,butter,butter,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,yogurt,yogurt,tp,1
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,flatbread,bread,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,milk,milk,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,asparagus,asparagus,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,medium,lettuce,lettuce,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,medium,cheese,cheese,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,pickle,pickle,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,mustard,mustard,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,ketchup,ketchup,tp,1
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,hot sauce,hot sauce,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,salad dressing,salad dressing,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,soy sauce,soy sauce,fp,0
+0984_jpeg.rf.41093ff7c6609eec624002e4d762047d.jpg,high,cream,cream,fp,0
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,bread,bread,tp,1
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,egg,egg,tp,1
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,banana,banana,tp,1
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,cheese,cheese,tp,1
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,mushroom,mushroom,tp,1
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,green bean,green bean,tp,1
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,margarine,margarine,fp,0
+DSC_6067_JPG_jpg.rf.7cf2a9b99c19673a6da23e61bd1debdb.jpg,high,potato,potato,fp,0
+1w49a5xavly71_jpg.rf.e4c21786458c12b5b6205129a218be83.jpg,high,ketchup,ketchup,tp,1
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,high,zucchini,zucchini,fp,0
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,high,egg,egg,tp,1
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,high,lemon,lemon,fp,0
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,high,blueberry,blueberry,tp,1
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,medium,meat,meat,tp,1
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,high,bread,bread,tp,1
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,high,chicken breast,chicken,tp,1
+DSC_5994_JPG_jpg.rf.9f83ec4ed43d98d62bf38e0041a28d9d.jpg,high,green bean,green bean,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,high,sweet potato,sweet potato,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,high,onion,onion,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,high,mushroom,mushroom,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,high,strawberry,strawberry,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,medium,meat,meat,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,high,green bean,green bean,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,high,burger patty,meat,tp,1
+DSC_5959_JPG_jpg.rf.5394f74e076d0ff37c09531f0ee21049.jpg,high,butter,butter,fp,0
+ly4mf7yepbvd1_jpeg.rf.b9a656fb0d4a1a4d9a353d96a97a25c0.jpg,high,carrot,carrot,tp,1
+ly4mf7yepbvd1_jpeg.rf.b9a656fb0d4a1a4d9a353d96a97a25c0.jpg,high,milk,milk,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,collagen powder,collagen powder,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,yogurt,yogurt,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,egg,egg,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,milk,milk,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,ketchup,ketchup,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,salad cream,salad dressing,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,mayonnaise,mayonnaise,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,jam,jam,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,pickle,pickle,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,cheese,cheese,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,butter,butter,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,chicken,chicken,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,lettuce,lettuce,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,cucumber,cucumber,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,tomato,tomato,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,mushroom,mushroom,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,hummus,hummus,tp,1
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,bread,bread,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,crisps,chips,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,chocolate,chocolate,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,relish,relish,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,mustard,mustard,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,pasta sauce,pasta sauce,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,soup,soup,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,meat,meat,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,fish,fish,fp,0
+2p5wfkocpds61_jpg.rf.8b0b1b471fd7a1ce7ea50bdc21cc7940.jpg,high,berry,berry,fp,0
+0650_jpeg.rf.19d04c99c77fc56d18678e35c08fa1c2.jpg,high,egg,egg,tp,1
+0650_jpeg.rf.19d04c99c77fc56d18678e35c08fa1c2.jpg,high,lemon,lemon,tp,1
+0650_jpeg.rf.19d04c99c77fc56d18678e35c08fa1c2.jpg,high,ketchup,ketchup,tp,1
+0650_jpeg.rf.19d04c99c77fc56d18678e35c08fa1c2.jpg,high,roasted red pepper,bell pepper,tp,1
+0650_jpeg.rf.19d04c99c77fc56d18678e35c08fa1c2.jpg,high,pickle,pickle,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,apple,apple,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,blueberry,blueberry,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,egg,egg,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,carrot,carrot,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,strawberry,strawberry,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,mushroom,mushroom,fp,0
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,soy milk,soy milk,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,high,ground meat,meat,tp,1
+DSC_6096_JPG_jpg.rf.ad7083d1c5abb524ce2e9d3363972495.jpg,medium,bread,bread,fp,0
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,skyr,yogurt,tp,1
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,strawberry,strawberry,fp,0
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,bell pepper,bell pepper,tp,1
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,spring onion,spring onion,tp,1
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,lemon,lemon,tp,1
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,hot sauce,hot sauce,fp,0
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,apple cider vinegar,apple cider vinegar,fp,0
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,coconut milk,coconut milk,fp,0
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,ketchup,ketchup,tp,1
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,mustard,mustard,fp,0
+a1kuvxriau2d1_jpeg.rf.a16fdf4516a55e095e28d878080e4454.jpg,high,salad dressing,salad dressing,fp,0
+DSC_5977_JPG_jpg.rf.cae1dffa0f9fdd97c4101d02cdd830b5.jpg,high,egg,egg,fp,0
+DSC_5977_JPG_jpg.rf.cae1dffa0f9fdd97c4101d02cdd830b5.jpg,high,cheese,cheese,fp,0
+DSC_5977_JPG_jpg.rf.cae1dffa0f9fdd97c4101d02cdd830b5.jpg,high,asparagus,asparagus,fp,0
+DSC_5977_JPG_jpg.rf.cae1dffa0f9fdd97c4101d02cdd830b5.jpg,medium,smoked salmon,smoked salmon,fp,0
+DSC_5977_JPG_jpg.rf.cae1dffa0f9fdd97c4101d02cdd830b5.jpg,high,ground beef,ground beef,tp,1
+DSC_5977_JPG_jpg.rf.cae1dffa0f9fdd97c4101d02cdd830b5.jpg,medium,chicken,chicken,tp,1
+DSC_5909_JPG_jpg.rf.905339242b5fc71ecb84e6c8d092c3ad.jpg,high,apple,apple,fp,0
+DSC_5909_JPG_jpg.rf.905339242b5fc71ecb84e6c8d092c3ad.jpg,high,cheese,cheese,fp,0
+DSC_5909_JPG_jpg.rf.905339242b5fc71ecb84e6c8d092c3ad.jpg,high,strawberry,strawberry,tp,1
+DSC_5909_JPG_jpg.rf.905339242b5fc71ecb84e6c8d092c3ad.jpg,high,banana,banana,tp,1
+DSC_5909_JPG_jpg.rf.905339242b5fc71ecb84e6c8d092c3ad.jpg,medium,kiwi,kiwi,fp,0
+DSC_5909_JPG_jpg.rf.905339242b5fc71ecb84e6c8d092c3ad.jpg,high,tomato,tomato,tp,1
+DSC_5909_JPG_jpg.rf.905339242b5fc71ecb84e6c8d092c3ad.jpg,high,sweet potato,sweet potato,fp,0
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,lettuce,lettuce,fp,0
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,lime,lime,fp,0
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,carrot,carrot,tp,1
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,tomato,tomato,fp,0
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,lemon,lemon,tp,1
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,red bell pepper,bell pepper,tp,1
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,apple,apple,tp,1
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,medium,greek yogurt,yogurt,tp,1
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,medium,butter,butter,tp,1
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,mango,mango,fp,0
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,yogurt,yogurt,tp,1
+20250621_150133_jpg.rf.9adc24934417328fd8a8033cafaa8e2d.jpg,high,banana,banana,tp,1
+w1r3mnziyhvd1_jpeg.rf.870f4e05ef1ab64284545f1446f44923.jpg,high,milk,milk,fp,0
+w1r3mnziyhvd1_jpeg.rf.870f4e05ef1ab64284545f1446f44923.jpg,high,mayonnaise,mayonnaise,fp,0
+w1r3mnziyhvd1_jpeg.rf.870f4e05ef1ab64284545f1446f44923.jpg,medium,salad dressing,salad dressing,fp,0
+w1r3mnziyhvd1_jpeg.rf.870f4e05ef1ab64284545f1446f44923.jpg,medium,butter,butter,fp,0
+w1r3mnziyhvd1_jpeg.rf.870f4e05ef1ab64284545f1446f44923.jpg,medium,yogurt,yogurt,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,mayonnaise,mayonnaise,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,orange,orange,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,cucumber,cucumber,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,tomato,tomato,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,avocado,avocado,tp,1
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,red bell pepper,bell pepper,tp,1
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,medium,spinach,spinach,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,medium,chicken,chicken,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,medium,cheese,cheese,fp,0
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,hot sauce,hot sauce,tp,1
+20250621_000025_jpg.rf.c0de73d2921d41d8633ef7c961d9914b.jpg,high,green apple,apple,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,high,mayonnaise,mayonnaise,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,high,egg,egg,tp,1
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,high,almond milk,almond milk,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,high,ketchup,ketchup,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,shredded cheese,cheese,tp,1
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,bbq sauce,barbecue sauce,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,soy sauce,soy sauce,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,mustard,mustard,tp,1
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,minced garlic,garlic,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,lettuce,lettuce,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,broccoli,broccoli,fp,0
+5m86rb2i5b6e1_jpeg.rf.832a6e115ab8931dc1586042a1318406.jpg,medium,ground meat,meat,fp,0
+8d25lpb35lvd1_jpeg.rf.59982d82e26271b3e447e0d960a1b7fd.jpg,high,hemp hearts,hemp hearts,fp,0
+8d25lpb35lvd1_jpeg.rf.59982d82e26271b3e447e0d960a1b7fd.jpg,medium,lime,lime,fp,0
+8d25lpb35lvd1_jpeg.rf.59982d82e26271b3e447e0d960a1b7fd.jpg,medium,orange,orange,tp,1
+20250619_172455_jpg.rf.f413046a3013143088931b56ef6321f3.jpg,high,tomato,tomato,tp,1
+20250619_172455_jpg.rf.f413046a3013143088931b56ef6321f3.jpg,high,pickle,pickle,tp,1
+0lbxdi753y7f1_jpeg.rf.68180848402318fcecc913cd0d18effe.jpg,high,margarine,margarine,fp,0
+0lbxdi753y7f1_jpeg.rf.68180848402318fcecc913cd0d18effe.jpg,high,apple pie filling,pie,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,milk,milk,tp,1
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,soy sauce,soy sauce,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,bread roll,bread,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,lettuce,lettuce,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,medium,mushroom,mushroom,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,mustard,mustard,tp,1
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,mayonnaise,mayonnaise,tp,1
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,yogurt,yogurt,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,butter,butter,tp,1
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,medium,bacon,bacon,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,frozen pizza,pizza,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,french fry,french fry,fp,0
+8tz46i3bdx3e1_jpeg.rf.9320b6d08b6d43df233af169c7f831b6.jpg,high,ice cream,ice cream,fp,0
+DSC_5914_JPG_jpg.rf.cbbcb8585aa18e86bc9da531b6f0cf78.jpg,high,apple,apple,tp,1
+DSC_5914_JPG_jpg.rf.cbbcb8585aa18e86bc9da531b6f0cf78.jpg,high,cheese,cheese,tp,1
+DSC_5914_JPG_jpg.rf.cbbcb8585aa18e86bc9da531b6f0cf78.jpg,high,strawberry,strawberry,tp,1
+DSC_5914_JPG_jpg.rf.cbbcb8585aa18e86bc9da531b6f0cf78.jpg,medium,apricot,apricot,fp,0
+DSC_5914_JPG_jpg.rf.cbbcb8585aa18e86bc9da531b6f0cf78.jpg,high,blueberry,blueberry,tp,1
+DSC_5914_JPG_jpg.rf.cbbcb8585aa18e86bc9da531b6f0cf78.jpg,high,soy milk,soy milk,fp,0
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,high,apple,apple,tp,1
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,high,lettuce,lettuce,tp,1
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,high,lemon,lemon,fp,0
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,medium,avocado,avocado,fp,0
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,high,yogurt,yogurt,tp,1
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,medium,butter,butter,fp,0
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,high,bread roll,bread,tp,1
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,high,milk,milk,fp,0
+mulypoxgms6f1_jpeg.rf.072b3c0fef4e72aabedce21eef139170.jpg,high,pea,pea,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,milk,milk,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,butter,butter,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,egg,egg,tp,1
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,yogurt,yogurt,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,grape,grape,tp,1
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,olive,olive,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,medium,mushroom,mushroom,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,medium,bacon,bacon,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,medium,salad mix,salad,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,mustard,mustard,fp,0
+nw4d3j5hi1ae1_jpeg.rf.e57cee24d977499ee5099ee0e59ece2d.jpg,high,mayonnaise,mayonnaise,tp,1
+12khbw4mcod51_jpg.rf.b7d3ae31a70fb581e134a5df8b48a439.jpg,high,gnocchi,gnocchi,fp,0
+12khbw4mcod51_jpg.rf.b7d3ae31a70fb581e134a5df8b48a439.jpg,high,pasta,pasta,fp,0
+12khbw4mcod51_jpg.rf.b7d3ae31a70fb581e134a5df8b48a439.jpg,high,shredded carrot,carrot,fp,0
+12khbw4mcod51_jpg.rf.b7d3ae31a70fb581e134a5df8b48a439.jpg,high,protein drink,protein shake,fp,0
+12khbw4mcod51_jpg.rf.b7d3ae31a70fb581e134a5df8b48a439.jpg,high,ketchup,ketchup,tp,1
+12khbw4mcod51_jpg.rf.b7d3ae31a70fb581e134a5df8b48a439.jpg,high,milk,milk,tp,1
+12khbw4mcod51_jpg.rf.b7d3ae31a70fb581e134a5df8b48a439.jpg,high,salad,salad,fp,0
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,high,corn flakes,corn flakes,fp,0
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,high,lettuce,lettuce,fp,0
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,high,butter,butter,fp,0
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,high,orange,orange,tp,1
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,high,cheese,cheese,fp,0
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,high,broccoli,broccoli,fp,0
+zqcd80k52a651_jpg.rf.136633a3d184af61e05b53679c3d6d8e.jpg,high,plant milk,plant milk,fp,0
+havent-seen-any-posts-from-ppl-from-my-country-v0-z0jzz4585y7f1_webp.rf.a068dfd6e257804c1433ec7fbd1354bf.jpg,high,celery,celery,fp,0
+havent-seen-any-posts-from-ppl-from-my-country-v0-z0jzz4585y7f1_webp.rf.a068dfd6e257804c1433ec7fbd1354bf.jpg,medium,bell pepper,bell pepper,tp,1
+havent-seen-any-posts-from-ppl-from-my-country-v0-z0jzz4585y7f1_webp.rf.a068dfd6e257804c1433ec7fbd1354bf.jpg,medium,tomato,tomato,tp,1
+havent-seen-any-posts-from-ppl-from-my-country-v0-z0jzz4585y7f1_webp.rf.a068dfd6e257804c1433ec7fbd1354bf.jpg,medium,avocado,avocado,fp,0
+havent-seen-any-posts-from-ppl-from-my-country-v0-z0jzz4585y7f1_webp.rf.a068dfd6e257804c1433ec7fbd1354bf.jpg,medium,cheese slice,cheese,fp,0
+havent-seen-any-posts-from-ppl-from-my-country-v0-z0jzz4585y7f1_webp.rf.a068dfd6e257804c1433ec7fbd1354bf.jpg,medium,yogurt,yogurt,fp,0
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,apple,apple,tp,1
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,lemon,lemon,tp,1
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,red bell pepper,bell pepper,tp,1
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,medium,yogurt,yogurt,fp,0
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,banana,banana,fp,0
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,avocado,avocado,fp,0
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,tomato,tomato,fp,0
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,cucumber,cucumber,tp,1
+20250621_145951_jpg.rf.f9174fe5f3c36c5c3358b6d9a29d83cf.jpg,high,carrot,carrot,fp,0
+DSC_6027_JPG_jpg.rf.e283a8325f07013ac6f88d62aa26cb1b.jpg,high,bread roll,bread,fp,0
+DSC_6027_JPG_jpg.rf.e283a8325f07013ac6f88d62aa26cb1b.jpg,high,tomato,tomato,fp,0
+DSC_6027_JPG_jpg.rf.e283a8325f07013ac6f88d62aa26cb1b.jpg,high,mushroom,mushroom,tp,1
+DSC_6027_JPG_jpg.rf.e283a8325f07013ac6f88d62aa26cb1b.jpg,high,banana,banana,tp,1
+DSC_6027_JPG_jpg.rf.e283a8325f07013ac6f88d62aa26cb1b.jpg,high,chocolate cake,cake,fp,0
+DSC_6027_JPG_jpg.rf.e283a8325f07013ac6f88d62aa26cb1b.jpg,high,egg,egg,fp,0
+DSC_6027_JPG_jpg.rf.e283a8325f07013ac6f88d62aa26cb1b.jpg,high,chicken breast,chicken,tp,1
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,high,blueberry,blueberry,fp,0
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,high,strawberry,strawberry,tp,1
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,high,yogurt,yogurt,fp,0
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,medium,ground beef,ground beef,fp,0
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,medium,lettuce,lettuce,fp,0
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,high,hot sauce,hot sauce,tp,1
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,high,ketchup,ketchup,fp,0
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,high,pickle,pickle,fp,0
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,medium,salsa,salsa,fp,0
+yeo9bmon3p451_jpg.rf.32458d0fc93cfd7ccd3562388cf53d14.jpg,medium,cream cheese,cream cheese,fp,0
+u5ybfh84tpyd1_jpeg.rf.ea317ad3f442010a3c57d8729b9a700a.jpg,high,egg,egg,tp,1
+u5ybfh84tpyd1_jpeg.rf.ea317ad3f442010a3c57d8729b9a700a.jpg,high,lemon,lemon,fp,0
+u5ybfh84tpyd1_jpeg.rf.ea317ad3f442010a3c57d8729b9a700a.jpg,medium,zucchini,zucchini,fp,0
+u5ybfh84tpyd1_jpeg.rf.ea317ad3f442010a3c57d8729b9a700a.jpg,high,yogurt,yogurt,tp,1
+u5ybfh84tpyd1_jpeg.rf.ea317ad3f442010a3c57d8729b9a700a.jpg,high,butter,butter,fp,0
+u5ybfh84tpyd1_jpeg.rf.ea317ad3f442010a3c57d8729b9a700a.jpg,medium,milk,milk,fp,0
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,high,fish finger,fish,fp,0
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,medium,frozen pea,pea,fp,0
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,high,cheddar cheese,cheese,fp,0
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,high,cream cheese,cream cheese,fp,0
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,medium,ham,ham,fp,0
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,medium,cheese slice,cheese,fp,0
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,high,milk,milk,tp,1
+38wrf0tv6m1f1_jpeg.rf.f7fe54e6ac27b25f027c9d0be7cdadef.jpg,medium,butter,butter,fp,0
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,high,blueberry,blueberry,fp,0
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,high,banana,banana,fp,0
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,high,margarine,margarine,fp,0
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,high,mushroom,mushroom,tp,1
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,high,strawberry,strawberry,tp,1
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,high,spring onion,spring onion,fp,0
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,medium,kiwi,kiwi,fp,0
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,high,tomato,tomato,tp,1
+DSC_5895_JPG_jpg.rf.46ae66905fb0f18ac333eb50ec3e348f.jpg,medium,chicken,chicken,tp,1
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,strawberry,strawberry,fp,0
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,tomato,tomato,tp,1
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,banana,banana,tp,1
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,medium,carrot,carrot,fp,0
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,mushroom,mushroom,tp,1
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,spinach,spinach,fp,0
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,onion,onion,tp,1
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,blueberry,blueberry,tp,1
+DSC_5925_JPG_jpg.rf.1f622d5bc7ab09fb045db42255e3829e.jpg,high,ground beef,ground beef,tp,1
+2nhgchvk7a4e1_jpeg.rf.3b7b86948fbe50eb1c5da7b8dda6e6ee.jpg,high,almond milk,almond milk,fp,0
+2nhgchvk7a4e1_jpeg.rf.3b7b86948fbe50eb1c5da7b8dda6e6ee.jpg,high,cottage cheese,cheese,tp,1
+2nhgchvk7a4e1_jpeg.rf.3b7b86948fbe50eb1c5da7b8dda6e6ee.jpg,high,egg,egg,tp,1
+2nhgchvk7a4e1_jpeg.rf.3b7b86948fbe50eb1c5da7b8dda6e6ee.jpg,high,lettuce,lettuce,fp,0
+2nhgchvk7a4e1_jpeg.rf.3b7b86948fbe50eb1c5da7b8dda6e6ee.jpg,high,apple,apple,tp,1
+2nhgchvk7a4e1_jpeg.rf.3b7b86948fbe50eb1c5da7b8dda6e6ee.jpg,medium,bun,bread,fp,0
+2nhgchvk7a4e1_jpeg.rf.3b7b86948fbe50eb1c5da7b8dda6e6ee.jpg,medium,beef,beef,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,high,carrot,carrot,tp,1
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,high,lettuce,lettuce,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,high,blueberry,blueberry,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,medium,ham,ham,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,high,pickle,pickle,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,medium,yogurt,yogurt,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,high,lime,lime,tp,1
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,medium,green pepper,bell pepper,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,medium,banana,banana,fp,0
+20250619_212231_jpg.rf.9243022c180a4a508ec1d95edadcb680.jpg,medium,cheese,cheese,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,high,cream cheese,cream cheese,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,high,mustard,mustard,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,high,milk,milk,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,medium,butter,butter,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,medium,ketchup,ketchup,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,medium,pesto,pesto,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,medium,mayonnaise,mayonnaise,fp,0
+dwm7louwwx5e1_jpeg.rf.7a415973d2df9f2efa58ea8b7d75d912.jpg,medium,yogurt,yogurt,fp,0
+rmyz31dmn2x51_jpg.rf.6f37ebd5e3a66a440c6fecfba3a93b3b.jpg,high,orange,orange,tp,1
+rmyz31dmn2x51_jpg.rf.6f37ebd5e3a66a440c6fecfba3a93b3b.jpg,high,sriracha,hot sauce,tp,1
+rmyz31dmn2x51_jpg.rf.6f37ebd5e3a66a440c6fecfba3a93b3b.jpg,high,mustard,mustard,tp,1
+rmyz31dmn2x51_jpg.rf.6f37ebd5e3a66a440c6fecfba3a93b3b.jpg,high,pickle,pickle,tp,1
+rmyz31dmn2x51_jpg.rf.6f37ebd5e3a66a440c6fecfba3a93b3b.jpg,medium,coffee creamer,coffee creamer,fp,0
+rmyz31dmn2x51_jpg.rf.6f37ebd5e3a66a440c6fecfba3a93b3b.jpg,medium,chili sauce,hot sauce,tp,1
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,blueberry,blueberry,tp,1
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,strawberry,strawberry,fp,0
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,onion,onion,fp,0
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,margarine,margarine,fp,0
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,cheese,cheese,tp,1
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,banana,banana,tp,1
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,carrot,carrot,tp,1
+DSC_5820_JPG_jpg.rf.9bbecb9654dad7fa2b59714de1215ce9.jpg,high,avocado,avocado,fp,0
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,high,grape,grape,fp,0
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,high,blackberry,blackberry,fp,0
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,high,egg,egg,tp,1
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,high,yogurt,yogurt,fp,0
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,high,milk,milk,tp,1
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,medium,butter,butter,fp,0
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,medium,tortilla,tortilla,fp,0
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,high,cheese,cheese,fp,0
+0961_jpeg.rf.91e2e64b7e169fc445677eb7dc479f02.jpg,high,carrot,carrot,fp,0
+mnthdsddij1f1_jpeg.rf.f7e21d1eb97bf80a19da08a6005ad04f.jpg,high,egg,egg,tp,1
+mnthdsddij1f1_jpeg.rf.f7e21d1eb97bf80a19da08a6005ad04f.jpg,high,avocado,avocado,tp,1
+mnthdsddij1f1_jpeg.rf.f7e21d1eb97bf80a19da08a6005ad04f.jpg,high,apple,apple,tp,1
+mnthdsddij1f1_jpeg.rf.f7e21d1eb97bf80a19da08a6005ad04f.jpg,high,bell pepper,bell pepper,tp,1
+mnthdsddij1f1_jpeg.rf.f7e21d1eb97bf80a19da08a6005ad04f.jpg,high,carrot,carrot,fp,0
+mnthdsddij1f1_jpeg.rf.f7e21d1eb97bf80a19da08a6005ad04f.jpg,high,milk,milk,tp,1
+mnthdsddij1f1_jpeg.rf.f7e21d1eb97bf80a19da08a6005ad04f.jpg,high,bread,bread,fp,0
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,pasta sauce,pasta sauce,fp,0
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,margarine,margarine,fp,0
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,cucumber,cucumber,tp,1
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,carrot,carrot,tp,1
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,zucchini,zucchini,fp,0
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,red onion,onion,fp,0
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,celery,celery,tp,1
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,high,pineapple,pineapple,fp,0
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,medium,tomato,tomato,fp,0
+0qk4z02qs7d61_jpg.rf.421a123f57647bc8d648497795dcdbed.jpg,medium,bell pepper,bell pepper,fp,0
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,high,milk,milk,fp,0
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,high,cheese,cheese,tp,1
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,high,pickle,pickle,fp,0
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,high,lettuce,lettuce,tp,1
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,high,orange,orange,fp,0
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,high,lemon,lemon,fp,0
+erd6jzcgmr1f1_jpeg.rf.c345e86d392370ef9d4a67d1c47be518.jpg,medium,yogurt,yogurt,fp,0
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,medium,egg,egg,fp,0
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,high,tomato,tomato,tp,1
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,high,blueberry,blueberry,tp,1
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,high,carrot,carrot,tp,1
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,high,lime,lime,tp,1
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,high,banana,banana,tp,1
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,medium,onion,onion,tp,1
+DSC_5764_JPG_jpg.rf.411120a754480313fa39024fd47100b9.jpg,high,soy milk,soy milk,fp,0
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,egg,egg,tp,1
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,bread,bread,fp,0
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,lemon,lemon,fp,0
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,potato,potato,tp,1
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,avocado,avocado,fp,0
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,blueberry,blueberry,tp,1
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,butter,butter,tp,1
+DSC_5973_JPG_jpg.rf.d12d4f2a86ce472e01b4de96b20ec0b8.jpg,high,cheese,cheese,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,high,egg,egg,tp,1
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,high,margarine,margarine,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,high,yogurt,yogurt,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,high,cheese slice,cheese,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,medium,spinach,spinach,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,high,salad mix,salad,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,high,carrot,carrot,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,medium,bell pepper,bell pepper,fp,0
+0502_jpeg.rf.de6c90849afd15a5436519d161cf7dd5.jpg,high,lime,lime,tp,1
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,butter,butter,tp,1
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,yogurt,yogurt,fp,0
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,almond milk,almond milk,fp,0
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,cold brew coffee,cold brew coffee,fp,0
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,milk,milk,tp,1
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,egg,egg,tp,1
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,lemon,lemon,tp,1
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,ketchup,ketchup,fp,0
+bg8f4fnb01e41_jpg.rf.bd3284a97af339b89f2d702a1897e1d7.jpg,high,cabbage,cabbage,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,butter,butter,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,greek yogurt,yogurt,tp,1
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,cream cheese,cream cheese,tp,1
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,cottage cheese,cheese,tp,1
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,bacon dip,bacon dip,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,broccolini,broccolini,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,watermelon,watermelon,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,apple,apple,tp,1
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,grape,grape,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,melon,melon,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,chia seed,chia seed,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,banana,banana,tp,1
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,lemon,lemon,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,medium,blueberry,blueberry,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,high,salad,salad,fp,0
+qtta8z2251se1_jpeg.rf.2365c935973a6e11fbd2ff0ce893e532.jpg,medium,onion,onion,fp,0
+0070_jpeg.rf.50e3be07710488fae255bb49fbc9126a.jpg,high,milk,milk,tp,1
+0070_jpeg.rf.50e3be07710488fae255bb49fbc9126a.jpg,high,egg,egg,tp,1
+0070_jpeg.rf.50e3be07710488fae255bb49fbc9126a.jpg,high,baking soda,baking soda,fp,0
+DSC_6036_JPG_jpg.rf.4d04a9850c907435e34928e4ba31dad1.jpg,high,tomato,tomato,tp,1
+DSC_6036_JPG_jpg.rf.4d04a9850c907435e34928e4ba31dad1.jpg,high,carrot,carrot,tp,1
+DSC_6036_JPG_jpg.rf.4d04a9850c907435e34928e4ba31dad1.jpg,high,lime,lime,tp,1
+DSC_6036_JPG_jpg.rf.4d04a9850c907435e34928e4ba31dad1.jpg,high,cheese,cheese,tp,1
+DSC_6036_JPG_jpg.rf.4d04a9850c907435e34928e4ba31dad1.jpg,high,egg,egg,tp,1
+DSC_6036_JPG_jpg.rf.4d04a9850c907435e34928e4ba31dad1.jpg,high,potato,potato,tp,1
+DSC_6036_JPG_jpg.rf.4d04a9850c907435e34928e4ba31dad1.jpg,medium,minced meat,ground beef,fp,0
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,lettuce,lettuce,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,avocado,avocado,fp,0
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,carrot,carrot,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,apple,apple,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,tomato,tomato,fp,0
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,banana,banana,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,yogurt,yogurt,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,cucumber,cucumber,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,bell pepper,bell pepper,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,high,orange,orange,fp,0
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,medium,jarred pepper,bell pepper,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,medium,mustard,mustard,tp,1
+20250621_153308_jpg.rf.ecbf33bac42beea937b638c44db76d96.jpg,medium,pickle,pickle,fp,0
+DSC_5870_JPG_jpg.rf.fea918b6468847ffc6e9248168d4c76f.jpg,high,cheese,cheese,fp,0
+DSC_5870_JPG_jpg.rf.fea918b6468847ffc6e9248168d4c76f.jpg,high,tomato,tomato,tp,1
+DSC_5870_JPG_jpg.rf.fea918b6468847ffc6e9248168d4c76f.jpg,high,carrot,carrot,tp,1
+DSC_5870_JPG_jpg.rf.fea918b6468847ffc6e9248168d4c76f.jpg,high,chicken,chicken,tp,1
+DSC_5870_JPG_jpg.rf.fea918b6468847ffc6e9248168d4c76f.jpg,medium,ham,ham,fp,0
+DSC_5870_JPG_jpg.rf.fea918b6468847ffc6e9248168d4c76f.jpg,high,banana,banana,tp,1
+naid6xbl9t5f1_jpeg.rf.3e8593e6c185e7edf10d9f187eab5d05.jpg,high,milk,milk,tp,1
+naid6xbl9t5f1_jpeg.rf.3e8593e6c185e7edf10d9f187eab5d05.jpg,high,almond milk,almond milk,fp,0
+naid6xbl9t5f1_jpeg.rf.3e8593e6c185e7edf10d9f187eab5d05.jpg,high,egg,egg,fp,0
+naid6xbl9t5f1_jpeg.rf.3e8593e6c185e7edf10d9f187eab5d05.jpg,high,blueberry,blueberry,fp,0
+naid6xbl9t5f1_jpeg.rf.3e8593e6c185e7edf10d9f187eab5d05.jpg,medium,broccoli,broccoli,fp,0
+naid6xbl9t5f1_jpeg.rf.3e8593e6c185e7edf10d9f187eab5d05.jpg,medium,bell pepper,bell pepper,fp,0
+0932_jpeg.rf.e03ba66c2977eff4cb3a7a86c6b85985.jpg,high,oat milk,oat milk,fp,0
+0932_jpeg.rf.e03ba66c2977eff4cb3a7a86c6b85985.jpg,high,almond milk,almond milk,fp,0
+0932_jpeg.rf.e03ba66c2977eff4cb3a7a86c6b85985.jpg,high,cream cheese,cream cheese,fp,0
+0932_jpeg.rf.e03ba66c2977eff4cb3a7a86c6b85985.jpg,high,egg,egg,tp,1
+0932_jpeg.rf.e03ba66c2977eff4cb3a7a86c6b85985.jpg,high,strawberry,strawberry,tp,1
+0932_jpeg.rf.e03ba66c2977eff4cb3a7a86c6b85985.jpg,medium,yogurt,yogurt,fp,0
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,high,cheese,cheese,tp,1
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,high,butter,butter,fp,0
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,high,mustard,mustard,fp,0
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,high,mayonnaise,mayonnaise,fp,0
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,high,pickles,pickle,tp,1
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,high,jam,jam,fp,0
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,medium,lettuce,lettuce,fp,0
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,medium,deli meat,meat,fp,0
+dyts370h4v8e1_jpeg.rf.3e8df1ddf42c9f2096b08ab6d08b597e.jpg,medium,salsa,salsa,fp,0
+liwyg6fudryd1_jpeg.rf.7534331e8a564f2225825d5ee86c5daf.jpg,high,greek yogurt,yogurt,tp,1
+liwyg6fudryd1_jpeg.rf.7534331e8a564f2225825d5ee86c5daf.jpg,high,mustard,mustard,tp,1
+liwyg6fudryd1_jpeg.rf.7534331e8a564f2225825d5ee86c5daf.jpg,high,ketchup,ketchup,tp,1
+liwyg6fudryd1_jpeg.rf.7534331e8a564f2225825d5ee86c5daf.jpg,high,pickled onion,onion,fp,0
+liwyg6fudryd1_jpeg.rf.7534331e8a564f2225825d5ee86c5daf.jpg,high,cheese,cheese,fp,0
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,medium,lettuce,lettuce,fp,0
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,high,chicken breast,chicken,tp,1
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,high,carrot,carrot,fp,0
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,high,avocado,avocado,tp,1
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,medium,butter,butter,tp,1
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,medium,lime,lime,fp,0
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,high,apple,apple,tp,1
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,high,banana,banana,tp,1
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,high,orange,orange,tp,1
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,high,yogurt,yogurt,tp,1
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,medium,cheese,cheese,fp,0
+20250621_145632_jpg.rf.3361b3a3679562405db79999b26a254d.jpg,medium,tomato,tomato,fp,0
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,egg,egg,tp,1
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,milk,milk,fp,0
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,apple,apple,tp,1
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,orange,orange,tp,1
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,lemon,lemon,tp,1
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,red pepper,bell pepper,tp,1
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,cucumber,cucumber,tp,1
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,high,carrot,carrot,tp,1
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,medium,cheese,cheese,fp,0
+x0sosl3epju61_jpg.rf.53b74e2e871204599e8a9115bf9abcc5.jpg,medium,pickle,pickle,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,egg,egg,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,butter,butter,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,cherry tomato,tomato,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,sour cream,sour cream,tp,1
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,medium,sliced meat,meat,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,carrot,carrot,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,pineapple,pineapple,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,medium,milk,milk,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,lettuce,lettuce,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,lime,lime,tp,1
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,bread roll,bread,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,medium,cheese slice,cheese,fp,0
+dz4pix0bib5e1_jpeg.rf.732264e74b53e4c3ec2947f056b3eee6.jpg,high,pickle,pickle,fp,0
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,high,egg,egg,tp,1
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,high,butter,butter,fp,0
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,high,orange,orange,tp,1
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,high,lettuce,lettuce,fp,0
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,medium,mayonnaise,mayonnaise,tp,1
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,medium,pickle,pickle,fp,0
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,medium,ketchup,ketchup,tp,1
+0586_jpeg.rf.4261bffb70f2026c1db00e48960af25f.jpg,medium,bbq sauce,barbecue sauce,fp,0
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,medium,cheese,cheese,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,high,lime,lime,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,high,sweet potato,sweet potato,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,high,carrot,carrot,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,medium,asparagus,asparagus,fp,0
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,high,blueberry,blueberry,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,high,tomato,tomato,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,high,chicken,chicken,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,high,mushroom,mushroom,tp,1
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,medium,ham,ham,fp,0
+DSC_5860_JPG_jpg.rf.3b69265fdaba32cc3564df40037b9fb3.jpg,medium,spinach,spinach,fp,0
