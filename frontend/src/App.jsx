@@ -751,9 +751,11 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
 
   const matchedIngredients = recipe.matched_ingredients || [];
   const missingIngredients = recipe.missing_ingredients || [];
+  const grocerySuggestions = recipe.grocery_suggestions || [];
   const instructions = recipe.instructions || [];
 
   const missingPreview = missingIngredients.slice(0, 4).join(", ");
+  const primaryGrocerySuggestion = grocerySuggestions[0] || null;
 
   return (
     <motion.article
@@ -841,24 +843,37 @@ function RecipeCard({ recipe, index, selectedShop, isOpen, onToggle }) {
       </div>
 
       {selectedShop && missingIngredients.length > 0 && (
-        <div className="shopping-suggestion">
-          <div className="shopping-icon">
-            <Store size={18} />
-          </div>
+  <div className="shopping-suggestion">
+    <div className="shopping-icon">
+      <Store size={18} />
+    </div>
 
-          <div>
-            <strong>Shopping suggestion</strong>
-            <p>
-              Check {selectedShop.name} for {missingPreview}
-              {missingIngredients.length > 4 ? "..." : ""}.
-            </p>
-          </div>
+    <div>
+      <strong>Shopping suggestion</strong>
 
-          <span className={getShopBadgeClass(selectedShop.type)}>
-            {selectedShop.type}
+      <p>
+        Check {selectedShop.name} for {missingPreview}
+        {missingIngredients.length > 4 ? "..." : ""}.
+      </p>
+
+      {primaryGrocerySuggestion && (
+        <div className="shopping-detail">
+          <span>
+            Best store type: {primaryGrocerySuggestion.recommended_store_type}
+          </span>
+
+          <span>
+            {primaryGrocerySuggestion.shopping_note}
           </span>
         </div>
       )}
+    </div>
+
+    <span className={getShopBadgeClass(selectedShop.type)}>
+      {selectedShop.type}
+    </span>
+  </div>
+)}
 
       <button className="instructions-button" onClick={onToggle}>
         {isOpen ? "Hide instructions" : "View instructions"}

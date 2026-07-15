@@ -190,12 +190,13 @@ def simplify_recipe_for_ui(recipe: dict[str, Any]) -> dict[str, Any]:
             {
                 "basic_staples": [],
                 "common_grocery": [],
+                "specific_grocery": [],
                 "special_ingredients": [],
             },
         ),
+        "grocery_suggestions": recipe.get("grocery_suggestions", []),
         "instructions": recipe.get("instructions", []),
     }
-
 
 @app.get("/")
 def root():
